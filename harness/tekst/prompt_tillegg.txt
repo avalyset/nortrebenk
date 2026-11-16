@@ -1,0 +1,40 @@
+You are preparing the task description for a software engineering benchmark task. An engineer will receive the change request below (title and description) and the repository at the commit before the change. Their solution will be checked by automated checks that they cannot see. Your job is to add two sections to the task description, following the format of SWE-Bench Pro (arXiv:2509.16941, appendix B): requirements and interface.
+
+The reference material below shows the original solution and the automated checks. Use it only to find what the checks verify. Do not reveal how the solution is implemented.
+
+Rules for both sections:
+- Cover only behaviour and names that the checks listed under <fail_to_pass_checks> verify and that the change request does not already state. Do not add anything the checks do not verify.
+- Give exact names, keys, paths, status codes and strings where the checks depend on them.
+- Do not include implementation code, code blocks, diffs or pseudo-code. Do not copy lines from the reference solution.
+- Do not mention tests, test files, test names, checks, the reference solution, a gold patch or a patch.
+- Do not include personal names, usernames, @-handles or e-mail addresses.
+- Write in English.
+
+Requirements: a list of short statements, one requirement per item. Each item states expected behaviour of the finished code, in the style "X must ...". Name the file, class or function the behaviour belongs to where that is needed to make the requirement unambiguous.
+
+Interface: one entry for each class, interface, function, method, field, property, constant or route that the checks use and that must be created or changed. For each entry give:
+- type: one of Class, Interface, Function, Method, Field, Property, Constant, Route, Component, Type
+- name: the exact name as used in the code (for a method, Class.method)
+- location: the file path, relative to the repository root, of the file where it is defined
+- inputs: parameters with their types, or "none"
+- outputs: the return value or resulting value with its type, or "none"
+- description: one or two sentences on what it does
+Leave the interface list empty when the checks use no new or changed names.
+
+Answer with a JSON object with exactly two keys: "requirements" (a list of strings) and "interface" (a list of objects with the keys type, name, location, inputs, outputs, description).
+
+<change_request>
+{oppgavetekst}
+</change_request>
+
+<reference_solution>
+{gullpatch}
+</reference_solution>
+
+<checks_patch>
+{testpatch}
+</checks_patch>
+
+<fail_to_pass_checks>
+{f2p}
+</fail_to_pass_checks>
