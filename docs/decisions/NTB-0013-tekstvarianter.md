@@ -1,6 +1,7 @@
 # NTB-0013: Tekstvarianter
 
 - Status: vedtatt 2026-11-16
+- Endret 2026-11-16: uavhengig kontroll av den utvidede teksten.
 
 ## Kontekst
 
@@ -13,6 +14,8 @@ Hver oppgave får to tekstvarianter. «PR-tekst» er tittel og beskrivelse slik 
 Kvalitetskravet i NTB-0003 gjelder den utvidede teksten. Den vurderes med samme prompt, samme tre vurderere og samme regel som i P2.3. OpenAI-vurdereren kalles bare for oppgaver der stemmen kan endre utfallet, altså der nøyaktig én av de to andre stemmer for utelukkelse på et kriterium, fordi restkreditten ikke dekker alle. Mangler en slik stemme når kreditten er brukt, består ikke oppgaven. Grensen på 20 i NTB-0003 står.
 
 I P3 kjøres begge tekstvarianter for oppgavene i settet. Hovedmålet er løst andel på utvidet tekst. Forskjellen mellom variantene rapporteres parvis per oppgave, beskrivende, og inndelt etter utfallet av kvalitetssjekken av PR-teksten i P2.3. Rekker ikke budsjettet, kuttes kjøringer før tekstvariant, og PR-tekst-varianten før en arm.
+
+Uavhengig kontroll: OpenAI-vurdereren vurderer den utvidede teksten med samme prompt, for alle oppgavene i settet hvis restkreditten dekker det, ellers for 11 av de 17 som ble utelukket i P2.3, trukket med frø 20261116 fra sorterte ID-er. Stemmen endrer ikke settet, fordi regelen krever to stemmer. Oppgaver der den stemmer for utelukkelse, merkes, og hovedmålet rapporteres både med og uten dem.
 
 ## Alternativer vurdert
 

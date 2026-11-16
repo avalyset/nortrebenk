@@ -37,3 +37,4 @@ Status for hver fase står i ground truth, ikke her.
 - [NTB-0011: Plattform](docs/decisions/NTB-0011-plattform.md)
 - [NTB-0012: Budsjettramme](docs/decisions/NTB-0012-budsjettramme.md)
 - [NTB-0013: Tekstvarianter](docs/decisions/NTB-0013-tekstvarianter.md)
+- [NTB-0014: Kjøreplan for P3](docs/decisions/NTB-0014-kjoreplan-p3.md)
