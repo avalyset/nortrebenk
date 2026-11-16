@@ -2,6 +2,7 @@
 
 - Status: vedtatt 2026-11-16
 - Endret 2026-11-16: skårgrense og sammenslåingsregel presisert.
+- Endret 2026-11-16 (2): ankerutvalg, samsvarsmål og vurderere presisert.
 
 ## Kontekst
 
@@ -10,6 +11,8 @@ Oppgaveteksten er PR-beskrivelsen, som kan beskrive løsningen eller være for v
 ## Beslutning
 
 Hver oppgave vurderes etter de to kriteriene i SWE-bench Verified-rubrikken (underspesifisert oppgavetekst; tester som avviser gyldige løsninger), med skår 0–3, av tre modeller fra ulike leverandører med rubrikken som prompt. En modell stemmer for utelukkelse på et kriterium når den gir skår 2 eller 3. Sammenslåingsregelen velges på ankerutvalget fra de menneskelige Verified-annotasjonene, før den brukes på egne oppgaver: enten utelukkes en oppgave når minst én av tre modeller stemmer for utelukkelse på et kriterium, eller når minst to av tre gjør det. Regelen med høyest samsvar med de menneskelige annotasjonene velges; ved likt samsvar velges den strengeste. Ensemblet måles først mot de publiserte menneskelige Verified-annotasjonene. I tillegg føres to mekaniske felt per oppgave: andelen av gullpatchens tilføyde linjer som står ordrett i oppgaveteksten, og om testpatchen kompilerer mot base. Alle vurderinger publiseres. Forfatteren er ikke vurderer.
+
+Ankerutvalget er 100 instanser trukket fra de menneskelig annoterte SWE-bench-instansene: 50 der den menneskelige samleskåren er 2 eller høyere på minst ett av de to kriteriene, og 50 der den er under 2 på begge, trukket med fast frø (20261116) fra sorterte instans-ID-er. Samsvar er andelen av de 100 der ensemblets avgjørelse (utelukket eller beholdt) er lik den menneskelige. Vurdererne er én modell fra Anthropic, én fra OpenAI og én fra Google; modell-ID-er og parametre føres sammen med vurderingene. Kan en vurderer ikke brukes uten utgifter utover eksisterende kreditt, føres det som avvik, og regelen velges mellom «minst én» og «alle» blant vurdererne som er igjen. Ankeret er engelskspråklige Python-oppgaver som modellene kan ha sett i trening, også med utfallet av annoteringen; settet er Kotlin og TypeScript med norsk og engelsk tekst. Begge deler står som grense.
 
 ## Alternativer vurdert
 
