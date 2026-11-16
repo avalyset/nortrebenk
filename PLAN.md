@@ -14,9 +14,10 @@
   - P2.1 Repo og ADR
   - P2.2 Settbygging lokalt på linux/arm64: forsegling, stabilitet over tre kjøringer, tompatch-kontroll, dedup, treningsgrenser
   - P2.3 Kvalitetssjekk av oppgavene
+  - P2.3b Utvidet oppgavetekst med krav og grensesnitt, og ny kvalitetssjekk av den (NTB-0013)
   - P2.4 Anker og røykprøve på oppgaver utenfor settet; budsjettak
   - P2.5 Forhåndsregistrering (prereg-v1), med oversettelse av repoets dokumenter til engelsk
-- P3 Pilotkjøring under forhåndsregistreringen: Claude Code med Opus 5.5 og med Sonnet 5.5
+- P3 Pilotkjøring under forhåndsregistreringen: Claude Code med Opus 5.5 og med Sonnet 5.5, på utvidet tekst og på PR-teksten alene
 - P4 Frys av v1.0, med krysskontroll på amd64 før frys hvis inkludert kreditt dekker det
 
 Status for hver fase står i ground truth, ikke her.
@@ -35,3 +36,4 @@ Status for hver fase står i ground truth, ikke her.
 - [NTB-0010: Personopplysninger](docs/decisions/NTB-0010-personopplysninger.md)
 - [NTB-0011: Plattform](docs/decisions/NTB-0011-plattform.md)
 - [NTB-0012: Budsjettramme](docs/decisions/NTB-0012-budsjettramme.md)
+- [NTB-0013: Tekstvarianter](docs/decisions/NTB-0013-tekstvarianter.md)

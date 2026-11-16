@@ -1,6 +1,7 @@
 # NTB-0008: Metrikker og analyse
 
 - Status: vedtatt 2026-11-16
+- Endret 2026-11-16: hovedmål og parvis sammenligning av tekstvarianter, se NTB-0013.
 
 ## Kontekst
 

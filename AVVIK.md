@@ -20,9 +20,12 @@ NTB-0004 krever én vurderer fra Google. Gemini-nøkkelens prosjekt er på grati
 
 ## 5. Kjørerankeret mot Multi-SWE-bench falt bort (2026-11-16)
 
-Kjøreren skulle ankres mot de publiserte testlistene for Altinn/app-frontend-react i Multi-SWE-bench. Datasettet (ByteDance-Seed/Multi-SWE-bench) har ingen instanser for repoet, og det har heller ikke Multi-SWE-RL, Multi-SWE-bench_mini eller Multi-SWE-bench-flash. Sammenligningen kunne ikke gjøres. Se `data/anker/msb_altinn.md`.
+Kjøreren skulle ankres mot de publiserte testlistene for Altinn/app-frontend-react i Multi-SWE-bench. Datasettet (ByteDance-Seed/Multi-SWE-bench) har ingen instanser for repoet, og det har heller ikke Multi-SWE-RL, Multi-SWE-bench_mini eller Multi-SWE-bench-flash. Sammenligningen kunne ikke gjøres. Se `data/anker/msb_altinn.md`. Kjøreren kontrolleres i stedet mot uendret Multi-SWE-bench-harness i krysskontrollen på amd64 i P4 (NTB-0011).
 
 ## 6. Røykprøvesøket bygde under diskgrensen (2026-11-16)
 
 Grensen for P2.4 var minst 6 GiB ledig på disken før hvert bygg. Søket etter røykprøveoppgave i navikt/mock-oauth2-server (C1) startet bygget med 5 GiB ledig, fordi søkeskriptet ikke målte disken før hvert bygg. Bygget og kjøringene ga ingen diskfeil. Senere bygg ble målt på forhånd og stoppet under grensen.
 
+## 7. Nytt steg P2.3b og to tekstvarianter (2026-11-16)
+
+Kartet hadde ikke steget. Det er lagt inn etter at P2.3 lot 4 av 21 oppgaver bestå. Kvalitetskravet gjelder nå utvidet tekst, og P3 kjører to tekstvarianter (NTB-0013). Endringen er gjort før noen agentkjøring på oppgavene i settet.

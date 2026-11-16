@@ -3,6 +3,7 @@
 - Status: vedtatt 2026-11-16
 - Arm 3 utgår fra v1.0, se NTB-0012.
 - Endret 2026-11-16 (2): innpakning, versjon og kjørerekkefølge.
+- Endret 2026-11-16 (3): to tekstvarianter i P3, se NTB-0013.
 
 ## Kontekst
 

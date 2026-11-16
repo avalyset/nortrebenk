@@ -3,6 +3,7 @@
 - Status: vedtatt 2026-11-16
 - Endret 2026-11-16: skårgrense og sammenslåingsregel presisert.
 - Endret 2026-11-16 (2): ankerutvalg, samsvarsmål og vurderere presisert.
+- Endret 2026-11-16 (3): OpenAI-vurdereren kalles bare der stemmen kan endre utfallet, se NTB-0013.
 
 ## Kontekst
 

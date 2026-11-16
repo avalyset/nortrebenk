@@ -1,6 +1,7 @@
 # NTB-0011: Plattform
 
 - Status: vedtatt 2026-11-16
+- Endret 2026-11-16: krysskontrollen kjøres gjennom uendret Multi-SWE-bench-harness.
 
 ## Kontekst
 
@@ -9,6 +10,8 @@ Validering og måling skal skje på samme plattform. P1 validerte oppgavene på 
 ## Beslutning
 
 Måleplattformen for sett og pilotmåling er linux/arm64 lokalt, samme miljø som P1. Prøven på Modal som NTB-0002 beskrev, ble ikke kjørt. Før v1.0 kjøres gullpatch og tom patch for alle oppgavene i settet én gang på linux/amd64 som krysskontroll, bare hvis det kan gjøres på inkludert kreditt. Oppgaver som ikke gir samme utfall der, merkes i datasettet og i README, og måleresultatene endres ikke. NTB-0002 står ellers ved lag.
+
+Krysskontrollen på amd64 kjøres gjennom uendret Multi-SWE-bench-harness (24f493f), slik at den også viser om kjøreren vår gir samme fail-to-pass- og pass-to-pass-lister som den etablerte harnessen. Lar det seg ikke gjøre, kjøres den med vår egen kjører, og det føres som grense.
 
 ## Alternativer vurdert
 

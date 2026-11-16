@@ -1,6 +1,7 @@
 # NTB-0003: Inklusjon i settet
 
 - Status: vedtatt 2026-11-16
+- Endret 2026-11-16: kvalitetskravet gjelder utvidet oppgavetekst, se NTB-0013.
 
 ## Kontekst
 
