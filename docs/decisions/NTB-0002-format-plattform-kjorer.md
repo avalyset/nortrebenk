@@ -1,6 +1,7 @@
 # NTB-0002: Format, plattform og kjører
 
 - Status: vedtatt 2026-11-16
+- Plattformpunktet er erstattet av NTB-0011.
 
 ## Kontekst
 

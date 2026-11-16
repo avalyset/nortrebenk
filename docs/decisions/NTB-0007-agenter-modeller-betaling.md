@@ -1,6 +1,7 @@
 # NTB-0007: Agenter, modeller og betaling
 
 - Status: vedtatt 2026-11-16
+- Arm 3 utgår fra v1.0, se NTB-0012.
 
 ## Kontekst
 

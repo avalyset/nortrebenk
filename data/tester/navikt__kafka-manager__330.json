@@ -1,0 +1,48 @@
+{
+ "url": "https://github.com/navikt/kafka-manager/pull/330",
+ "f2p": [
+  "src/mock/api.test.ts::mocks consumer offsets with lag on partitions 0 and 2",
+  "src/view/kafka-admin/consumer-offsets.test.ts::finds partitions whose committed offsets are behind the log end"
+ ],
+ "p2p": [
+  "src/component/header/header.test.tsx::displays the image build tag",
+  "src/mock/api.test.ts::mocks consumer-group requests",
+  "src/mock/api.test.ts::mocks delete-records requests",
+  "src/mock/api.test.ts::mocks last-record-offset requests for all partitions",
+  "src/utils/date-utils.test.ts::toTimerStr creates correct str with 0 millis",
+  "src/utils/date-utils.test.ts::toTimerStr creates correct str with negative millis",
+  "src/utils/date-utils.test.ts::toTimerStr creates correct str with positive millis",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > parses a non-negative integer",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: ",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: -1",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: 1.5",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: 12abc",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: 9007199254740992",
+  "src/view/kafka-admin/DeleteRecordsCard.test.tsx::disables record deletion for unsupported topics"
+ ],
+ "andre": [
+  {
+   "test": "src/view/kafka-admin/consumer-offsets.test.ts::src/view/kafka-admin/consumer-offsets.test.ts",
+   "A": null,
+   "B": "FAIL",
+   "C": null
+  }
+ ],
+ "antall": {
+  "A": {
+   "pass": 14,
+   "fail": 0,
+   "skip": 0
+  },
+  "B": {
+   "pass": 14,
+   "fail": 2,
+   "skip": 0
+  },
+  "C": {
+   "pass": 16,
+   "fail": 0,
+   "skip": 0
+  }
+ }
+}

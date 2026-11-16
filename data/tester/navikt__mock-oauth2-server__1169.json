@@ -1,0 +1,2142 @@
+{
+ "url": "https://github.com/navikt/mock-oauth2-server/pull/1169",
+ "f2p": [],
+ "p2p": [],
+ "andre": [
+  {
+   "test": "examples.java.springboot.login.OAuth2LoginAppTest::oidcUserFooShouldBeLoggedIn()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.java.springboot.resourceserver.OAuth2ResourceServerAppTest::api should return 200 when valid token is present",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.java.springboot.resourceserver.OAuth2ResourceServerAppTest::api should return 401 if no bearer token present",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.kotlin.ktor.client.OAuth2ClientTest::client credentials grant()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.kotlin.ktor.client.OAuth2ClientTest::onbehalfof grant()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.kotlin.ktor.login.OAuth2LoginAppTest::login with google or github should return appropriate subject()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.kotlin.ktor.resourceserver.OAuth2ResourceServerAppTest::http get to hello1 endpoint should only accept tokens from provider1 with correct claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.kotlin.ktor.resourceserver.OAuth2ResourceServerAppTest::http get to hello2 endpoint should only accept tokens from provider2 with correct claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "examples.kotlin.ktor.resourceserver.OAuth2ResourceServerAppTest::http get to secured endpoint without token should return 401()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.MockOAuth2ServerTest::server takeRequest() should return sent request()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.MockOAuth2ServerTest::takeRequest should time out if no request is received()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create MockWebServerWrapper with https enabled and generated keystore()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create MockWebServerWrapper with https enabled and provided keystore()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create NettyWrapper with https enabled and generated keystore()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create NettyWrapper with https enabled and provided keystore()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create config from json with an unsupported algorithm should throw Oauth2Exception()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create config from json with tokenprovider system time set()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create full config from json with multiple tokenCallbacks()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create httpServer from json()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create tokenProvider with generated signing algorithm EC()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.OAuth2ConfigTest::create tokenProvider with specified signing algorithm EC()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.StandaloneMockOAuth2ServerKtTest::load deterministic standalone defaults from JSON_CONFIG()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.StandaloneMockOAuth2ServerKtTest::load oauth2Config from env var()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.StandaloneMockOAuth2ServerKtTest::load oauth2Config from file()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.StandaloneMockOAuth2ServerKtTest::with the environment variable PORT set()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.StandaloneMockOAuth2ServerKtTest::with the environment variable SERVER_PORT set()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.StandaloneMockOAuth2ServerKtTest::with the environment variables SERVER_PORT and PORT set()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.debugger.DebuggerRequestHandlerTest::debugger callback should not make server side requests to a client supplied token_url()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.debugger.DebuggerRequestHandlerTest::debugger callback should reach the token endpoint over https with a provided keystore()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.debugger.DebuggerRequestHandlerTest::debugger should not redirect to a client supplied authorize_url()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.AuthorizeResponseTypeIntegrationTest::authorize request with hybrid response_type should return unsupported_response_type()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.AuthorizeResponseTypeIntegrationTest::successful authorization response with response_mode form_post should not be cached()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.AuthorizeResponseTypeIntegrationTest::well-known should only advertise the code response type()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.CorsHeadersIntegrationTest::jwks response should allow all origins()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.CorsHeadersIntegrationTest::method not allowed response should allow origin and list the supported methods()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.CorsHeadersIntegrationTest::preflight response should allow specific origin, methods and headers()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.CorsHeadersIntegrationTest::revoke error response should allow origin()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.CorsHeadersIntegrationTest::token response should allow all origins()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.CorsHeadersIntegrationTest::wellknown response should allow origin()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.EndSessionIntegrationTest::end session request should add state to post_logout_redirect_uri that already has a query()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.EndSessionIntegrationTest::end session request should add state to post_logout_redirect_uri with a custom scheme()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.EndSessionIntegrationTest::end session request should redirect to post_logout_redirect_uri with state()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.EndSessionIntegrationTest::end session request without state should redirect to post_logout_redirect_uri unchanged()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should be the full lifetime when the clock has sub-second precision()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should use the token provider clock for authorization_code()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should use the token provider clock for client_credentials()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should use the token provider clock for jwt-bearer()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should use the token provider clock for password()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should use the token provider clock for refresh_token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.ExpiresInIntegrationTest::expires_in should use the token provider clock for token exchange()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.HttpsTrustStoreIntegrationTest::spring mvc jwt decoder should verify tokens over https once the generated keystore is trusted()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.HttpsTrustStoreIntegrationTest::truststore made with keytool from the server keystore should trust the server()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::auth_time should use the token provider clock()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::id_token should contain auth_time when max_age is requested()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::id_token should contain sub when the request mapping does not set it()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::id_token should keep sub from the request mapping()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::id_token should not contain auth_time when max_age is not requested()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::refreshed id_token should keep the original auth_time()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.IdTokenRequiredClaimsIntegrationTest::refreshed id_token should keep the sub when the request mapping does not set it()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.InteractiveLoginIntegrationTest::[1] User(username=user1, claims={claim1=claim1value})",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.InteractiveLoginIntegrationTest::[2] User(username=user2, claims={claim2=claim2value})",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.InteractiveLoginIntegrationTest::interactive login selects requestMapping based on login username as subject()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.InteractiveLoginIntegrationTest::interactive login subject falls back to login username when matching mapping omits sub()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.InteractiveLoginIntegrationTest::mapping sub claim is not overwritten by login claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.JwtBearerGrantIntegrationTest::token request with JwtBearerGrant should exchange assertion with a new token containing many of the same claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.JwtBearerGrantIntegrationTest::token request with JwtBearerGrant should exchange assertion with a new token with scope specified in assertion claim or request params()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.JwtBearerGrantIntegrationTest::token request with JwtBearerGrant without scope in request or assertion should return invalid_scope()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[1] \"./src/test/resources/does-not-exists.html\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[2] \"./src/test/resources/\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[3] \"\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[4] \"classpath:does-not-exists.html\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[5] \"classpath:static\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[6] \"classpath:\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[7] \"classpath:..\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::[8] \"classpath:../resources/test/login.example.html\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::authorization with interactive login and classpath login page path set should return login page from a jar(Path)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::authorization with interactive login and classpath login page path set should return login page from classpath()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::authorization with interactive login and login page path set should return external login page()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::authorization with interactive login should return built-in login page()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.LoginPageIntegrationTest::built-in login page escapes authorization query parameters()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::anyToken should issue token with claims from input and be verifyable by servers keys()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::issue token directly from server should contain claims from callback and be verifiable with server jwks()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::server on fixed port should include fixed port in wellknown and issued token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::server with addtional routes should serve wellknown and additional route()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::token request matching RequestMappingTokenCallback should return configured claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::token request with client_id via HTTP Basic auth should match requestmapping on client_id()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::token request with enqueued token callback should return claims from tokencallback (with exception of id_token and oidc rules)()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::token request with unknown grant_type should return unsupported_grant_type()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::wellknown should include https addresses when MockWebServerWrapper is started with https enabled()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.MockOAuth2ServerIntegrationTest::wellknown should include issuer id in urls()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::[1] \"http://callback.example/finish\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::[1] \"javascript:alert(document.domain)\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::[2] \"customapp://callback.example/finish\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::[2] \"https://callback.example/finish\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::[3] \"http://callback_service:8080/finish\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authentication request should return 302 with redirectUri as location and query params state and code()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authentication request should return invalid_request when code_challenge_method is not supported()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authentication request should return state with reserved characters unchanged()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authentication request with interactivelogin enabled should return invalid_request when code_challenge_method is not supported()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should default to plain PKCE when code_challenge_method is omitted()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should not accept the same code after a failed PKCE verification()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should reject a code redeemed at a different issuer()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should reject code_verifier when authorization request had no code_challenge()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should reject token request when PKCE code_verifier is omitted()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should return 400 bad request on token request when invalid PKCE code_verifier is used()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should return invalid_grant for unknown or bogus authorization code()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should return tokens on token request when valid PKCE code_verifier is used()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should return tokens when code_challenge_method is plain()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::authorization code flow should use the enqueued token callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::complete authorization code flow should return tokens according to spec()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::complete authorization code flow with interactivelogin enabled should return tokens with sub=username posted to login()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::failed PKCE verification should not use up the enqueued token callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::form post rejects non HTTP redirect URIs before showing the interactive login page()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::form_post authentication response without state should return form without state()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::rejected authorization codes should keep the order of the enqueued token callbacks()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.OidcAuthorizationCodeGrantIntegrationTest::unknown authorization code should not use up the enqueued token callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.PasswordGrantIntegrationTest::password grant does not apply subject requestMapping when username does not match()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.PasswordGrantIntegrationTest::password grant supports requestMapping match on subject and exposes subject template variable()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.PasswordGrantIntegrationTest::token request with password grant should return accesstoken with username as subject()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::[1] false",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::[2] true",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::refresh_token grant should return id_token and access_token with same subject as authorization code grant()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::refresh_token grant should return tokens with same subject as authorization code grant, even when refreshtoken is rotated()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::refresh_token issued by one issuer should not be accepted by a different issuer()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::token request with bogus refresh_token and enqueued tokencallback should return 400 invalid_grant and keep the callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::token request with bogus refresh_token should return 400 invalid_grant()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::token request with refresh_token grant and enqueued tokencallback should return token with subject from tokencallback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RefreshTokenGrantIntegrationTest::token request with revoked refresh_token and enqueued tokencallback should return 400 invalid_grant()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request with a line break in token_type_hint should return unsupported_token_type()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request with refresh_token should should remove refresh token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request with token_type_hint access_token should return 200()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request with unknown token should return 200()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request with wrong token_type_hint should still remove refresh token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request without token and token_type_hint should return invalid_request()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request without token should return invalid_request()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.RevocationIntegrationTest::revocation request without token_type_hint should remove refresh token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[1] \"classpath:\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[2] \"classpath:/\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[3] \"classpath: \"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[4] \"classpath:.\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[5] \"classpath:./\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[6] \"classpath:static/..\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[7] \"classpath:..\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::[8] \"classpath:../static\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::blank static assets path is rejected()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::classpath static assets must not follow a symlinked directory with the same name()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::classpath static assets must not follow a symlinked subdirectory()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::classpath static assets must not follow symlinks()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::classpath static assets must not serve directories or files outside their directory()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::request to static asset should return file from a jar on the classpath()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::request to static asset should return file from classpath directory()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::request to static asset should return file from static asset directory()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::static assets follow symlinks inside their directory()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::static assets must not follow symlinks outside their directory()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::static assets must not include files in sibling directories with the same prefix()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::static assets must not serve directories()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.StaticAssetsIntegrationTest::static assets use the requested file name for the content type of a symlink()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::client assertion lifetime is compared without Int saturation()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with client_assertion containing aud equal token endpoint should be allowed()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with client_assertion containing invalid aud should fail()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with client_assertion containing multiple audiences should fail()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with client_assertion expiring in 100 years should fail with invalid_request()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with invalid client_assertion_type should fail()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with token exchange grant and client basic auth should exchange subject_token with a new token containing many of the same claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request with token exchange grant should exchange subject_token with a new token containing many of the same claims()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenExchangeGrantIntegrationTest::token request without client_assertion should fail()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenResponseCacheHeadersIntegrationTest::client_credentials token response should not be cached()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenResponseCacheHeadersIntegrationTest::password token response should not be cached()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenResponseCacheHeadersIntegrationTest::token error response should keep its current headers()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.TokenResponseCacheHeadersIntegrationTest::well-known response should keep its current headers()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::[1] \"Bearer\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::[2] \"bearer\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::[3] \"BEARER\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return 401 when the Authorization header uses another scheme()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return 401 with a bearer challenge when a POST request has an invalid bearer token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return 401 with a bearer challenge when a POST request has no bearer token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return claims from token signed with non-default algorithm when valid bearer token is present()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return claims from token when a POST request has a valid bearer token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return claims from token when valid bearer token is present()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.UserInfoIntegrationTest::userinfo should return error from token signed with non-default algorithm does not match server config()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WellKnownIntegrationTest::get to well-known url should return oauth2 server metadata()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WellKnownIntegrationTest::get to well-known url with IPv6 host header should not crash and reflect the proxy-aware issuer()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WellKnownIntegrationTest::well-known should advertise the configured signing algorithm used for issued tokens()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WellKnownIntegrationTest::well-known should only advertise the default signing algorithm()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WwwAuthenticateIntegrationTest::introspection with invalid Basic authorization header should return Basic challenge()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WwwAuthenticateIntegrationTest::introspection without authorization header should not return a challenge()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WwwAuthenticateIntegrationTest::userinfo with invalid bearer token should return Bearer challenge()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.e2e.WwwAuthenticateIntegrationTest::userinfo without bearer token should return Bearer challenge without error()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.examples.clientcredentials.ExampleAppWithClientCredentialsClientTest::appShouldReturnClientCredentialsAccessTokenWhenInvoked()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.examples.openidconnect.ExampleAppWithOpenIdConnectTest::loginAndAccessSecuredPathWithIdTokenForSubjectFoo()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.examples.openidconnect.ExampleAppWithOpenIdConnectTest::loginWithOpenIdConnect()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.examples.openidconnect.ExampleAppWithOpenIdConnectTest::requestToSecuredPathShouldRedirectToLogin()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.examples.securedapi.ExampleAppWithSecuredApiTest::apiShouldAllowAccessWhenTokenIsValid()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.examples.securedapi.ExampleAppWithSecuredApiTest::apiShouldDenyAccessWithoutValidToken()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.extensions.HttpUrlExtensionsTest::urls with no segments, one segment and multiple segments()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.extensions.StringExtensionsTest::keyValuesToMap should keep everything after the first equals sign in the value()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.extensions.StringExtensionsTest::keyValuesToMap should parse cookie header with base64 padding in value()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.extensions.StringExtensionsTest::keyValuesToMap should url decode keys and values()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.extensions.TemplateTest::template values in map should be replaced()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::[1] \"{ \\\"acr\\\": \\\"value\\\" }\", \"acr\", \"\\\"value\\\"\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::[1] \"{\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::[2] \"[]\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::[2] \"{ \\\"acr\\\": { \\\"reference\\\": { \\\"id\\\": \\\"value\\\" } } }\", \"acr\", \"{\\\"reference\\\":{\\\"id\\\":\\\"value\\\"}}\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::[3] \"[\\\"claim\\\"]\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::[4] \"{}\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::auth request with nonce should result in a token response with refresh token as a JWT containing the nonce()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::authorization code response should contain required parameters()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::token response with login including multiple claims should return access_token containing all claims from login()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.AuthorizationCodeHandlerTest::token response with login should return id_token and access_token containing username from login as sub()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.RefreshTokenGrantHandlerTest::refresh request that loses a concurrent rotation should not consume the enqueued callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.RefreshTokenManagerTest::refresh token should be a jwt with nonce included if nonce is not null (for keycloak compatibility)()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.RefreshTokenManagerTest::rotated refresh token should keep the granted scope()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.RefreshTokenManagerTest::rotating a refresh token that was already rotated should fail with invalid_grant()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.grant.RefreshTokenManagerTest::tokencallback should be available in cache for specific refresh token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::DELETE to the debugger should return 405 with the debugger methods in the Allow header()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::GET to the token endpoint should return 405 with the supported methods in the Allow header()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::HEAD to the discovery endpoint should return the GET headers without a body()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[10] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/debugger, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[11] OAuth2HttpRequest(headers=Content-Type: application/x-www-form-urlencoded<LF>, method=POST, originalUrl=http://localhost/issuer1/debugger, body=authorize_url=http://url), OAuth2HttpResponse(headers=, status=302, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[12] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/favicon.ico, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[13] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/unknown, body=null), OAuth2HttpResponse(headers=, status=404, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[14] OAuth2HttpRequest(headers=, method=OPTIONS, originalUrl=http://localhost/issuer1/unknown, body=null), OAuth2HttpResponse(headers=, status=204, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[15] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/token, body=null), OAuth2HttpResponse(headers=, status=405, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[1] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/.well-known/openid-configuration, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[2] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/.well-known/oauth-authorization-server, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[3] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/jwks, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[4] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/authorize?client_id=client&response_type=code&redirect_uri=foo&scope=openid, body=null), OAuth2HttpResponse(headers=, status=302, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[5] OAuth2HttpRequest(headers=, method=POST, originalUrl=http://localhost/issuer1/authorize?client_id=client&response_type=code&redirect_uri=foo&scope=openid, body=username=foo), OAuth2HttpResponse(headers=, status=302, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[6] OAuth2HttpRequest(headers=Content-Type: application/x-www-form-urlencoded<LF>, method=POST, originalUrl=http://localhost/issuer1/token, body=grant_type=client_credentials&client_id=client&client_secret=secret), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[7] OAuth2HttpRequest(headers=, method=GET, originalUrl=http://localhost/issuer1/endsession, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[8] OAuth2HttpRequest(headers=Content-Type: application/x-www-form-urlencoded<LF>, method=POST, originalUrl=http://localhost/issuer1/revoke, body=client_id=client&client_secret=secret&token=token&token_type_hint=refresh_token), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestHandlerTest::[9] OAuth2HttpRequest(headers=Authorization: ██<LF>, method=GET, originalUrl=http://localhost/issuer1/userinfo, body=null), OAuth2HttpResponse(headers=, status=200, body=null, bytesBody=null)",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestTest::hostAndPortFromHostHeader splits host and port for all Host header shapes()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestTest::proxy aware urls all usecases()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestTest::proxyAwareUrl should use host header and x-forwarded-for- ()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestTest::url should keep encoded characters in query parameter values()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestTest::wellKnown should contain urls exposed by mock service()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRequestTest::wellKnown should use proxyAwareUrl when headers are set()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpResponseTest::oauth2Error should keep the casing of error_description()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::405 response for a path of a nested router should get the interceptors of that router()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::405 response should list the methods supported by the path in an Allow header()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::HEAD request to a GET route should return the GET status and headers without a body()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::HEAD request to a path without a GET route should return 405 without a body()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::OPTIONS route for every path should not turn unknown paths into 405()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::exception handler response should still be returned when response interceptor throws in error path()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::request and response interceptors should be applied on every route()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::response interceptors should be applied when route handler throws and exception handler returns a response()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::routes from route builder should be matched()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::routes should be matched()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::routes with matching path but incorrect method should return 405()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.OAuth2HttpRouterTest::routes with wildcard should be matched()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::client error logs include the exception message when it differs from the description()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::client error logs stay on one line when the exception message contains line breaks()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::client errors are logged at info with the request url and error description but without a stack trace()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::client errors include the stack trace when debug logging is enabled()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::debug logging includes the request values()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::server errors are logged at error with the request url and stack trace()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.http.RequestLoggingTest::server errors without a message are logged and return server_error()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[1] \"Basic dXNlcjpwYXNzd29yZA==\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[1] \"Basic\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[1] \"JWT\", \"true\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[2] \"Bearer\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[2] \"at+jwt\", \"true\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[2] \"basic dXNlcjpwYXNzd29yZA==\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[3] \"BASIC dXNlcjpwYXNzd29yZA==\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[3] \"Digest dXNlcjpwYXNzd29yZA==\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[3] \"application/at+jwt\", \"true\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[4] \"Basicuser=password\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[4] \"Bearer some-token\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[4] \"JWT2\", \"false\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[5] \"bearer some-token\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::[6] \"BEARER some-token\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return 401 when no Authorization header is provided()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return active and claims for non-default algorithm from bearer token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return active and claims from bearer token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return active and claims from token when using a custom timeProvider in the OAuth2TokenProvider()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return active false when token is invalid()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return active false when token is missing()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return active false when token was signed with a different algorithm than token provider()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return iat and exp from claims when present in token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return multiple audiences as array of strings()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.introspect.IntrospectTest::introspect should return single audience as string()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.login.LoginRequestHandlerTest::loginSubmit should fail with OAuth2Error invalid_request when missing required params()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.login.LoginRequestHandlerTest::loginSubmit should return login with username and claims from form params()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::MockWebServer should start and serve requests with generated keystore and HTTPS enabled()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::MockWebServer should start and serve requests()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::Netty server should reject request bodies exceeding the max content length()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::Netty server should serve requests with an IPv6 Host header instead of dropping the connection()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::Netty server should start and serve requests with generated keystore and HTTPS enabled()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::Netty server should start and serve requests with provided keystore and HTTPS enabled()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::Netty server should start and serve requests()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.server.OAuth2HttpServerTest::Netty server url should use the host name it was started with()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.templates.TemplateMapperTest::authorization form escapes values in HTML attributes()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.templates.TemplateMapperTest::debugger callback escapes token request and response()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.KeyGeneratorTest::verify EC signing keys with the right algorithm is created()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.KeyGeneratorTest::verify RSA signing keys with the right algorithm is created()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.KeyProviderTest::signingKey should return a EC key from initial keys file until deque is empty()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.KeyProviderTest::signingKey should return a RSA key from initial keys file until deque is empty()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.KeyProviderTest::signingKey should return a RSA key from provided constructor arg until deque is empty()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.KeyProviderTest::unsupported signingKey algorithm should throw an error message()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$DefaultOAuth2TokenCallbacks::Allow overriding tid()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$DefaultOAuth2TokenCallbacks::client credentials request should return client_id as sub from callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$DefaultOAuth2TokenCallbacks::oidc auth code token request should return scopes not in OIDC from audience in callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::invalid regex in match skips regex evaluation without throwing, exact-string matching still applies()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::repeated form param values are matched individually, not as a joined string()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with aud set as a list should return it as-is()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with aud set as a single string should return it wrapped in a list()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with client_id via HTTP Basic auth and wildcard requestmapping should match()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with client_id via HTTP Basic auth should match requestmapping on client_id()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with custom parameters in token request should include claims with placeholder names()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with request params matching requestmapping should return specific claims from callback with audience()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with request params matching requestmapping should return specific claims from callback with default JWT type()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with request params matching requestmapping should return specific claims from callback with non-default JWT type()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with request params matching requestmapping should return specific claims from callback with sub set to ${clientId}()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$RequestMappingTokenCallbacks::token request with request params matching wildcard requestmapping should return default claims from callback()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::extraMatchParams are available as template variables in claim values()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::form param takes precedence over extraMatchParams on same key()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::form params take precedence over extraMatchParams as template variables()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::subject comes from mapping when sub is set()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::subject is null when mapping does not set sub()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams falls back to wildcard when subject does not match any specific mapping()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams matches via regex when value comes from extraMatchParams()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams returns empty audience when no mapping matches()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams returns no match when no mapping matches and no wildcard()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams selects audience from matched mapping when aud is a list()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams selects audience from matched mapping when aud is a string()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams selects audience from matched mapping()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams selects correct requestMapping based on subject()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest$WithExtraMatchParams::withExtraMatchParams selects typeHeader from matched mapping()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenCallbackTest::token request with custom parameters in token request should include claims with placeholder names()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderECTest::[1] \"issuer1\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderECTest::[2] \"issuer2\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderECTest::all keys in public jwks should contain kty, use and kid()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderECTest::claims from tokencallback should be added to token in tokenExchange()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderECTest::public jwks returns public part of JWKs()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderECTest::publicJwks should return different signing key for each issuerId()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::[1] \"JWT\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::[1] \"issuer1\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::[2] \"at+jwt\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::[2] \"issuer2\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::[3] \"application/at+jwt\"",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::all keys in public jwks should contain kty, use and kid()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::claims from tokencallback should be added to token in tokenExchange()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::public jwks returns public part of JWKs()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::publicJwks should return different signing key for each issuerId()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::token should have issuedAt set dynamically according to timeProvider()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::token should have issuedAt set to systemTime if set, otherwise use now()()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.token.OAuth2TokenProviderRSATest::token with issueTime set to yesterday should be able to validate with the verify function using the same timeprovider()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.userinfo.UserInfoTest::userinfo should return claims from bearer token when using a custom timeProvider in OAuth2TokenProvider()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.userinfo.UserInfoTest::userinfo should return claims from bearer token()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.userinfo.UserInfoTest::userinfo should throw OAuth2Exception when algorithm does not match()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.userinfo.UserInfoTest::userinfo should throw OAuth2Exception when bearer token is invalid()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  },
+  {
+   "test": "no.nav.security.mock.oauth2.userinfo.UserInfoTest::userinfo should throw OAuth2Exception when bearer token is missing()",
+   "A": "PASS",
+   "B": null,
+   "C": null
+  }
+ ],
+ "antall": {
+  "A": {
+   "pass": 353,
+   "fail": 0,
+   "skip": 0
+  },
+  "B": {
+   "pass": 0,
+   "fail": 0,
+   "skip": 0
+  },
+  "C": {
+   "pass": 0,
+   "fail": 0,
+   "skip": 0
+  }
+ }
+}

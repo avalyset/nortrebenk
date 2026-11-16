@@ -1,0 +1,82 @@
+{
+ "url": "https://github.com/navikt/kafka-manager/pull/336",
+ "f2p": [
+  "no.nav.kafkamanager.actuator.ActuatorTest::Gir OK for anonym forespørsel til Prometheus()",
+  "no.nav.kafkamanager.actuator.ActuatorTest::Gir OK for anonym forespørsel til liveness()",
+  "no.nav.kafkamanager.actuator.ActuatorTest::Gir OK for anonym forespørsel til readiness()",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"GET\" \"/\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"GET\" \"/api/kafka/available-topics\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"GET\" \"/index.html\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/delete-records\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/get-consumer-groups\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/get-consumer-offsets\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/get-last-record-offset\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/get-last-record-offsets\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/read-topic\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::\"POST\" \"/api/kafka/set-consumer-offset\" krever OAuth2-login",
+  "no.nav.kafkamanager.security.AuthenticationTest::Starter OAuth2-login med klientregistreringen()"
+ ],
+ "p2p": [
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$ConsumerGroupTests::Henter committed offsets fra consumer-gruppetjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$ConsumerGroupTests::Henter consumer-grupper fra consumer-gruppetjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$ConsumerGroupTests::Setter en consumer-offset ved å videresende forespørselen til tjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$ReadTopicTests::Avviser ugyldig antall poster uten å kalle lesertjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$ReadTopicTests::Leser poster og videresender forespørselen til lesertjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$TopicOperationsTests::Henter siste postoffset for alle partisjoner fra topic-operasjonstjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$TopicOperationsTests::Henter siste postoffset for én partisjon fra topic-operasjonstjenesten()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$TopicOperationsTests::Henter tilgjengelige Kafka-topics med støtte for sletting av poster()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$TopicOperationsTests::Returnerer ikke implementert når Kafka-topicet ikke støtter sletting av poster()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest$TopicOperationsTests::Sletter poster for et støttet Kafka-topic og videresender parametrene til tjenesten()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$AdminClientCreation::Avviser Kafka-topics som ikke finnes i allowlisten()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$AdminClientCreation::Avviser administrasjonsoperasjoner på Kafka-topics uten støtte()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$AdminClientCreation::Oppretter administrasjonsklient for et tillatt Kafka-topic med støtte for sletting()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$ConsumerCreation::Oppretter Aiven-consumer uten å hente on-prem-legitimasjon()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$ConsumerCreation::Oppretter consumer for et tillatt on-prem Kafka-topic og bruker oppgitt gruppe-ID()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$ConsumerCreation::Ukjente Kafka-topics avvises før en klient opprettes()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$OnPremCredentials::Avviser brukernavn uten passord uten å røpe verdien eller bruke reserveoppslag()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$OnPremCredentials::Avviser passord uten brukernavn uten å røpe verdien eller bruke reserveoppslag()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$OnPremCredentials::Bruker begge miljøverdiene når de er satt uten å kalle reserveoppslaget()",
+  "no.nav.kafkamanager.service.KafkaClientFactoryTest$OnPremCredentials::Bruker montert legitimasjon når begge miljøverdiene er blanke()",
+  "no.nav.kafkamanager.service.KafkaConsumerGroupServiceTest$ConsumerGroupLookup::Avviser Kafka-topics uten administrasjonsstøtte()",
+  "no.nav.kafkamanager.service.KafkaConsumerGroupServiceTest$ConsumerGroupLookup::Avviser ukjente Kafka-topics før administrasjonsklienten opprettes()",
+  "no.nav.kafkamanager.service.KafkaConsumerGroupServiceTest$ConsumerGroupLookup::Filtrerer på Kafka-topicet sorterer treffene og utelater grupper med offset-feil()",
+  "no.nav.kafkamanager.service.KafkaConsumerGroupServiceTest$ConsumerOffsetLookup::Returnerer committed offsets bare for partisjoner med lagret offset()",
+  "no.nav.kafkamanager.service.KafkaConsumerGroupServiceTest$ConsumerOffsetUpdate::Tildeler partisjonen søker til offsetten og committer endringen()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$RecordFiltering::Matcher filtertekst i nøkkel uten å skille mellom store bokstaver og mellomrom()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$RecordFiltering::Matcher filtertekst i verdi uten treff i nøkkelen()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$RecordFiltering::Null nøkkel og verdi matcher ikke en ikke-blank filtertekst()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$TopicReading::Avviser ukjente Kafka-topics før consumeren brukes()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$TopicReading::Blank filtertekst lar alle poster passere uendret()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$TopicReading::Et null-filter lar alle poster passere uendret()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$TopicReading::Leser alle partisjoner filtrerer poster og avslutter når polling ikke gir poster()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$TopicReading::Leser valgt partisjon fra ikke-negativ offset og begrenser antall poster()",
+  "no.nav.kafkamanager.service.KafkaRecordReaderServiceTest$TopicReading::Null filtertekst lar alle poster passere uendret()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$AvailableTopics::Viser alle konfigurerte Kafka-topics og om sletting støttes()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$LastRecordOffsets::Avviser ukjent Kafka-topic ved oppslag av én partisjon()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$LastRecordOffsets::Returnerer en tom liste når Kafka-topicet ikke har partisjoner()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$LastRecordOffsets::Returnerer offsetter sortert etter partisjonsnummer()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$LastRecordOffsets::Søker til slutten av den valgte partisjonen og returnerer posisjonen()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$RecordDeletion::Avviser sletting på Kafka-topics uten administrasjonsstøtte()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$RecordDeletion::Returnerer intern serverfeil når Kafka feiler under sletting()",
+  "no.nav.kafkamanager.service.KafkaTopicOperationsServiceTest$RecordDeletion::Sletter poster før oppgitt offsett for riktig partisjon()",
+  "no.nav.kafkamanager.utils.ConsumerRecordMapperTest::null key and value remain null when mapping consumer record()"
+ ],
+ "andre": [],
+ "antall": {
+  "A": {
+   "pass": 43,
+   "fail": 0,
+   "skip": 0
+  },
+  "B": {
+   "pass": 0,
+   "fail": 0,
+   "skip": 0
+  },
+  "C": {
+   "pass": 57,
+   "fail": 0,
+   "skip": 0
+  }
+ }
+}

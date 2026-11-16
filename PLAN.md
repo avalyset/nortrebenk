@@ -1,23 +1,25 @@
 # PLAN – nortrebenk
 
-Formål, brukere, start/midt/ende og kart er hentet ordrett fra den håndførte delen av ground truth (16.11.2026).
-
 **Formål:** måle hvor godt og raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løste oppgave koster. Fasiten er etatens egne tester.
 
 **Brukere:** teknologiledelse i etatene (modellklasse under kostnadstak), DFD/Digdir/DFØ (gevinstmåling uten selvrapportering), forskere på utviklerproduktivitet.
 
 **Start:** P1, lar oppgavene seg kjøre. **Midt:** prereg-v1, alt låst før agentdata. **Ende:** v1.0 med DOI. Kartet slutter der.
 
-**Kart (fast rekkefølge, avvik bare i AVVIK.md):**
-- P0 Recon og frosset kandidatliste: ferdig 16.11.2026 (norpref 1e69c51)
-- P1 Kjøringsvalidering: ferdig 16.11.2026, terskel nådd (nortrebenk-intern 84f6d46). Tallene står i del 3.
-- P2.1 Repo ~/dev/nortrebenk og ADR NTB-0001–0010
-- P2.2 Settbygging: amd64-prøve på Modal (ett repo først), stabilitet 3/3, dedup, treningsgrenser, forsegling, gull- og tompatch-kontroll
-- P2.3 Kvalitetssjekk av oppgavene
-- P2.4 Anker og røykprøve på oppgaver utenfor settet; budsjettak
-- P2.5 Prereg. Port: Eirik godkjenner frys av prereg-v1
-- P3 Pilotkjøring under prereg; Claude-armene først
-- P4 Frys v1.0. Port: Eirik godkjenner Zenodo og offentlig push
+## Kart (fast rekkefølge; avvik føres i AVVIK.md)
+
+- P0 Recon og frosset kandidatliste
+- P1 Kjøringsvalidering (fail-to-pass)
+- P2 Repo, sett og forhåndsregistrering
+  - P2.1 Repo og ADR
+  - P2.2 Settbygging lokalt på linux/arm64: forsegling, stabilitet over tre kjøringer, tompatch-kontroll, dedup, treningsgrenser
+  - P2.3 Kvalitetssjekk av oppgavene
+  - P2.4 Anker og røykprøve på oppgaver utenfor settet; budsjettak
+  - P2.5 Forhåndsregistrering (prereg-v1), med oversettelse av repoets dokumenter til engelsk
+- P3 Pilotkjøring under forhåndsregistreringen: Claude Code med Opus 5.5 og med Sonnet 5.5
+- P4 Frys av v1.0, med krysskontroll på amd64 før frys hvis inkludert kreditt dekker det
+
+Status for hver fase står i ground truth, ikke her.
 
 ## Beslutninger (ADR)
 
@@ -31,3 +33,5 @@ Formål, brukere, start/midt/ende og kart er hentet ordrett fra den håndførte 
 - [NTB-0008: Metrikker og analyse](docs/decisions/NTB-0008-metrikker-analyse.md)
 - [NTB-0009: Publisering, vedlikehold og pensjonering](docs/decisions/NTB-0009-publisering-vedlikehold-pensjonering.md)
 - [NTB-0010: Personopplysninger](docs/decisions/NTB-0010-personopplysninger.md)
+- [NTB-0011: Plattform](docs/decisions/NTB-0011-plattform.md)
+- [NTB-0012: Budsjettramme](docs/decisions/NTB-0012-budsjettramme.md)

@@ -9,3 +9,7 @@ Kjøringsvalideringen i P1 ble kjørt på linux/arm64 med en egen tynn kjører b
 ## 2. Regel for kjørefeil lagt til under P1 (2026-11-16)
 
 Regelen «C uten testrapporter gir kjorefeil» (C = base + testpatch + gullpatch) ble lagt til under P1, etter første repo. Én kandidat ble omklassifisert fra «ingen_f2p» til «kjorefeil» ut fra de lagrede loggene, uten ny kjøring. Regelen endret ikke antall validerte.
+
+## 3. Codex-armen utgikk (2026-11-16)
+
+Codex-armen, som lå i den opprinnelige planen, utgikk fra v1.0 fordi studien gjennomføres uten utgifter utover eksisterende kreditt (NTB-0012).

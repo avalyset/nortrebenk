@@ -1,0 +1,50 @@
+{
+ "url": "https://github.com/navikt/kafka-manager/pull/329",
+ "f2p": [
+  "src/mock/api.test.ts::mocks consumer-group requests"
+ ],
+ "p2p": [
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest::available topics returns record deletion capabilities()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest::delete records returns no content for supported topic()",
+  "no.nav.kafkamanager.controller.KafkaAdminControllerTest::delete records returns not implemented for unsupported topic()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::available topics should expose record deletion support()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::consumer group lookup should use operation-neutral error for on-prem topics()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::filterRecords should filter records with key()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::filterRecords should filter records with text with different letter case()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::filterRecords should filter records with text with whitespace()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::filterRecords should filter records with value()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::filterRecords should not filter with empty filter()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::filterRecords should not filter with null filter()",
+  "no.nav.kafkamanager.service.KafkaAdminServiceTest::record deletion should reject on-prem topics()",
+  "src/component/header/header.test.tsx::displays the image build tag",
+  "src/mock/api.test.ts::mocks delete-records requests",
+  "src/utils/date-utils.test.ts::toTimerStr creates correct str with 0 millis",
+  "src/utils/date-utils.test.ts::toTimerStr creates correct str with negative millis",
+  "src/utils/date-utils.test.ts::toTimerStr creates correct str with positive millis",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > parses a non-negative integer",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: ",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: -1",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: 1.5",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: 12abc",
+  "src/utils/index.test.ts::parseNonNegativeSafeInteger > rejects invalid input: 9007199254740992",
+  "src/view/kafka-admin/DeleteRecordsCard.test.tsx::disables record deletion for unsupported topics"
+ ],
+ "andre": [],
+ "antall": {
+  "A": {
+   "pass": 24,
+   "fail": 0,
+   "skip": 0
+  },
+  "B": {
+   "pass": 24,
+   "fail": 1,
+   "skip": 0
+  },
+  "C": {
+   "pass": 25,
+   "fail": 0,
+   "skip": 0
+  }
+ }
+}

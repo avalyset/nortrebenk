@@ -13,3 +13,4 @@ Ideer føres her og gjennomføres ikke i v1.0.
 - kode24-innlegg.
 - Hugging Face.
 - Ledertavle.
+- Codex og andre leverandører som armer.

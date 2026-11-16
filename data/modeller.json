@@ -1,0 +1,22 @@
+[
+ {
+  "modell": "Claude Opus 5.5",
+  "modell_id": "claude-opus-5-5",
+  "treningsgrense": "Jun 2026",
+  "palitelig_kunnskapsgrense": "Jun 2026",
+  "sitat": "Training data cutoff | Jun 2026",
+  "sitat_merknad": "tabellrad i «Models overview»; cellen i kolonnen for modellen. Raden «Reliable knowledge cutoff» har også «Jun 2026».",
+  "url": "https://platform.claude.com/docs/en/models/overview",
+  "lest": "2026-11-16"
+ },
+ {
+  "modell": "Claude Sonnet 5.5",
+  "modell_id": "claude-sonnet-5-5",
+  "treningsgrense": "Jun 2026",
+  "palitelig_kunnskapsgrense": "Jun 2026",
+  "sitat": "Training data cutoff | Jun 2026",
+  "sitat_merknad": "tabellrad i «Models overview»; cellen i kolonnen for modellen. Raden «Reliable knowledge cutoff» har også «Jun 2026».",
+  "url": "https://platform.claude.com/docs/en/models/overview",
+  "lest": "2026-11-16"
+ }
+]
