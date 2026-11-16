@@ -1,0 +1,4 @@
+{"datasett": "ByteDance-Seed/Multi-SWE-bench", "lest": "2026-11-16", "metode": "fillista (HF tree-API), 59 oppføringer", "treff_altinn_app_frontend_react": 0}
+{"datasett": "ByteDance-Seed/Multi-SWE-RL", "lest": "2026-11-16", "metode": "fillista (HF tree-API), 154 oppføringer", "treff_altinn_app_frontend_react": 0}
+{"datasett": "ByteDance-Seed/Multi-SWE-bench_mini", "lest": "2026-11-16", "metode": "hele multi_swe_bench_mini.jsonl strømmet og søkt etter «altinn» (uten skille mellom store og små bokstaver)", "treff_altinn_app_frontend_react": 0}
+{"datasett": "ByteDance-Seed/Multi-SWE-bench-flash", "lest": "2026-11-16", "metode": "hele multi_swe_bench_flash.jsonl strømmet og søkt etter «altinn» (uten skille mellom store og små bokstaver)", "treff_altinn_app_frontend_react": 0}

@@ -1,0 +1,6 @@
+You are working in a git repository checked out at {sti}. Below is the title and description of a change request for this repository. Make the code changes needed to fulfil it. Do not change or add test files; tests for the change will be applied and run after you finish. Stop when the change is complete.
+
+Title: {tittel}
+
+Description:
+{beskrivelse}
