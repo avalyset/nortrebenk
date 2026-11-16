@@ -30,6 +30,7 @@ sys.path.insert(0, str(MSB)); sys.path.insert(0, str(HER))
 sys.modules["multi_swe_bench.harness.repos"] = types.ModuleType("multi_swe_bench.harness.repos")
 import _felles  # noqa: E402
 import agentbilde  # noqa: E402
+import gullcache  # noqa: E402
 from multi_swe_bench.harness.image import Config  # noqa: E402
 from multi_swe_bench.harness.pull_request import Base, PullRequest  # noqa: E402
 
@@ -90,8 +91,12 @@ def bygg(oid):
     pr = PullRequest(org=o["org"], repo=o["repo"], number=o["pr"], state="closed", title="", body=None,
                      base=Base(label="", ref="", sha=o["basis_sha"]), resolved_issues=[], fix_patch="", test_patch="")
     mappe = UT / "agentbygg" / oid; mappe.mkdir(parents=True, exist_ok=True)
-    (mappe / "Dockerfile").write_text(agentbilde.agent_dockerfile(o["org"], o["repo"], o["basis_sha"], m.Spes))
+    (mappe / "Dockerfile").write_text(agentbilde.agent_dockerfile(o["org"], o["repo"], o["basis_sha"], m.Spes, pr=pr, bygg=o.get("bygg")))
     (mappe / "forbered.sh").write_text(agentbilde.forbered(o["repo"], m.Spes, pr))
+    if o.get("bygg"):  # gullpatch og testpatch bare for byggesteget «gull» (gullcache.py)
+        g = mappe / gullcache.GULL_KATALOG; g.mkdir(exist_ok=True)
+        (g / "fix.patch").write_text((PATCHER / oid / "fix.patch").read_text())
+        (g / "test.patch").write_text((PATCHER / oid / "test.patch").read_text())
     logg = UT / "logs" / oid; logg.mkdir(parents=True, exist_ok=True)
     with open(logg / "agentbygg.log", "w") as lf:
         r = subprocess.run(["docker", "build", "--label", "nortrebenk=p2", "-t", agentbilde_navn(oid), str(mappe)],
@@ -109,7 +114,7 @@ def gull_linjer(oid, n=3):
 def selvtest(oid, modell=False):
     o, _ = oppgave(oid)
     skript = (HER / "selvtest.sh").read_text()
-    args = [base64.b64encode(l.encode()).decode() for l in gull_linjer(oid)]
+    args = [base64.b64encode(l.encode()).decode() for l in gull_linjer(oid, 10)]  # selvtest.sh velger tre som ikke står på base
     r = sh(["docker", "run", "--rm", "--user", "root", "--network", NETT, "--label", "nortrebenk=p2",
             agentbilde_navn(oid), "bash", "-c", skript, "selvtest", o["repo"], *args], timeout=1800)
     ut = r.stdout.strip()
@@ -170,7 +175,7 @@ def vurder(oid, agentpatch, navn):
     d = UT / "vurdering" / navn; d.mkdir(parents=True, exist_ok=True)
     (d / "agent.patch").write_text(agentpatch)
     patcher = "/home/test.patch" + (" /tmp/ntb_agent.patch" if agentpatch.strip() else "")
-    skript = _felles._skript(m.Spes, pr, patcher, False)
+    skript = _felles._skript(m.Spes, pr, patcher, bool(o.get("bygg")))  # oppgaver med bygg: installasjon på nytt, som i P2.4
     c = sh(["docker", "create", "--network", "none", "--label", "nortrebenk=p2", bilde, "bash", "-c", skript]).stdout.strip()
     try:
         sh(["docker", "cp", str((d / "agent.patch").resolve()), f"{c}:/tmp/ntb_agent.patch"])
@@ -182,6 +187,24 @@ def vurder(oid, agentpatch, navn):
     løst = all(x in tr.passed_tests for x in f2p | p2p)
     return {"loest": løst, "patch_feilet": "NORTREBENK_PATCH_FEILET" in r.stdout,
             "ikke_pass": sorted(x for x in f2p | p2p if x not in tr.passed_tests)[:30]}
+
+
+def bygg_instans(oid):
+    """Bygger instansbildet (harness/msb_repos/_felles.py) som vurder() bruker; med cacher fra gulltilstanden for
+    oppgaver med feltet `bygg`."""
+    o, m = oppgave(oid)
+    tp = (PATCHER / oid / "test.patch").read_text(); fp = (PATCHER / oid / "fix.patch").read_text()
+    pr, inst = instansbilde(o, m, tp, fp)
+    img = inst.dependency()
+    mappe = UT / "instansbygg" / oid; mappe.mkdir(parents=True, exist_ok=True)
+    (mappe / "Dockerfile").write_text(gullcache.instans_dockerfile(img, o["bygg"]) if o.get("bygg") else img.dockerfile())
+    for f in img.files():
+        (mappe / f.name).write_text(f.content)
+    logg = UT / "logs" / oid; logg.mkdir(parents=True, exist_ok=True)
+    with open(logg / "instansbygg.log", "w") as lf:
+        r = subprocess.run(["docker", "build", "--label", "nortrebenk=p2", "-t", img.image_full_name(), str(mappe)],
+                           stdout=lf, stderr=subprocess.STDOUT, timeout=TIDSGRENSE)
+    return r.returncode == 0, img.image_full_name()
 
 
 def testfiler(oid):
@@ -248,7 +271,7 @@ git diff --cached --binary HEAD -- . $ekskl > /tmp/ntb_agent.patch
     rad = {"kjoring": navn, "oppgave": oid, "url": o["url"], "modell": modell, "budsjett_usd": budsjett,
            "claude_code": agentbilde.CC_VERSJON, "total_cost_usd": r.get("total_cost_usd"), "usage": r.get("usage"),
            "modelUsage": r.get("modelUsage"), "num_turns": r.get("num_turns"), "duration_ms": r.get("duration_ms"),
-           "subtype": r.get("subtype"), "is_error": r.get("is_error"), "veggtid_s": vegg,
+           "subtype": r.get("subtype"), "is_error": r.get("is_error"), "resultat_tekst": (r.get("result") or "")[:500], "veggtid_s": vegg,
            "budsjettak_slo_inn": bool(r.get("subtype") and "budget" in str(r.get("subtype"))),
            "tidstak_slo_inn": "124" in kode or vegg >= TIDSGRENSE, "utgangskode": kode.strip(),
            "mellomtjener_kall": len(nye), "mellomtjener_avvist": sum(1 for l in nye if "\tja:" in l),

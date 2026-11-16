@@ -1,27 +1,27 @@
-# NTB-0011: Plattform
+# NTB-0011: Platform
 
-- Status: vedtatt 2026-11-16
-- Endret 2026-11-16: krysskontrollen kjøres gjennom uendret Multi-SWE-bench-harness.
+- Status: adopted 2026-11-16
+- Changed 2026-11-16: the cross-check is run through the unchanged Multi-SWE-bench harness.
 
-## Kontekst
+## Context
 
-Validering og måling skal skje på samme plattform. P1 validerte oppgavene på linux/arm64. Den inkluderte Modal-kreditten for november dekket ikke agentkjøringer.
+Validation and measurement are to take place on the same platform. P1 validated the tasks on linux/arm64. The Modal credit included for November did not cover agent runs.
 
-## Beslutning
+## Decision
 
-Måleplattformen for sett og pilotmåling er linux/arm64 lokalt, samme miljø som P1. Prøven på Modal som NTB-0002 beskrev, ble ikke kjørt. Før v1.0 kjøres gullpatch og tom patch for alle oppgavene i settet én gang på linux/amd64 som krysskontroll, bare hvis det kan gjøres på inkludert kreditt. Oppgaver som ikke gir samme utfall der, merkes i datasettet og i README, og måleresultatene endres ikke. NTB-0002 står ellers ved lag.
+The measurement platform for the set and the pilot measurement is linux/arm64 locally, the same environment as P1. The trial on Modal that NTB-0002 described was not run. Before v1.0, the gold patch and the empty patch are run for all tasks in the set once on linux/amd64 as a cross-check, only if this can be done on included credit. Tasks that do not give the same outcome there are marked in the dataset and in the README, and the measurement results are not changed. NTB-0002 otherwise stands.
 
-Krysskontrollen på amd64 kjøres gjennom uendret Multi-SWE-bench-harness (24f493f), slik at den også viser om kjøreren vår gir samme fail-to-pass- og pass-to-pass-lister som den etablerte harnessen. Lar det seg ikke gjøre, kjøres den med vår egen kjører, og det føres som grense.
+The cross-check on amd64 is run through the unchanged Multi-SWE-bench harness (24f493f), so that it also shows whether our runner gives the same fail-to-pass and pass-to-pass lists as the established harness. If that is not possible, it is run with our own runner, and this is recorded as a limitation.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Alt på amd64 på Modal. Argument mot beslutningen: lettere å gjenskape for andre. Forkastet fordi validering og måling skal skje på samme plattform, og fordi den inkluderte Modal-kreditten for november ikke dekket agentkjøringer.
-- Betalt Modal-bruk. Forkastet, se NTB-0012.
+- Everything on amd64 on Modal. Argument against the decision: easier for others to reproduce. Rejected because validation and measurement are to take place on the same platform, and because the Modal credit included for November did not cover agent runs.
+- Paid Modal use. Rejected, see NTB-0012.
 
-## Konsekvenser
+## Consequences
 
-Settet bygges og måles på linux/arm64. README oppgir plattformen. Krysskontrollen på amd64 gjøres bare hvis inkludert kreditt dekker den.
+The set is built and measured on linux/arm64. The README states the platform. The cross-check on amd64 is done only if included credit covers it.
 
-## Kilder
+## Sources
 
-- Ingen ekstern kilde; beslutningen hviler på P1-protokollen og NTB-0002.
+- No external source; the decision rests on the P1 protocol and NTB-0002.

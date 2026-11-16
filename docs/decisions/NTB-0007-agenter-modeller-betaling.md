@@ -1,29 +1,29 @@
-# NTB-0007: Agenter, modeller og betaling
+# NTB-0007: Agents, models and payment
 
-- Status: vedtatt 2026-11-16
-- Arm 3 utgår fra v1.0, se NTB-0012.
-- Endret 2026-11-16 (2): innpakning, versjon og kjørerekkefølge.
-- Endret 2026-11-16 (3): to tekstvarianter i P3, se NTB-0013.
+- Status: adopted 2026-11-16
+- Arm 3 is dropped from v1.0, see NTB-0012.
+- Changed 2026-11-16 (2): wrapper, version and run order.
+- Changed 2026-11-16 (3): two text variants in P3, see NTB-0013.
 
-## Kontekst
+## Context
 
-Studien skal oppgi kostnad per løste oppgave. Kostnaden må måles per kall og være skilt fra abonnementer.
+The study is to report cost per solved task. The cost must be measured per call and be separate from subscriptions.
 
-## Beslutning
+## Decision
 
-Det kjøres tre armer i prioritert rekkefølge: Claude Code med Opus 5.5, Claude Code med Sonnet 5.5, og Codex med gjeldende toppmodell (modell-ID festes i P2.4, [U] til da). Det kjøres tre kjøringer per arm og oppgave. Claude-armene kjøres først og belastes Anthropic-API-et, ikke Max-abonnementet, slik at kostnaden kan måles; Codex belastes OpenAI-API-et. Rekker ikke budsjettaket, kuttes kjøringer før armer, og arm 3 før arm 2. Agentene kjøres med standardinnstillinger og uten egen promptjustering. Tidsgrense, kostnadstak per oppgave og samlet budsjettak settes fra P2.4. Ingen kjøring legges til for å bruke opp kreditt.
+Three arms are run in priority order: Claude Code with Opus 5.5, Claude Code with Sonnet 5.5, and Codex with the current top model (model ID fixed in P2.4, [U] until then). Three runs are made per arm and task. The Claude arms are run first and are charged to the Anthropic API, not the Max subscription, so that the cost can be measured; Codex is charged to the OpenAI API. If the budget cap is not reached, runs are cut before arms, and arm 3 before arm 2. The agents are run with default settings and without their own prompt tuning. Time limit, cost cap per task and total budget cap are set from P2.4. No run is added to use up credit.
 
-Agenten får oppgavens tittel og beskrivelse i en fast innpakning (harness/agent/innpakning.txt), lik for alle oppgaver og armer. Claude Code-versjonen festes og føres. Kjøringene går én om gangen. Tak per kjøring settes med agentens egen budsjettgrense og en tidsgrense i kjøreren. Eneste avvik fra standardinnstillingene er det forseglingen krever (NTB-0006). Agentoppsettet ankres ikke mot publiserte løsningsrater i v1.0, fordi kreditten ikke dekker et utvalg som er stort nok til å sammenligne rater.
+The agent receives the task's title and description in a fixed wrapper (harness/agent/innpakning.txt), the same for all tasks and arms. The Claude Code version is fixed and recorded. The runs go one at a time. The cap per run is set with the agent's own budget limit and a time limit in the runner. The only deviation from the default settings is what the sealing requires (NTB-0006). The agent setup is not anchored against published solve rates in v1.0, because the credit does not cover a sample large enough to compare rates.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- GitHub Copilot som arm. Argument mot beslutningen: det er verktøyet etatene betaler for. Forkastet i v1.0 fordi kostnad per kall ikke kan måles på samme måte; ideen står i IDEER.md.
-- Én kjøring per arm og oppgave. Argument mot beslutningen: lavere kostnad. Forkastet fordi variasjon mellom kjøringer da ikke kan anslås.
+- GitHub Copilot as an arm. Argument against the decision: it is the tool the agencies pay for. Rejected in v1.0 because cost per call cannot be measured in the same way; the idea is in IDEER.md.
+- One run per arm and task. Argument against the decision: lower cost. Rejected because variation between runs then cannot be estimated.
 
-## Konsekvenser
+## Consequences
 
-Kostnad rapporteres fra API-faktureringen. Armrekkefølgen bestemmer hva som kuttes ved budsjettmangel.
+Cost is reported from the API billing. The arm order determines what is cut in case of budget shortage.
 
-## Kilder
+## Sources
 
-- Kapoor mfl., «AI Agents That Matter», arXiv:2407.01502: «Our focus on cost in addition to accuracy motivates the new goal of jointly optimizing the two metrics.»
+- Kapoor et al., «AI Agents That Matter», arXiv:2407.01502: «Our focus on cost in addition to accuracy motivates the new goal of jointly optimizing the two metrics.»

@@ -1,23 +1,23 @@
-# NTB-0010: Personopplysninger
+# NTB-0010: Personal data
 
-- Status: vedtatt 2026-11-16
+- Status: adopted 2026-11-16
 
-## Kontekst
+## Context
 
-Oppgavetekstene er PR-beskrivelser fra offentlige repoer og kan inneholde brukernavn og e-postadresser.
+The task texts are PR descriptions from public repos and may contain usernames and email addresses.
 
-## Beslutning
+## Decision
 
-Instansene har ingen forfatterfelt. @-brukernavn og e-postadresser fjernes fra oppgaveteksten. PR-URL-en beholdes som kildehenvisning.
+The instances have no author field. @-usernames and email addresses are removed from the task text. The PR URL is kept as the source reference.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Beholde forfatterfelt. Argument mot beslutningen: full sporbarhet til personen. Forkastet fordi PR-URL-en gir sporbarhet uten at settet lagrer personopplysninger.
+- Keep an author field. Argument against the decision: full traceability to the person. Rejected because the PR URL gives traceability without the set storing personal data.
 
-## Konsekvenser
+## Consequences
 
-Rensingen gjøres mekanisk ved settbygging og kontrolleres før frys.
+The cleaning is done mechanically when the set is built and checked before the freeze.
 
-## Kilder
+## Sources
 
-- Ingen ekstern kilde.
+- No external source.

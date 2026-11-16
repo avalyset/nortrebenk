@@ -10,10 +10,12 @@ installasjon og oppvarming fra repo-definisjonen), men:
   kontrollert mot sha256 i versjonens manifest. Den bruker ikke repoets node eller npm.
 - Miljøet peker Claude Code mot mellomtjeneren og har en plassholder som nøkkel. Bryterne for telemetri,
   feilrapportering, oppdatering og annen ikke-nødvendig trafikk er satt.
+Oppgaver med feltet `bygg` (data/sett_v1.jsonl) får i tillegg avhengighetscachene fra gulltilstanden, se gullcache.py.
 Grunnlinjen for `git status` etter oppvarmingen lagres i /etc/ntb/grunnlinje_status.txt, slik at filer oppvarmingen
 lager og git ikke ignorerer, kan holdes utenfor agentens patch.
 """
 import _felles
+import gullcache
 
 CC_VERSJON = "2.1.325"  # gjeldende versjon 16.11.2026 (downloads.claude.ai/claude-code-releases/latest)
 CC_SHA256 = {"linux-arm64": "7b6e484b1989a5a14a4b354709ccc8672518a3ec5b9ccd7981fc6254327fde67"}  # fra manifest.json
@@ -35,7 +37,7 @@ GIT_INST = ("RUN (command -v git >/dev/null || (apt-get update && apt-get instal
             "ca-certificates && rm -rf /var/lib/apt/lists/*))")
 
 
-def agent_dockerfile(org, repo, sha, spes, plattform="linux-arm64"):
+def agent_dockerfile(org, repo, sha, spes, plattform="linux-arm64", pr=None, bygg=None):
     miljø = " ".join(f'{k}="{v}"' for k, v in MILJØ.items())
     return f"""FROM {spes.base_image} AS kilde
 {GIT_INST}
@@ -45,7 +47,7 @@ FROM {spes.base_image} AS cc
 RUN (command -v curl >/dev/null || (apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/*))
 RUN curl -fsSL {CC_URL}/{CC_VERSJON}/{plattform}/claude -o /claude && echo "{CC_SHA256[plattform]}  /claude" | sha256sum -c - && chmod 755 /claude
 
-FROM {spes.base_image}
+FROM {spes.base_image}{" AS agentinst" if bygg else ""}
 LABEL nortrebenk=p2 nortrebenk.bilde=agent
 WORKDIR /home/
 ENV DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -67,7 +69,7 @@ COPY --from=cc /claude /usr/local/bin/claude
 ENV {miljø}
 USER agent
 WORKDIR /home/{repo}
-"""
+""" + (gullcache.agent_tillegg(repo, spes, pr, bygg) if bygg else "")
 
 
 def forbered(repo, spes, pr):

@@ -1,20 +1,20 @@
-# Instrumentanker for kjøreren: Altinn/app-frontend-react i Multi-SWE-bench
+# Instrument anchor for the runner: Altinn/app-frontend-react in Multi-SWE-bench
 
-Lest 2026-11-16.
+Read 2026-11-16.
 
-Multi-SWE-bench (commit 24f493f) har tre definisjoner for Altinn/app-frontend-react under `multi_swe_bench/harness/repos/typescript/Altinn/` (se `data/dedup.md`). Ankeret skulle sammenligne våre f2p- og p2p-lister med datasettets lister for de tre instansene med høyest PR-nummer.
+Multi-SWE-bench (commit 24f493f) has three definitions for Altinn/app-frontend-react under `multi_swe_bench/harness/repos/typescript/Altinn/` (see `data/dedup.md`). The anchor was to compare our f2p and p2p lists with the dataset's lists for the three instances with the highest PR numbers.
 
-**Funn: datasettet har ingen instanser for Altinn/app-frontend-react.** Sammenligningen kunne derfor ikke gjøres, og del D stoppet etter første steg.
+**Finding: the dataset has no instances for Altinn/app-frontend-react.** The comparison could therefore not be made, and part D stopped after the first step.
 
-| Datasett | Hvordan det er lest | Instanser for Altinn/app-frontend-react |
+| Dataset | How it was read | Instances for Altinn/app-frontend-react |
 |---|---|---|
-| ByteDance-Seed/Multi-SWE-bench | fillista (59 oppføringer); ingen fil for Altinn | 0 |
-| ByteDance-Seed/Multi-SWE-RL | fillista (154 oppføringer); ingen fil for Altinn | 0 |
-| ByteDance-Seed/Multi-SWE-bench_mini | hele fila søkt etter «altinn» | 0 |
-| ByteDance-Seed/Multi-SWE-bench-flash | hele fila søkt etter «altinn» | 0 |
+| ByteDance-Seed/Multi-SWE-bench | file list (59 entries); no file for Altinn | 0 |
+| ByteDance-Seed/Multi-SWE-RL | file list (154 entries); no file for Altinn | 0 |
+| ByteDance-Seed/Multi-SWE-bench_mini | whole file searched for «altinn» | 0 |
+| ByteDance-Seed/Multi-SWE-bench-flash | whole file searched for «altinn» | 0 |
 
-| Sammenligning (D3) | Hos dem | Hos oss | Felles | Bare hos dem | Bare hos oss | Reprodusert |
+| Comparison (D3) | Theirs | Ours | Common | Only theirs | Only ours | Reproduced |
 |---|---|---|---|---|---|---|
-| ikke mulig | – | – | – | – | – | – |
+| not possible | – | – | – | – | – | – |
 
-Kjøreren er dermed ikke ankret mot publiserte testlister i v1.0.
+The runner is thus not anchored against published test lists in v1.0.

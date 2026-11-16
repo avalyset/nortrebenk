@@ -1,31 +1,31 @@
-# NTB-0004: Kvalitetssjekk
+# NTB-0004: Quality check
 
-- Status: vedtatt 2026-11-16
-- Endret 2026-11-16: skårgrense og sammenslåingsregel presisert.
-- Endret 2026-11-16 (2): ankerutvalg, samsvarsmål og vurderere presisert.
-- Endret 2026-11-16 (3): OpenAI-vurdereren kalles bare der stemmen kan endre utfallet, se NTB-0013.
+- Status: adopted 2026-11-16
+- Changed 2026-11-16: score threshold and merge rule clarified.
+- Changed 2026-11-16 (2): anchor sample, agreement measure and judges clarified.
+- Changed 2026-11-16 (3): the OpenAI judge is called only where its vote can change the outcome, see NTB-0013.
 
-## Kontekst
+## Context
 
-Oppgaveteksten er PR-beskrivelsen, som kan beskrive løsningen eller være for vag. Testene kan også avvise gyldige løsninger. SWE-bench Verified brukte menneskelige annotatorer med en rubrikk for disse forholdene.
+The task text is the PR description, which may describe the solution or be too vague. The tests may also reject valid solutions. SWE-bench Verified used human annotators with a rubric for these conditions.
 
-## Beslutning
+## Decision
 
-Hver oppgave vurderes etter de to kriteriene i SWE-bench Verified-rubrikken (underspesifisert oppgavetekst; tester som avviser gyldige løsninger), med skår 0–3, av tre modeller fra ulike leverandører med rubrikken som prompt. En modell stemmer for utelukkelse på et kriterium når den gir skår 2 eller 3. Sammenslåingsregelen velges på ankerutvalget fra de menneskelige Verified-annotasjonene, før den brukes på egne oppgaver: enten utelukkes en oppgave når minst én av tre modeller stemmer for utelukkelse på et kriterium, eller når minst to av tre gjør det. Regelen med høyest samsvar med de menneskelige annotasjonene velges; ved likt samsvar velges den strengeste. Ensemblet måles først mot de publiserte menneskelige Verified-annotasjonene. I tillegg føres to mekaniske felt per oppgave: andelen av gullpatchens tilføyde linjer som står ordrett i oppgaveteksten, og om testpatchen kompilerer mot base. Alle vurderinger publiseres. Forfatteren er ikke vurderer.
+Each task is assessed on the two criteria in the SWE-bench Verified rubric (underspecified task text; tests that reject valid solutions), with score 0–3, by three models from different vendors with the rubric as the prompt. A model votes for exclusion on a criterion when it gives score 2 or 3. The merge rule is chosen on the anchor sample from the human Verified annotations, before it is applied to our own tasks: either a task is excluded when at least one of three models votes for exclusion on a criterion, or when at least two of three do. The rule with the highest agreement with the human annotations is chosen; with equal agreement the strictest is chosen. The ensemble is first measured against the published human Verified annotations. In addition, two mechanical fields are recorded per task: the share of the gold patch's added lines that appear verbatim in the task text, and whether the test patch compiles against base. All assessments are published. The author is not a judge.
 
-Ankerutvalget er 100 instanser trukket fra de menneskelig annoterte SWE-bench-instansene: 50 der den menneskelige samleskåren er 2 eller høyere på minst ett av de to kriteriene, og 50 der den er under 2 på begge, trukket med fast frø (20261116) fra sorterte instans-ID-er. Samsvar er andelen av de 100 der ensemblets avgjørelse (utelukket eller beholdt) er lik den menneskelige. Vurdererne er én modell fra Anthropic, én fra OpenAI og én fra Google; modell-ID-er og parametre føres sammen med vurderingene. Kan en vurderer ikke brukes uten utgifter utover eksisterende kreditt, føres det som avvik, og regelen velges mellom «minst én» og «alle» blant vurdererne som er igjen. Ankeret er engelskspråklige Python-oppgaver som modellene kan ha sett i trening, også med utfallet av annoteringen; settet er Kotlin og TypeScript med norsk og engelsk tekst. Begge deler står som grense.
+The anchor sample is 100 instances drawn from the human-annotated SWE-bench instances: 50 where the human combined score is 2 or higher on at least one of the two criteria, and 50 where it is below 2 on both, drawn with a fixed seed (20261116) from sorted instance IDs. Agreement is the share of the 100 where the ensemble's decision (excluded or kept) equals the human one. The judges are one model from Anthropic, one from OpenAI and one from Google; model IDs and parameters are recorded together with the assessments. If a judge cannot be used without expenses beyond existing credit, it is recorded as a deviation, and the rule is chosen between «at least one» and «all» among the judges that remain. The anchor is English-language Python tasks that the models may have seen in training, also with the outcome of the annotation; the set is Kotlin and TypeScript with Norwegian and English text. Both are stated as a limitation.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Forfatteren vurderer selv. Argument mot beslutningen: menneskelig vurdering er standarden i Verified. Forkastet fordi forfatteren kjenner oppgavene og utfallene fra P1.
-- Ingen kvalitetssjekk. Argument mot beslutningen: færre steg og lavere kostnad. Forkastet fordi PR-beskrivelser kan inneholde løsningen.
+- The author assesses themselves. Argument against the decision: human assessment is the standard in Verified. Rejected because the author knows the tasks and the outcomes from P1.
+- No quality check. Argument against the decision: fewer steps and lower cost. Rejected because PR descriptions may contain the solution.
 
-## Konsekvenser
+## Consequences
 
-Kvalitetssjekken (P2.3) bruker API-kreditt. Ensemblets samsvar med de menneskelige annotasjonene rapporteres før det brukes på settet.
+The quality check (P2.3) uses API credit. The ensemble's agreement with the human annotations is reported before it is applied to the set.
 
-## Kilder
+## Sources
 
-- OpenAI, «Introducing SWE-bench Verified», 13.08.2024 (openai.com/index/introducing-swe-bench-verified/), lest i nettleser 16.11.2026. Utelukkelse ved samlet skår 2 eller høyere: «have an ensemble label of 2 or above in severity»; sammenslåing: «taking the highest-severity label amongst the 3 annotators». Siden har ingen enkeltsetning som sier begge deler; de to delene står i hver sin setning.
-- OpenAI, «Why SWE-bench Verified no longer measures frontier coding capabilities» (sidetittel «Why we no longer evaluate SWE-bench Verified»), 23.02.2026 (openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/), lest i nettleser 16.11.2026: «This is why we have stopped reporting SWE-bench Verified scores»
-- «SWE-rebench V2: Language-Agnostic SWE Task Collection at Scale», arXiv:2602.23866 (sammendraget; §3.4 lot seg ikke sitere ordrett fra PDF-teksten): «filters unsound instances using an ensemble of LLM judges, validated against human-verified SWE-bench annotations»
+- OpenAI, «Introducing SWE-bench Verified», 13.08.2024 (openai.com/index/introducing-swe-bench-verified/), read in browser 16.11.2026. Exclusion at combined score 2 or higher: «have an ensemble label of 2 or above in severity»; merging: «taking the highest-severity label amongst the 3 annotators». The page has no single sentence that says both; the two parts are in separate sentences.
+- OpenAI, «Why SWE-bench Verified no longer measures frontier coding capabilities» (page title «Why we no longer evaluate SWE-bench Verified»), 23.02.2026 (openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/), read in browser 16.11.2026: «This is why we have stopped reporting SWE-bench Verified scores»
+- «SWE-rebench V2: Language-Agnostic SWE Task Collection at Scale», arXiv:2602.23866 (the abstract; §3.4 could not be quoted verbatim from the PDF text): «filters unsound instances using an ensemble of LLM judges, validated against human-verified SWE-bench annotations»

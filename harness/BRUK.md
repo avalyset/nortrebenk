@@ -1,51 +1,51 @@
-# Bruk av harnessen (P2.2)
+# Using the harness (P2.2)
 
-Harnessen bygger ett forseglet Docker-image per oppgave og kjører oppgavens tester i nye containere. Den bruker klassene i Multi-SWE-bench (commit 24f493f): `PullRequest`, `Config`, `Image` og `Instance`. Kjøringen går gjennom en egen, tynn kjører, fordi Multi-SWE-bench sin testkjøring (swe-rex og `nix_swe`) bare finnes for linux/amd64. P2.2 er kjørt på linux/arm64.
+The harness builds one sealed Docker image per task and runs the task's tests in new containers. It uses the classes in Multi-SWE-bench (commit 24f493f): `PullRequest`, `Config`, `Image` and `Instance`. The run goes through an own, thin runner, because Multi-SWE-bench's test run (swe-rex and `nix_swe`) exists only for linux/amd64. P2.2 was run on linux/arm64.
 
-## Innhold
+## Contents
 
-- `msb_repos/_felles.py`: felles kode. Bygger det forseglede imaget, lager kjøreskriptene og leser JUnit-XML og TRX.
-- `msb_repos/<org>/<repo>.py`: én definisjon per repo. Base-imaget er festet med digest. Definisjonen har oppsett, installasjon, oppvarming og testkommando.
-- `scripts/p22_kjor.py`: kjører alle oppgaver i ett repo.
+- `msb_repos/_felles.py`: shared code. Builds the sealed image, creates the run scripts and reads JUnit XML and TRX.
+- `msb_repos/<org>/<repo>.py`: one definition per repo. The base image is pinned by digest. The definition has setup, installation, warm-up and test command.
+- `scripts/p22_kjor.py`: runs all tasks in one repo.
 
-## Forseglet image
+## Sealed image
 
-1. Repoet klones i et eget byggesteg og sjekkes ut på `base_sha`. Mappa `.git` slettes.
-2. Arbeidstreet kopieres inn i det endelige imaget, som får et nytt git-repo med én commit. Det har ingen remotes og ingen andre refs.
-3. Avhengighetene installeres etter forseglingen. Oppvarmingen kjører testene én gang, slik at byggverktøyets cache er fylt.
-4. Imaget kontrollerer selv at `git log --all` gir én commit, at `git remote -v` er tom og at det bare finnes én ref. Først da skrives `/home/forsegling.txt`.
+1. The repo is cloned in a separate build stage and checked out at `base_sha`. The `.git` folder is deleted.
+2. The working tree is copied into the final image, which gets a new git repo with one commit. It has no remotes and no other refs.
+3. The dependencies are installed after the sealing. The warm-up runs the tests once, so that the build tool's cache is filled.
+4. The image itself checks that `git log --all` gives one commit, that `git remote -v` is empty and that there is only one ref. Only then is `/home/forsegling.txt` written.
 
-Kjøringene bruker ikke `git fetch` eller `git clean -x`.
+The runs do not use `git fetch` or `git clean -x`.
 
-## Kjøringer
+## Runs
 
-- **B**: testpatchen legges på base. Kjøres én gang, med nett.
-- **C**: testpatchen og gullpatchen legges på base. Kjøres tre ganger, hver gang i en ny container. Første C kjøres med `--network none`. Feiler den på grunn av nett, settes `trenger_nett_i_test: true`, og alle tre C kjøres med nett.
+- **B**: the test patch is applied on base. Run once, with network.
+- **C**: the test patch and the gold patch are applied on base. Run three times, each time in a new container. The first C is run with `--network none`. If it fails because of network, `trenger_nett_i_test: true` is set, and all three C runs are run with network.
 
-En oppgave er løst når alle tester i P1-listene `f2p` og `p2p` har PASS.
+A task is resolved when all tests in the P1 lists `f2p` and `p2p` have PASS.
 
-Oppgaven tas med i settet (`i_settet_etter_p22: ja`) når fire vilkår er oppfylt:
-- B er ikke løst.
-- C er løst i alle tre kjøringene.
-- Kjøringen ble fullført.
-- Forseglingen er kontrollert.
+The task is included in the set (`i_settet_etter_p22: ja`) when four conditions are met:
+- B is not resolved.
+- C is resolved in all three runs.
+- The run was completed.
+- The sealing is checked.
 
-## Kjøre
+## Running
 
-Krav:
+Requirements:
 - Docker
-- Python 3.12 med multi-swe-bench (commit 24f493f, `uv pip install -e .`) og `docker` (Python-SDK)
+- Python 3.12 with multi-swe-bench (commit 24f493f, `uv pip install -e .`) and `docker` (Python SDK)
 
-Kjøreren leser tre stier fra miljøvariabler:
+The runner reads three paths from environment variables:
 
-- `NTB_P1`: mappe med `results.jsonl` (P1-status per oppgave; oppgaver med `status: validert` kjøres), `c2_patcher.jsonl` (én linje per oppgave med `url`, `repo`, `pr`, `basis_sha` og `deps_reinstall`) og `tester/<org>__<repo>__<pr>.json` (lister `f2p` og `p2p`). `data/p1_resultater.jsonl` og `data/tester/` i dette repoet har det samme innholdet.
-- `NTB_PATCHER`: mappe med `<org>__<repo>__<pr>/test.patch` og `fix.patch`. Patchene for oppgavene i settet ligger i `data/instances.jsonl` (feltene `testpatch` og `gullpatch`).
-- `NTB_UT`: mappe for logger, byggmapper og resultater (standard `ntb-ut`).
+- `NTB_P1`: folder with `results.jsonl` (P1 status per task; tasks with `status: validert` are run), `c2_patcher.jsonl` (one line per task with `url`, `repo`, `pr`, `basis_sha` and `deps_reinstall`) and `tester/<org>__<repo>__<pr>.json` (lists `f2p` and `p2p`). `data/p1_resultater.jsonl` and `data/tester/` in this repo have the same content.
+- `NTB_PATCHER`: folder with `<org>__<repo>__<pr>/test.patch` and `fix.patch`. The patches for the tasks in the set are in `data/instances.jsonl` (the fields `testpatch` and `gullpatch`).
+- `NTB_UT`: folder for logs, build folders and results (default `ntb-ut`).
 
 ```bash
 NTB_P1=... NTB_PATCHER=... NTB_UT=ntb-ut python harness/scripts/p22_kjor.py navikt/mock-oauth2-server 2
 ```
 
-Siste argument er antall oppgaver som kjøres parallelt (standard 2). Hver oppgave har en tidsgrense på 40 minutter. Resultatet for hver oppgave skrives til `$NTB_UT/res/<org>__<repo>__<pr>.json`, og loggene til `$NTB_UT/logs/<org>__<repo>__<pr>/`.
+The last argument is the number of tasks run in parallel (default 2). Each task has a time limit of 40 minutes. The result for each task is written to `$NTB_UT/res/<org>__<repo>__<pr>.json`, and the logs to `$NTB_UT/logs/<org>__<repo>__<pr>/`.
 
-Ved importfeil på macOS: multi-swe-bench 24f493f har både `repos/python/Qiskit` og `repos/python/qiskit`, som kolliderer på filsystemer som ikke skiller mellom store og små bokstaver. Kjøreren erstatter derfor den samlede repo-importen med en tom modul.
+On import errors on macOS: multi-swe-bench 24f493f has both `repos/python/Qiskit` and `repos/python/qiskit`, which collide on file systems that do not distinguish between upper and lower case. The runner therefore replaces the combined repo import with an empty module.

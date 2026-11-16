@@ -1,26 +1,26 @@
-# NTB-0009: Publisering, vedlikehold og pensjonering
+# NTB-0009: Publication, maintenance and retirement
 
-- Status: vedtatt 2026-11-16
+- Status: adopted 2026-11-16
 
-## Kontekst
+## Context
 
-Settet består av ferske oppgaver fra offentlige repoer. Det blir kontaminert når nyere modeller trenes på data etter merge-datoene.
+The set consists of fresh tasks from public repos. It becomes contaminated when newer models are trained on data after the merge dates.
 
-## Beslutning
+## Decision
 
-Fulle instanser publiseres med kanaristreng og lisensangivelse per repo. v1.0 rettes bare ved feil som endrer et tall. Settet er gyldig for modeller med treningsgrense før den tidligste merge-datoen i det endelige settet; for nyere modeller er det pensjonert, og datoen står i README. Ferdig-kriteriene ved P4 er Agentic Benchmark Checklist, BetterBench og JOSS-sjekklisten. Databladet skrives etter Datasheets for Datasets.
+Full instances are published with a canary string and a license statement per repo. v1.0 is corrected only for errors that change a number. The set is valid for models with a training cutoff before the earliest merge date in the final set; for newer models it is retired, and the date is stated in the README. The completion criteria at P4 are the Agentic Benchmark Checklist, BetterBench and the JOSS checklist. The datasheet is written following Datasheets for Datasets.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Løpende oppdatering av v1.0. Argument mot beslutningen: settet holdes ferskt. Forkastet fordi publiserte tall da endres; påfyll står i IDEER.md som v1.1.
+- Continuous updating of v1.0. Argument against the decision: the set is kept fresh. Rejected because published numbers would then change; refills are listed in IDEER.md as v1.1.
 
-## Konsekvenser
+## Consequences
 
-README får en pensjoneringsdato. Frysen i P4 vurderes mot de tre sjekklistene.
+The README gets a retirement date. The freeze at P4 is assessed against the three checklists.
 
-## Kilder
+## Sources
 
 - «Establishing Best Practices for Building Rigorous Agentic Benchmarks» (Agentic Benchmark Checklist), arXiv:2507.02825: «we show that many agentic benchmarks have issues in task setup or reward design.»
 - «BetterBench: Assessing AI Benchmarks, Uncovering Issues, and Establishing Best Practices», arXiv:2411.12990: «we develop an assessment framework considering 46 best practices across an AI benchmark's lifecycle»
-- «Datasheets for Datasets», arXiv:1803.09010 (identifikatoren kontrollert mot tittelen på arXiv-siden): «we propose that every dataset be accompanied with a datasheet that documents its motivation, composition, collection process, recommended uses, and so on.»
-- JOSS-sjekklisten: ikke hentet i P2.1.
+- «Datasheets for Datasets», arXiv:1803.09010 (identifier checked against the title on the arXiv page): «we propose that every dataset be accompanied with a datasheet that documents its motivation, composition, collection process, recommended uses, and so on.»
+- The JOSS checklist: not retrieved in P2.1.

@@ -1,23 +1,23 @@
-# NTB-0012: Budsjettramme
+# NTB-0012: Budget framework
 
-- Status: vedtatt 2026-11-16
+- Status: adopted 2026-11-16
 
-## Kontekst
+## Context
 
-Studien skal ikke ha utgifter utover forhåndsbetalt kreditt som fantes 16.11.2026. NTB-0007 planla tre armer, der arm 3 (Codex) skulle belastes OpenAI-API-et.
+The study is to have no expenses beyond prepaid credit that existed on 16.11.2026. NTB-0007 planned three arms, where arm 3 (Codex) was to be charged to the OpenAI API.
 
-## Beslutning
+## Decision
 
-Studien gjennomføres på forhåndsbetalt kreditt som fantes 16.11.2026, uten påfyll og uten andre utgifter. Codex-armen (arm 3 i NTB-0007) utgår fra v1.0. Pilotmålingen har to armer: Claude Code med Opus 5.5 og Claude Code med Sonnet 5.5. Antall kjøringer per arm og oppgave settes i prereg ut fra målt kostnad i P2.4, og kuttes før en arm kuttes. v1.0 måler dermed én leverandør, og det står som grense i README.
+The study is carried out on prepaid credit that existed on 16.11.2026, with no top-up and no other expenses. The Codex arm (arm 3 in NTB-0007) is dropped from v1.0. The pilot measurement has two arms: Claude Code with Opus 5.5 and Claude Code with Sonnet 5.5. The number of runs per arm and task is set in the prereg from the cost measured in P2.4, and runs are cut before an arm is cut. v1.0 thus measures one vendor, and this is stated as a limitation in the README.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Fylle på kreditt for å beholde Codex-armen. Argument mot beslutningen: to leverandører styrker uavhengigheten. Forkastet fordi studien ikke skal ha utgifter utover eksisterende kreditt; ideen står i IDEER.md.
+- Top up credit to keep the Codex arm. Argument against the decision: two vendors strengthen independence. Rejected because the study is not to have expenses beyond existing credit; the idea is listed in IDEER.md.
 
-## Konsekvenser
+## Consequences
 
-v1.0 måler én leverandør (Anthropic). Antall kjøringer per arm og oppgave fastsettes i prereg.
+v1.0 measures one vendor (Anthropic). The number of runs per arm and task is fixed in the prereg.
 
-## Kilder
+## Sources
 
-- Ingen ekstern kilde; beslutningen ble tatt av forfatteren 16.11.2026.
+- No external source; the decision was made by the author on 16.11.2026.

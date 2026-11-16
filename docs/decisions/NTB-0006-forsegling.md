@@ -1,31 +1,31 @@
-# NTB-0006: Forsegling
+# NTB-0006: Sealing
 
-- Status: vedtatt 2026-11-16
-- Endret 2026-11-16: nettregel, nettverktøy, agentbilde og nøkkelhåndtering for lokal kjøring.
+- Status: adopted 2026-11-16
+- Changed 2026-11-16: web rule, web tools, agent image and key handling for local running.
 
-## Kontekst
+## Context
 
-Oppgavene er hentet fra offentlige repoer der løsningen finnes i senere commits og på nett. Agenter kan slå opp løsningen i stedet for å utlede den.
+The tasks are taken from public repos where the solution exists in later commits and on the web. Agents can look up the solution instead of deriving it.
 
-## Beslutning
+## Decision
 
-Instansbildet har repoet på base_sha uten senere git-objekter, uten remotes og uten refs. Agentens nett er begrenset til modell-API og pakkeregistre; github.com er sperret. Avhengighetene er løst i bildet. Kjøres agentene på Modal, ligger API-nøkkelen som Modal-hemmelighet, som en egen nøkkel med beløpsgrense som slettes etter P3.
+The instance image has the repo at base_sha without later git objects, without remotes and without refs. The agent's network is limited to the model API and package registries; github.com is blocked. The dependencies are resolved in the image. If the agents run on Modal, the API key is stored as a Modal secret, as a separate key with a spending limit that is deleted after P3.
 
-Agentens nett er begrenset til modell-API-et. Agentcontaineren står på et internt Docker-nett uten rute ut. Eneste vei ut er en mellomtjener som bare videresender til modell-API-et og legger på API-nøkkelen, slik at nøkkelen aldri finnes i agentcontaineren. Pakkeregistre og github.com er ikke tilgjengelige. Verktøy som lar modell-API-et søke eller hente på nettet på agentens vegne, er slått av i agenten og avvises i mellomtjeneren. Agentbildet bygges uten gullpatch, testpatch og kjøreskript, og det kontrolleres før hver kjøring. Avhengighetene for base og for tilstanden med gullpatch er løst i bildet, uten at kildeendringer fra gullpatchen følger med. Oppgaver der testene likevel ikke lar seg kjøre uten nett, merkes og rapporteres for seg. Setningene om pakkeregistre og om Modal over gjelder ikke lenger (NTB-0011).
+The agent's network is limited to the model API. The agent container sits on an internal Docker network with no route out. The only way out is a proxy that forwards only to the model API and adds the API key, so that the key never exists in the agent container. Package registries and github.com are not available. Tools that let the model API search or fetch on the web on the agent's behalf are turned off in the agent and rejected in the proxy. The agent image is built without the gold patch, test patch and run scripts, and it is checked before every run. The dependencies for base and for the state with the gold patch are resolved in the image, without source changes from the gold patch coming along. Tasks where the tests still cannot be run without network are marked and reported separately. The sentences about package registries and about Modal above no longer apply (NTB-0011).
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Full nettilgang. Argument mot beslutningen: agentene får samme vilkår som i vanlig bruk. Forkastet fordi fasiten da er ett oppslag unna.
-- Ingen nettilgang. Argument mot beslutningen: sterkest forsegling. Forkastet fordi agentene trenger modell-API-et.
-- Pakkeregistre åpne. Argument mot beslutningen: agenten kan legge til avhengigheter slik en utvikler ville. Forkastet fordi et repo som publiseres som pakke, kan ha løsningen i en nyere pakkeversjon, og fordi 19 av 21 oppgaver kjører testene uten nett.
+- Full network access. Argument against the decision: the agents get the same terms as in normal use. Rejected because the answer key is then one lookup away.
+- No network access. Argument against the decision: strongest sealing. Rejected because the agents need the model API.
+- Package registries open. Argument against the decision: the agent can add dependencies as a developer would. Rejected because a repo that is published as a package may have the solution in a newer package version, and because 19 of 21 tasks run the tests without network.
 
-## Konsekvenser
+## Consequences
 
-Bildet må bygges med avhengigheter på forhånd. Nettregler og nøkkelhåndtering dokumenteres i harness/.
+The image must be built with dependencies in advance. Network rules and key handling are documented in harness/.
 
-## Kilder
+## Sources
 
 - Cursor, «Reward hacking is swamping model intelligence gains» (cursor.com/blog/reward-hacking-coding-benchmarks): «If the agent has access to repository history or the public web, it can sometimes look up the answer rather than derive it.»
 - NIST CAISI, «Cheating On AI Agent Evaluations» (nist.gov/blogs/caissi-research-blog/cheating-ai-agent-evaluations): «Models cheating on coding benchmarks by looking up more recent code versions, disabling assertions, and adding test-specific logic.»
 - «SWE-Lego: Pushing the Limits of Supervised Fine-tuning for Software Issue Resolving», arXiv:2601.01426: «the agent sometimes peeked at Git history or future commits, thereby cheating rather than faithfully resolving the issue.»
-- Modal-dokumentasjonen, «Networking and security» (modal.com/docs/guide/sandbox-networking): «By default, Sandboxes can make outbound connections to any public IP address.»
+- The Modal documentation, «Networking and security» (modal.com/docs/guide/sandbox-networking): «By default, Sandboxes can make outbound connections to any public IP address.»

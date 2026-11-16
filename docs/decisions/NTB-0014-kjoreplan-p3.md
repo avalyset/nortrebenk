@@ -1,35 +1,35 @@
-# NTB-0014: Kjøreplan for P3
+# NTB-0014: Run plan for P3
 
-- Status: vedtatt 2026-11-16
+- Status: adopted 2026-11-16
 
-## Kontekst
+## Context
 
-P3 skal kjøre oppgavene i settet med to armer, to tekstvarianter og tre kjøringer (NTB-0007, NTB-0013). Disken rommer ikke bilder for alle oppgavene samtidig, og kreditten har et tak (NTB-0012). Røykprøven målte høyst 9,43 USD for én runde over 21 oppgaver og to armer. Vurderingsveien i agentkjøreren er en annen kodevei enn valideringen i P2.2, og to oppgaver trenger et eget bygg for å kjøre testene uten nett.
+P3 is to run the tasks in the set with two arms, two text variants and three runs (NTB-0007, NTB-0013). The disk cannot hold images for all the tasks at the same time, and the credit has a cap (NTB-0012). The smoke trial measured at most 9.43 USD for one round over 21 tasks and two arms. The grading path in the agent runner is a different code path from the validation in P2.2, and two tasks need a separate build to run the tests without network.
 
-## Beslutning
+## Decision
 
-P3 kjøres i inntil tre pass. Ett pass er én kjøring per oppgave, arm og tekstvariant, altså 84 kjøringer for 21 oppgaver. Innen et pass tas oppgavene i en rekkefølge stokket med frø 20261116 pluss passnummeret. For hver oppgave bygges instansbildet og agentbildet, selvtesten kjøres, vurderingsveien kontrolleres uten modellkall (gullpatchen utenom testfiler gir løst, tom patch gir ikke løst), de fire kjøringene gjøres i en rekkefølge gitt av samme frø, og bildene slettes. Kjøringene går én om gangen. Planen med alle kjøringene i rekkefølge lages av kjøreren før frys og ligger i data/p3_plan.jsonl.
+P3 is run in up to three passes. One pass is one run per task, arm and text variant, that is, 84 runs for 21 tasks. Within a pass the tasks are taken in an order shuffled with seed 20261116 plus the pass number. For each task the instance image and the agent image are built, the self-test is run, the grading path is checked without model calls (the gold patch excluding test files gives resolved, the empty patch gives not resolved), the four runs are done in an order given by the same seed, and the images are deleted. The runs go one at a time. The plan with all the runs in order is made by the runner before the freeze and is in data/p3_plan.jsonl.
 
-Tak per kjøring er 1,50 USD for Sonnet 5.5 og 3,00 USD for Opus 5.5, satt med agentens budsjettgrense, og 40 minutter. En kjøring som treffer et tak, teller som ikke løst, og kostnad og tid telles med.
+The cap per run is 1.50 USD for Sonnet 5.5 and 3.00 USD for Opus 5.5, set with the agent's budget limit, and 40 minutes. A run that hits a cap counts as not resolved, and cost and time are counted.
 
-Budsjettet B er Anthropic-saldoen avlest rett før P3 minus 5,00 USD. Brukt beløp er summen for alle kjøringer, også forkastede forsøk. Første pass startes bare hvis B er minst 28,29 USD (1,5 ganger to runder à 9,43 USD). Et nytt fullt pass startes bare hvis det som står igjen av B, er minst 1,5 ganger kostnaden for det dyreste fullførte passet. Holder det ikke til et fullt pass, kjøres et pass med bare utvidet tekst hvis det som står igjen, er minst 1,5 ganger kostnaden for utvidet-delen av det dyreste passet. Ellers stopper P3. Inne i et pass startes ingen kjøring hvis brukt beløp pluss kjøringens tak overstiger B.
+The budget B is the Anthropic balance read just before P3 minus 5.00 USD. Amount spent is the sum over all runs, including discarded attempts. The first pass is started only if B is at least 28.29 USD (1.5 times two rounds of 9.43 USD). A new full pass is started only if what remains of B is at least 1.5 times the cost of the most expensive completed pass. If it does not suffice for a full pass, a pass with extended text only is run if what remains is at least 1.5 times the cost of the extended part of the most expensive pass. Otherwise P3 stops. Within a pass no run is started if amount spent plus the run's cap exceeds B.
 
-En infrastrukturfeil i en kjøring er at Claude Code avslutter med API-feil, eller at containeren stopper uten resultatlinje og uten at et tak slo inn. Kjøringen forkastes da og kjøres på nytt, høyst to ganger. Feiler den tredje gang, står den som manglende og teller ikke som ikke løst. Feiler bygget, selvtesten eller kontrollen av vurderingsveien for en oppgave etter to forsøk, står alle oppgavens kjøringer i passet som manglende. Forkastede forsøk, manglende kjøringer og kostnaden for dem rapporteres.
+An infrastructure failure in a run is that Claude Code exits with an API error, or that the container stops without a result line and without a cap having been hit. The run is then discarded and run again, at most two times. If it fails the third time, it stands as missing and does not count as not resolved. If the build, the self-test or the check of the grading path fails for a task after two attempts, all the task's runs in the pass stand as missing. Discarded attempts, missing runs and the cost of them are reported.
 
-Et pass er fullført når hver planlagte kjøring enten er gjennomført eller står som manglende etter reglene over. Et pass som stoppes av budsjettet, er ufullstendig. Bare fullførte pass inngår i hovedanalysen, og ufullstendige rapporteres for seg.
+A pass is completed when each planned run has either been carried out or stands as missing according to the rules above. A pass stopped by the budget is incomplete. Only completed passes are included in the main analysis, and incomplete ones are reported separately.
 
-Kjøreren for P3 nekter å kjøre agenter på oppgaver i settet før PREREG_DOI.txt finnes i repoet.
+The runner for P3 refuses to run agents on tasks in the set before PREREG_DOI.txt exists in the repo.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Alle tolv kjøringer per oppgave i ett bygg. Argument mot beslutningen: færre bygg. Forkastet fordi et budsjett som tar slutt underveis, da gir noen oppgaver alle kjøringer og andre ingen.
-- Beholde alle bildene gjennom hele P3. Forkastet fordi disken ikke rommer dem.
-- Kontrollere vurderingsveien bare før frys. Argument mot beslutningen: kortere pass. Forkastet fordi bygg kan endre seg mellom frys og kjøring, og en feil i vurderingsveien ellers ville stått som ikke løst.
+- All twelve runs per task in one build. Argument against the decision: fewer builds. Rejected because a budget that runs out along the way would then give some tasks all runs and others none.
+- Keep all the images throughout P3. Rejected because the disk cannot hold them.
+- Check the grading path only before the freeze. Argument against the decision: shorter passes. Rejected because builds can change between freeze and run, and an error in the grading path would otherwise stand as not resolved.
 
-## Konsekvenser
+## Consequences
 
-P3 tar tre pass med bygg og kontroll for hver oppgave i hvert pass. Rekkefølgen er fast og publisert før første kjøring.
+P3 takes three passes with build and check for each task in each pass. The order is fixed and published before the first run.
 
-## Kilder
+## Sources
 
-- data/roykprove/budsjett.md; ingen ekstern kilde.
+- data/roykprove/budsjett.md; no external source.

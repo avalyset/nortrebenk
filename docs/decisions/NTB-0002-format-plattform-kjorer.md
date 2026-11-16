@@ -1,26 +1,26 @@
-# NTB-0002: Format, plattform og kjører
+# NTB-0002: Format, platform and runner
 
-- Status: vedtatt 2026-11-16
-- Plattformpunktet er erstattet av NTB-0011.
+- Status: adopted 2026-11-16
+- The platform item is superseded by NTB-0011.
 
-## Kontekst
+## Context
 
-I P1 ble instansene skrevet som Multi-SWE-bench-definisjoner mot commit 24f493f og kjørt med en tynn kjører bygget på Multi-SWE-bench-klassene. Multi-SWE-bench sin egen kjøring brukte et image som bare fantes for linux/amd64, mens maskinen kjørte linux/arm64. P1 validerte derfor på linux/arm64.
+In P1 the instances were written as Multi-SWE-bench definitions against commit 24f493f and run with a thin runner built on the Multi-SWE-bench classes. Multi-SWE-bench's own run used an image that only existed for linux/amd64, while the machine ran linux/arm64. P1 therefore validated on linux/arm64.
 
-## Beslutning
+## Decision
 
-Instansene skrives som Multi-SWE-bench-definisjoner mot commit 24f493f. Kjøreren er den tynne kjøreren fra P1, bygget på Multi-SWE-bench-klassene. Plattformen for sett og måling avgjøres ved én avgrenset prøve i P2.2: kafka-manager (4 oppgaver) bygges og kjøres som linux/amd64 på Modal. Gir prøven de samme fail-to-pass- og pass-to-pass-listene som P1, er amd64 på Modal plattformen, og alle oppgavene valideres der. Ellers er plattformen linux/arm64 lokalt, og begrensningen står i README. Utfallet føres i NTB-0011. Uansett påstås det ikke at instansene er kjørt gjennom uendret Multi-SWE-bench.
+The instances are written as Multi-SWE-bench definitions against commit 24f493f. The runner is the thin runner from P1, built on the Multi-SWE-bench classes. The platform for the set and the measurement is decided by one bounded trial in P2.2: kafka-manager (4 tasks) is built and run as linux/amd64 on Modal. If the trial gives the same fail-to-pass and pass-to-pass lists as P1, amd64 on Modal is the platform, and all tasks are validated there. Otherwise the platform is linux/arm64 locally, and the limitation is stated in README. The outcome is recorded in NTB-0011. In either case it is not claimed that the instances were run through unmodified Multi-SWE-bench.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Egen harness og eget format. Argument mot beslutningen: full kontroll og ingen avhengighet av en ekstern kodebase. Forkastet fordi et etablert format gjør instansene gjenbrukbare.
-- Uendret Multi-SWE-bench på amd64 lokalt via emulering. Argument mot beslutningen: det ville gitt kjøring gjennom uendret harness. Forkastet fordi JVM- og Node-bygg under emulering ble vurdert som for trege, og fordi colima-konfigurasjonen ikke skulle endres.
-- Hele valideringen direkte på Modal uten prøve. Argument mot beslutningen: sparer ett steg. Forkastet fordi en prøve på ett repo viser om plattformene gir samme testlister før all validering flyttes.
+- Own harness and own format. Argument against the decision: full control and no dependency on an external codebase. Rejected because an established format makes the instances reusable.
+- Unmodified Multi-SWE-bench on amd64 locally via emulation. Argument against the decision: it would have given a run through the unmodified harness. Rejected because JVM and Node builds under emulation were judged too slow, and because the colima configuration was not to be changed.
+- All validation directly on Modal without a trial. Argument against the decision: saves one step. Rejected because a trial on one repo shows whether the platforms give the same test lists before all validation is moved.
 
-## Konsekvenser
+## Consequences
 
-P2.2 starter med prøven på kafka-manager. Plattformvalget føres i NTB-0011. README beskriver kjøreren som en tynn kjører på Multi-SWE-bench-klassene.
+P2.2 starts with the trial on kafka-manager. The platform choice is recorded in NTB-0011. README describes the runner as a thin runner on the Multi-SWE-bench classes.
 
-## Kilder
+## Sources
 
-- SWE-bench-dokumentasjonen, «Evaluation – SWE-bench», seksjonen «Cloud-Based Evaluation» (swebench.com/SWE-bench/guides/evaluation/): «Run evaluation on Modal»
+- The SWE-bench documentation, «Evaluation – SWE-bench», the section «Cloud-Based Evaluation» (swebench.com/SWE-bench/guides/evaluation/): «Run evaluation on Modal»

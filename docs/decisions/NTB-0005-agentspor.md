@@ -1,23 +1,23 @@
-# NTB-0005: Agentspor
+# NTB-0005: Agent traces
 
-- Status: vedtatt 2026-11-16
+- Status: adopted 2026-11-16
 
-## Kontekst
+## Context
 
-Forhåndsfaktaene fra P1 merket agentmarkør ja når PR-tekst eller commit-meldinger hadde eksplisitt spor (f.eks. «Co-authored-by: Copilot» eller «Generated with Claude Code»). 3 av de 21 validerte oppgavene hadde markør.
+The prior facts from P1 marked agent marker yes when PR text or commit messages had explicit traces (e.g. «Co-authored-by: Copilot» or «Generated with Claude Code»). 3 of the 21 validated tasks had a marker.
 
-## Beslutning
+## Decision
 
-Hver oppgave merkes med agentmarkør ja eller nei ut fra PR-tekst og commit-meldinger. Oppgavene beholdes, og resultatet rapporteres også delt på merket. Fravær av markør betyr ikke at koden er menneskeskrevet.
+Each task is marked with agent marker yes or no based on PR text and commit messages. The tasks are kept, and the result is also reported split by the marker. Absence of a marker does not mean the code is human-written.
 
-## Alternativer vurdert
+## Alternatives considered
 
-- Utelukke oppgaver med markør. Argument mot beslutningen: oppgaver løst med agent kan være lettere for agenter. Forkastet fordi markøren bare fanger eksplisitte spor, så utelukkelse ville gitt en falsk skillelinje.
+- Exclude tasks with a marker. Argument against the decision: tasks solved with an agent may be easier for agents. Rejected because the marker only captures explicit traces, so exclusion would have produced a false dividing line.
 
-## Konsekvenser
+## Consequences
 
-Rapporten viser resultater for alle oppgaver og delt på markør. Markøren beskriver bare synlige spor.
+The report shows results for all tasks and split by marker. The marker describes only visible traces.
 
-## Kilder
+## Sources
 
-- Ingen ekstern kilde; beslutningen hviler på forhåndsfaktaene fra P1.
+- No external source; the decision rests on the prior facts from P1.

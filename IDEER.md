@@ -1,16 +1,16 @@
-# IDEER – utenfor kartet (ikke gjennomført)
+# IDEER – outside the map (not carried out)
 
-Ideer føres her og gjennomføres ikke i v1.0.
+Ideas are recorded here and are not carried out in v1.0.
 
-- Klasse B (tester som trenger Testcontainers, Docker, Kafka, Postgres e.l.) og repoer uten lisens.
-- Påfyll av nye måneder med mergede PR-er (v1.1).
-- Kjøring gjennom uendret Multi-SWE-bench.
-- pensjonssimulator #716 med merge-forelder som basis.
-- foreldrepengesoknad med en forhåndserklært regel for åpent register.
-- GitHub Copilot som agent.
-- Måling på en etats egne repoer.
-- arXiv-notat.
-- kode24-innlegg.
+- Class B (tests that need Testcontainers, Docker, Kafka, Postgres or similar) and repos without a license.
+- Refill with new months of merged PRs (v1.1).
+- Running through unchanged Multi-SWE-bench.
+- pensjonssimulator #716 with merge parent as base.
+- foreldrepengesoknad with a pre-declared rule for open register.
+- GitHub Copilot as agent.
+- Measurement on an agency's own repos.
+- arXiv note.
+- kode24 post.
 - Hugging Face.
-- Ledertavle.
-- Codex og andre leverandører som armer.
+- Leaderboard.
+- Codex and other vendors as arms.
