@@ -1,0 +1,21 @@
+{
+  "title": "nortrebenk: coding agents on public code from Norwegian government agencies",
+  "upload_type": "software",
+  "publisher": "Zenodo",
+  "creators": [
+    {
+      "name": "Botten Nicolaysen, Eirik",
+      "orcid": "0009-0001-9188-6788",
+      "affiliation": "EcoDeco AS"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "keywords": [
+    "coding agents",
+    "software engineering benchmark",
+    "issue resolving",
+    "public sector",
+    "Norway"
+  ],
+  "language": "nob"
+}

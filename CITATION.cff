@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "nortrebenk: coding agents on public code from Norwegian government agencies"
+type: software
+authors:
+  - family-names: "Botten Nicolaysen"
+    given-names: "Eirik"
+    orcid: "https://orcid.org/0009-0001-9188-6788"
+    affiliation: "EcoDeco AS"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - coding agents
+  - software engineering benchmark
+  - issue resolving
+  - public sector
+  - Norway
