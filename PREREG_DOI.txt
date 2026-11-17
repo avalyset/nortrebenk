@@ -1,0 +1,3 @@
+10.5281/zenodo.24304903
+https://doi.org/10.5281/zenodo.24304903
+concept record 24304902; published 2026-11-17; files: nortrebenk_prereg-v1_2026-11-17.tar.gz (md5 d2dc034df1794d7a85da950e830dc106), PREREG.md (md5 2f325d4809a7d919c9900e741f7039e9), and both .ots proofs
