@@ -102,3 +102,51 @@ class Formler(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class VarianterOgMangler(unittest.TestCase):
+    """Differanser mellom tekstvariantene bare fra pass med begge; oppgaver uten gjennomførte kjøringer telles opp;
+    kostnad per løste oppgave oppgis ikke uten løste kjøringer."""
+
+    def setUp(self):
+        d = pathlib.Path(tempfile.mkdtemp())
+        (d / "data/kvalitet").mkdir(parents=True)
+        ider = {"a__x__1": "a/x", "b__y__3": "b/y"}
+        (d / "data/sett_v1.jsonl").write_text("".join(json.dumps(sett_rad(i, r)) + "\n" for i, r in ider.items()))
+        M = lambda p, o, arm, v: {"pass": p, "nummer": 0, "oppgave": o, "tekstvariant": v, "arm": arm, "status": "manglende", "grunn": "test"}
+        rader = [
+            # Sonnet, pass 1 og 2 med begge variantene
+            kj(1, "a__x__1", S, True), kj(1, "a__x__1", S, True, variant="utvidet"),
+            kj(1, "b__y__3", S, False), kj(1, "b__y__3", S, False, variant="utvidet"),
+            kj(2, "a__x__1", S, False), kj(2, "a__x__1", S, True, variant="utvidet"),
+            kj(2, "b__y__3", S, False), kj(2, "b__y__3", S, True, variant="utvidet"),
+            # Pass 3 med bare utvidet tekst (fullført); skal ikke inngå i differansen mellom variantene
+            kj(3, "a__x__1", S, False, variant="utvidet"), kj(3, "b__y__3", S, False, variant="utvidet"),
+            # Opus, PR-tekst: a__x__1 bare manglende kjøringer, b__y__3 ingen løste
+            M(1, "a__x__1", O, "pr_tekst"), M(2, "a__x__1", O, "pr_tekst"),
+            kj(1, "b__y__3", O, False), kj(2, "b__y__3", O, False),
+        ]
+        (d / "k.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rader))
+        (d / "p.jsonl").write_text("".join(json.dumps({"pass": p, "fullfort": True}) + "\n" for p in (1, 2, 3)))
+        self.r = an.analyse(d / "k.jsonl", d / "p.jsonl", d / "data")
+
+    def test_differanse_mellom_varianter_bare_fra_pass_med_begge(self):
+        p = self.r["hovedtall"]["parvise_differanser"][f"utvidet_minus_pr_tekst|{S}"]
+        self.assertEqual(p["pass"], [1, 2])
+        self.assertAlmostEqual(p["differanse"], 0.5)   # a: 1 - 0,5; b: 0,5 - 0 (med pass 3 ville det blitt 0,25)
+
+    def test_snitt_per_variant_bruker_alle_fullforte_pass(self):
+        s = self.r["hovedtall"]["per_arm_og_variant"][f"{S}|utvidet"]
+        self.assertAlmostEqual(s["loest_andel"], 0.5)  # (2/3 + 1/3) / 2
+
+    def test_oppgave_uten_gjennomforte_kjoringer_telles_opp(self):
+        s = self.r["hovedtall"]["per_arm_og_variant"][f"{O}|pr_tekst"]
+        self.assertEqual(s["oppgaver"], 1)
+        self.assertEqual(s["oppgaver_uten_gjennomforte_kjoringer"], {"antall": 1, "oppgaver": ["a__x__1"]})
+        self.assertAlmostEqual(s["loest_andel"], 0.0)
+
+    def test_ingen_loste_gir_samlet_kostnad_ikke_per_loste(self):
+        s = self.r["hovedtall"]["per_arm_og_variant"][f"{O}|pr_tekst"]
+        self.assertIsNone(s["kostnad_per_loste_usd"])
+        self.assertAlmostEqual(s["kostnad_usd"], 0.2)
+        self.assertIn("samlet kostnad", s["merknad_kostnad"])

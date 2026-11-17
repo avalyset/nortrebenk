@@ -1,46 +1,48 @@
-# Samsvar mellom vurdererne og de menneskelige Verified-annotasjonene (P2.3)
+*Translated by hand from the Norwegian original in P2.5; no script writes this file.*
 
-Ankerutvalget er 100 instanser fra de menneskelig annoterte SWE-bench-instansene (OpenAI, swe-bench-annotation-results.zip): 50 med menneskelig samleskår 2 eller høyere på minst ett av de to kriteriene og 50 under 2 på begge, trukket med frø 20261116 fra sorterte instans-ID-er (NTB-0004). Av 1699 annoterte instanser hadde 1150 samleskår 2 eller høyere og 549 under 2.
+# Agreement between the raters and the human Verified annotations (P2.3)
 
-Alle vurderere fikk samme prompt (`harness/kvalitet/prompt.txt`), ett kall per instans. En vurderer stemmer for utelukkelse på et kriterium når skåren er 2 eller 3.
+The anchor sample is 100 instances from the human-annotated SWE-bench instances (OpenAI, swe-bench-annotation-results.zip): 50 with a human aggregate score of 2 or higher on at least one of the two criteria and 50 below 2 on both, drawn with seed 20261116 from sorted instance IDs (NTB-0004). Of 1699 annotated instances, 1150 had an aggregate score of 2 or higher and 549 below 2.
 
-## Vurderere
+All raters got the same prompt (`harness/kvalitet/prompt.txt`), one call per instance. A rater votes for exclusion on a criterion when the score is 2 or 3.
 
-| Vurderer | Parametre |
+## Raters
+
+| Rater | Parameters |
 |---|---|
-| claude-sonnet-5-5 (Anthropic) | Messages API, strukturert JSON; temperatur kan ikke settes (standard), thinking og effort standard |
-| gpt-6.1-sol (OpenAI) | Responses API, strukturert JSON; temperatur 0 avvist av API-et, standard brukt; reasoning standard |
-| gemini-3.5-flash-lite (Google, gratisnivå) | Gemini API, JSON med skjema, temperatur 0 |
+| claude-sonnet-5-5 (Anthropic) | Messages API, structured JSON; temperature cannot be set (default), thinking and effort default |
+| gpt-6.1-sol (OpenAI) | Responses API, structured JSON; temperature 0 rejected by the API, default used; reasoning default |
+| gemini-3.5-flash-lite (Google, free tier) | Gemini API, JSON with schema, temperature 0 |
 
-## Per vurderer
+## Per rater
 
-Andel av de 100 der vurdererens stemme på kriteriet er lik den menneskelige (samleskår 2 eller høyere).
+Share of the 100 where the rater's vote on the criterion equals the human one (aggregate score 2 or higher).
 
-| Vurderer | underspecified | false_negative | Avgjørelse alene |
+| Rater | underspecified | false_negative | Decision alone |
 |---|---|---|---|
 | claude-sonnet-5-5 (Anthropic) | 0.76 | 0.79 | 0.78 |
 | gpt-6.1-sol (OpenAI) | 0.72 | 0.75 | 0.74 |
-| gemini-3.5-flash-lite (Google, gratisnivå) | 0.70 | 0.56 | 0.55 |
+| gemini-3.5-flash-lite (Google, free tier) | 0.70 | 0.56 | 0.55 |
 
-## Per regel
+## Per rule
 
-Samsvar er andelen av de 100 der ensemblets avgjørelse (utelukket eller beholdt) er lik den menneskelige.
+Agreement is the share of the 100 where the ensemble's decision (excluded or kept) equals the human one.
 
-| Regel | Samsvar | Utelukket av 100 |
+| Rule | Agreement | Excluded of 100 |
 |---|---|---|
-| minst én | 0.75 | 59 |
-| minst 2 av 3 | 0.76 | 40 |
+| minst én (at least one) | 0.75 | 59 |
+| minst 2 av 3 (at least 2 of 3) | 0.76 | 40 |
 
-**Valgt regel: minst 2 av 3** (høyest samsvar). Regelen ble valgt og lagret før de egne oppgavene ble vurdert.
+**Chosen rule: minst 2 av 3 (at least 2 of 3)** (highest agreement). The rule was chosen and stored before the set's own tasks were assessed.
 
-## Egne oppgaver
+## The set's own tasks
 
-Med valgt regel utelukkes 17 av de 21 oppgavene i `instances.jsonl`: 16 på false_negative og Altinn/altinn-support-dashboard #979 på begge kriteriene. Beholdt: navikt/mock-oauth2-server #1069, #1131 og #1154, og Altinn/altinn-support-dashboard #970. Ingen oppgave er fjernet fra `instances.jsonl`; settet fryses i P2.5. Vurderingene står i `vurderinger.jsonl`.
+With the chosen rule, 17 of the 21 tasks in `instances.jsonl` are excluded: 16 on false_negative and Altinn/altinn-support-dashboard #979 on both criteria. Kept: navikt/mock-oauth2-server #1069, #1131 and #1154, and Altinn/altinn-support-dashboard #970. No task has been removed from `instances.jsonl`; the set is frozen in P2.5. The ratings are in `vurderinger.jsonl`.
 
-Ordrett andel (andelen av gullpatchens tilføyde linjer, minst 8 tegn, som står ordrett i oppgaveteksten) er over 0 for navikt/mock-oauth2-server #1131 (0,0103) og navikt/pensjonssimulator #688 (0,0169).
+Verbatim share (the share of the gold patch's added lines, at least 8 characters, that appear verbatim in the task text) is above 0 for navikt/mock-oauth2-server #1131 (0.0103) and navikt/pensjonssimulator #688 (0.0169).
 
-## Grenser (NTB-0004)
+## Limits (NTB-0004)
 
-- Ankeret er engelskspråklige Python-oppgaver som modellene kan ha sett i trening, også med utfallet av annoteringen. Settet er Kotlin og TypeScript med norsk og engelsk tekst.
-- Google-vurdereren er en modell på gratisnivået (AVVIK.md), ikke leverandørens sterkeste modell.
-- Annotasjonsfila oppgir ingen lisens. De menneskelige skårene er derfor ikke med i `anker_utvalg.jsonl`; `harness/kvalitet/hent_menneskelig.py` henter dem fra kilden.
+- The anchor consists of English-language Python tasks that the models may have seen in training, including the outcome of the annotation. The set is Kotlin and TypeScript with Norwegian and English text.
+- The Google rater is a free-tier model (AVVIK.md), not the vendor's strongest model.
+- The annotation file states no licence. The human scores are therefore not included in `anker_utvalg.jsonl`; `harness/kvalitet/hent_menneskelig.py` fetches them from the source.

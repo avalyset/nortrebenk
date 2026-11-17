@@ -1,0 +1,21 @@
+{
+ "lest_utc": "2026-11-17T06:40:12Z",
+ "vertsmaskin": {
+  "modell": "MacBook Pro",
+  "modell_id": "MacBookPro18,3",
+  "prosessor": "Apple M1 Pro",
+  "kjerner": "8 (6 Performance and 2 Efficiency)",
+  "minne_gb": 16,
+  "kilde": "system_profiler SPHardwareDataType (Model Name, Model Identifier, Chip, Total Number of Cores) og sysctl hw.memsize"
+ },
+ "colima_vm": {
+  "cpu": 4,
+  "minne_gib": 8,
+  "disk_gib": 100,
+  "arkitektur": "aarch64",
+  "vm_type": "vz",
+  "kjoretid": "docker",
+  "kilde": "colima.yaml for profilen default (samme verdier som colima list)"
+ },
+ "merknad": "Ingen serienummer, maskinvare-UUID eller brukernavn er lest inn."
+}

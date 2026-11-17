@@ -33,12 +33,13 @@ Within-task design with 2 arms × 2 text variants:
 
 ### 5. Specify exactly which analyses you will conduct to examine the main question/hypothesis.
 
-`analysis/analyse.py` (sha256 `8e031fbfa86a66ccf1e7d30eafea78246957b9813a57c2eb842a34655de8e42d`), locked at the freeze. Standard errors follow Miller, arXiv:2411.00640 (NTB-0008):
+`analysis/analyse.py` (sha256 `3f75585107fd968738757c157341a22e178125dfcf383e3c3e3ba6bd82120968`), locked at the freeze. Standard errors follow Miller, arXiv:2411.00640 (NTB-0008):
 
 - task score s_i = mean of the task's completed runs (Miller §3.1);
+- a task without completed runs in an arm and text variant does not enter the mean for that arm and text variant, and the number of such tasks is reported;
 - solved share = mean of s_i over tasks; standard error by equation (1); 95 % interval by equation (3); clustered standard error with cluster = repository by equation (4);
-- paired differences per task, Opus minus Sonnet within each text variant and extended minus PR text within each arm, with standard errors by equations (7) and (8), labelled descriptive;
-- cost per solved task, and wall time as median and quartiles, per arm and text variant;
+- paired differences per task, Opus minus Sonnet within each text variant and extended minus PR text within each arm, with standard errors by equations (7) and (8), labelled descriptive; differences between the text variants are computed only from passes that have both variants;
+- cost per solved task, and wall time as median and quartiles, per arm and text variant; when no run is solved, cost per solved task is not reported and the total cost is reported instead;
 - the same numbers broken down by outcome of the quality check of the PR text in P2.3, by the flag from the independent check, by repository, by text language and by agent marker; the main measure with and without flagged tasks;
 - missing runs, discarded attempts and incomplete passes reported separately.
 
@@ -69,11 +70,11 @@ See the full analysis plan below.
 `data/sett_v1.jsonl`: 21 tasks, sha256 `f5921aa0392ca99a75dc716cfc17f2bde86c7edbf35f4c44de8e3d4b29c2d5f7`, assembled by `harness/sett/lag_sett.py` from existing data files. Patches are in `data/instances.jsonl` (sha256 `f382ff9a02129e971d27565dede5776b78b182655084683b303005fa21f8d88c`).
 
 - Repositories: navikt/mock-oauth2-server 5, Altinn/altinn-access-management-frontend 5, navikt/pensjonssimulator 4, navikt/kafka-manager 4, Altinn/altinn-support-dashboard 3.
-- Code language: Kotlin 13, TypeScript 8. Text language (field `tekstsprak`): engelsk 13, norsk 5, blandet 3. Agent marker (field `agentmarkor`): nei 18, ja 3.
+- Code language: Kotlin 13, TypeScript 8. Text language (field `tekstsprak`): engelsk (English) 13, norsk (Norwegian) 5, blandet (mixed) 3. Agent marker (field `agentmarkor`): nei (no) 18, ja (yes) 3.
 - Merged between 2026-11-02T12:58:35Z and 2026-11-14T23:10:08Z; training data cutoff for both models: claude-opus-5-5 Jun 2026, claude-sonnet-5-5 Jun 2026 (source: `data/modeller.json`).
-- Platform: linux/arm64, local (NTB-0011). Validation before inclusion: P1 status validert 21, krever_token 4, kjorefeil 2, ingen_gullpatch 1, ingen_f2p 1, regresjon 1 (source: `data/p1_resultater.jsonl`); in P2.2 all 21 tasks had B not solved and C solved 3/3 in a sealed image (source: `data/p22_resultater.jsonl`).
-- Quality check of the PR text (P2.3, rule «at least 2 of 3», chosen on the human-annotated anchor with agreement 0.76 against 0.75 for «at least one»; source: `data/kvalitet/samsvar.md`): field `utfall_p23` utelukket 17, består 4.
-- Quality check of the extended text (P2.3b, same prompt, raters and rule; source: `data/kvalitet/vurderinger_utvidet.jsonl`): består 21.
+- Platform: linux/arm64, local (NTB-0011). Because wall time is an outcome measure, the machine is stated: host MacBook Pro (MacBookPro18,3), Apple M1 Pro with 8 (6 Performance and 2 Efficiency) cores and 16 GB memory; Docker runs in a Colima VM with 4 CPUs and 8 GiB memory (source: `data/plattform.json`). Validation before inclusion: P1 status validert (validated) 21, krever_token (requires a registry token) 4, kjorefeil (run error) 2, ingen_gullpatch (no gold patch) 1, ingen_f2p (no fail-to-pass test) 1, regresjon (regression) 1 (source: `data/p1_resultater.jsonl`); in P2.2 all 21 tasks had B not solved and C solved 3/3 in a sealed image (source: `data/p22_resultater.jsonl`).
+- Quality check of the PR text (P2.3, rule «at least 2 of 3», chosen on the human-annotated anchor with agreement 0.76 against 0.75 for «at least one»; source: `data/kvalitet/samsvar.md`): field `utfall_p23` utelukket (excluded) 17, består (passes) 4.
+- Quality check of the extended text (P2.3b; source: `data/kvalitet/vurderinger_utvidet.jsonl`): the prompt and the rule were the same as in P2.3, and the OpenAI rater was to be called only where its vote could change the outcome, which applied to no task (NTB-0013); består 21.
 
 ### Text variants (NTB-0013)
 
@@ -105,9 +106,9 @@ Description:
 ### What has been seen before registration
 
 - Gold patch and empty patch: P1 validation (source: `data/p1_resultater.jsonl`); P2.2 stability over three runs (source: `data/p22_resultater.jsonl`); P2.4 network-free runs for kafka-manager #330 and #336 (source: `data/p24_nett.jsonl`).
-- Grading-path check before the freeze, without model calls, for 6 tasks (source: `data/p3_kontroll.jsonl`): passed 6 (navikt__kafka-manager__330, navikt__mock-oauth2-server__1069, navikt__pensjonssimulator__688, Altinn__altinn-support-dashboard__966, Altinn__altinn-access-management-frontend__2619, navikt__kafka-manager__336); failed 0. For each: build, self-test, gold patch without test files gives solved, empty patch gives not solved. Earlier attempts are recorded in the same file: Altinn__altinn-support-dashboard__966: failed at selvtest; Altinn__altinn-access-management-frontend__2619: failed at selvtest; navikt__kafka-manager__336: not started, below 6 GiB free after cleanup (4.9 GiB), not started, below 6 GiB free after cleanup (5.9 GiB). The self-test failures came from gold-patch lines that already occur in the base commit; the self-test now skips such lines and checks the three longest remaining ones (`harness/agent/selvtest.sh`).
+- Grading-path check before the freeze, without model calls, for 6 tasks (source: `data/p3_kontroll.jsonl`): passed 6 (navikt__kafka-manager__330, navikt__mock-oauth2-server__1069, navikt__pensjonssimulator__688, Altinn__altinn-support-dashboard__966, Altinn__altinn-access-management-frontend__2619, navikt__kafka-manager__336); failed 0. For each: build, self-test, gold patch without test files gives solved, empty patch gives not solved. Earlier attempts are recorded in the same file: Altinn__altinn-support-dashboard__966: failed at selvtest (self-test); Altinn__altinn-access-management-frontend__2619: failed at selvtest; navikt__kafka-manager__336: not started, below 6 GiB free after cleanup (4.9 GiB), not started, below 6 GiB free after cleanup (5.9 GiB). The self-test failures came from gold-patch lines that already occur in the base commit; the self-test now skips such lines and checks the three longest remaining ones (`harness/agent/selvtest.sh`).
 - Quality ratings of the PR text (P2.3; `data/kvalitet/vurderinger.jsonl`, 63 lines) and of the extended text (P2.3b; `data/kvalitet/vurderinger_utvidet.jsonl`, 63 lines), by `claude-sonnet-5-5`, `gpt-6.1-sol` (P2.3 only; not called in P2.3b) and `gemini-3.5-flash-lite`.
-- **[PENDING: the independent check by the OpenAI rater (gpt-6.1-sol, Batch API) had not returned when this draft was written. Its outcome will be entered here, read from `data/kvalitet/uavhengig_utvidet.jsonl`, before the freeze.]**
+- The OpenAI rater (gpt-6.1-sol) assessed the extended text for 21 tasks and voted for exclusion for 0 (source: `data/kvalitet/uavhengig_utvidet.jsonl`). Flagged tasks stay in the set (the rule needs two votes) and are reported with and without them (NTB-0013).
 - Four agent runs on two tasks outside the set (source: `data/roykprove/kjoringer.jsonl`):
   - https://github.com/Altinn/altinn-access-management-frontend/pull/2552, claude-opus-5-5: solved yes, 0.1678 USD, 9 turns, 41.5 s
   - https://github.com/Altinn/altinn-access-management-frontend/pull/2552, claude-sonnet-5-5: solved no, 0.0405 USD, 4 turns, 10.8 s
@@ -116,7 +117,7 @@ Description:
 - No agent has been run on any task in the set.
 - Anchors made before the quality check and before the additions were written:
 - `FORANKRING_for-P2.3_20261116T125720Z.txt` (written 2026-11-16T12:57:20Z; OpenTimestamps: confirmed in Bitcoin block 976131, 976134; source: `ots info` on the proof in the author's internal repository).
-- `FORANKRING_for-P2.3b_20261116T151046Z.txt` (written 2026-11-16T15:10:46Z; OpenTimestamps: pending; source: `ots info` on the proof in the author's internal repository).
+- `FORANKRING_for-P2.3b_20261116T151046Z.txt` (written 2026-11-16T15:10:46Z; OpenTimestamps: confirmed in Bitcoin block 976145, 976146, 976167; source: `ots info` on the proof in the author's internal repository).
 
 ### Decision records made before registration
 
@@ -130,6 +131,8 @@ NTB-0001 to NTB-0014 in `docs/decisions/`. Changes after the outcome of P2.3 was
 - Platform linux/arm64; a cross-check on amd64 through unmodified Multi-SWE-bench harness is run only if included credit covers it (NTB-0011). The runner anchor against Multi-SWE-bench fell away (AVVIK.md no. 5).
 - The extended text was added after the outcome of P2.3 and the smoke test were known, before any agent run on set tasks. The additions were written by a model from the same vendor as the agents, without human review; that a task passes may rest on the rater from the same vendor; the additions state names and strings from the solution (NTB-0013).
 - The smoke test built once below the disk limit (AVVIK.md no. 6).
+- Sample: 21 tasks from 5 repositories in two GitHub organisations, navikt and Altinn, merged between 2026-11-02T12:58:35Z and 2026-11-14T23:10:08Z (source: `data/sett_v1.jsonl`).
+- Validation was done with an own runner on linux/arm64, not through unmodified Multi-SWE-bench (AVVIK.md no. 1).
 
 ### Registration sequence
 
@@ -147,6 +150,6 @@ Deviations after registration are recorded in AVVIK.md with date and reason, and
 
 ## References
 
-- Deng et al., «SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?», arXiv:2509.16941.
-- Miller, «Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations», arXiv:2411.00640.
-- Kapoor et al., «AI Agents That Matter», arXiv:2407.01502.
+- Xiang Deng, Jeff Da, Edwin Pan and others, «SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?», arXiv:2509.16941.
+- Evan Miller, «Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations», arXiv:2411.00640.
+- Sayash Kapoor, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir, Arvind Narayanan, «AI Agents That Matter», arXiv:2407.01502.

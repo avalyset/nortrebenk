@@ -21,6 +21,12 @@ Evaluations», arXiv:2411.00640v1:
 Bare fullførte pass (p3_pass.jsonl, fullfort = true) inngår i hovedtallene. Manglende kjøringer, forkastede forsøk og
 ufullstendige pass rapporteres for seg.
 
+Regler for snitt og differanser:
+- En oppgave uten gjennomførte kjøringer i en arm og tekstvariant inngår ikke i snittet for den; antallet (og hvilke)
+  oppgis i «oppgaver_uten_gjennomforte_kjoringer».
+- Differanser mellom tekstvariantene regnes bare fra pass som har begge variantene (ikke fra pass med bare utvidet tekst).
+- Kostnad per løste oppgave oppgis ikke når ingen kjøring er løst; samlet kostnad oppgis i stedet.
+
     python analysis/analyse.py <p3_kjoringer.jsonl> [--pass p3_pass.jsonl] [--data data] [--ut resultat.json]
 """
 import argparse
@@ -111,6 +117,14 @@ def les(kjoringer, pass_fil, data):
     return rader, fullførte, sett, flagg
 
 
+def pass_med_begge_varianter(rader):
+    """Pass der kjøringene (uansett status) omfatter begge tekstvariantene."""
+    v = collections.defaultdict(set)
+    for r in rader:
+        v[r["pass"]].add(r["tekstvariant"])
+    return {p for p, x in v.items() if set(VARIANTER) <= x}
+
+
 def oppgaveskår(rader, arm, variant):
     """s_i = andel løste av de gjennomførte kjøringene for oppgaven (Miller avsnitt 3.1)."""
     per = collections.defaultdict(list)
@@ -125,9 +139,15 @@ def repo_av(oid, sett):
 
 
 def oppsummer(rader, sett, arm, variant):
-    s = oppgaveskår(rader, arm, variant)
-    if not s:
+    """Oppgavene som telles, er de som har minst én kjøring (uansett status) i arm og tekstvariant; de uten
+    gjennomførte kjøringer står utenfor snittet og oppgis."""
+    alle = sorted({r["oppgave"] for r in rader if r["arm"] == arm and r["tekstvariant"] == variant})
+    if not alle:
         return None
+    s = oppgaveskår(rader, arm, variant)
+    uten = [i for i in alle if i not in s]
+    if not s:
+        return {"oppgaver": 0, "oppgaver_uten_gjennomforte_kjoringer": {"antall": len(uten), "oppgaver": uten}}
     ider = sorted(s); v = [s[i] for i in ider]; kl = [repo_av(i, sett) for i in ider]
     m = sum(v) / len(v)
     se, sek = se_clt(v), se_klynget(v, kl)
@@ -136,11 +156,13 @@ def oppsummer(rader, sett, arm, variant):
     løste = sum(1 for r in mine if r.get("loest"))
     tider = sorted(r.get("veggtid_s") for r in mine if r.get("veggtid_s") is not None)
     kv = statistics.quantiles(tider, n=4, method="inclusive") if len(tider) >= 2 else [None, tider[0] if tider else None, None]
-    return {"oppgaver": len(v), "kjoringer": len(mine), "loest_andel": round(m, 4),
+    return {"oppgaver": len(v), "oppgaver_uten_gjennomforte_kjoringer": {"antall": len(uten), "oppgaver": uten},
+            "kjoringer": len(mine), "loest_andel": round(m, 4),
             "se_per_oppgave": None if se is None else round(se, 4), "intervall_per_oppgave": intervall(m, se),
             "se_klynget_repo": None if sek is None else round(sek, 4), "intervall_klynget_repo": intervall(m, sek),
             "kostnad_usd": round(kost, 4), "loste_kjoringer": løste,
-            "kostnad_per_loste_usd": round(kost / løste, 4) if løste else None,
+            **({"kostnad_per_loste_usd": round(kost / løste, 4)} if løste else
+               {"kostnad_per_loste_usd": None, "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet"}),
             "veggtid_s": {"median": statistics.median(tider) if tider else None, "q1": kv[0], "q3": kv[2]}}
 
 
@@ -164,8 +186,11 @@ def tabell(rader, sett):
     par = {}
     for v in VARIANTER:
         par[f"opus_minus_sonnet|{v}"] = parvis(rader, sett, (ARMER[1], v), (ARMER[0], v))
+    begge = pass_med_begge_varianter(rader)
+    rader_begge = [r for r in rader if r["pass"] in begge]
     for a in ARMER:
-        par[f"utvidet_minus_pr_tekst|{a}"] = parvis(rader, sett, (a, "utvidet"), (a, "pr_tekst"))
+        d = parvis(rader_begge, sett, (a, "utvidet"), (a, "pr_tekst"))
+        par[f"utvidet_minus_pr_tekst|{a}"] = d and {**d, "pass": sorted(begge)}
     return {"per_arm_og_variant": ut, "parvise_differanser": par}
 
 

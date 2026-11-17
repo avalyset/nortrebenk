@@ -1,10 +1,12 @@
-# Budsjett fra røykprøven (P2.4)
+# Budget from the smoke test (P2.4)
 
-Målt på 4 kjøringer: 2 røykprøveoppgaver utenfor settet, én kjøring per arm og oppgave. Kostnad er `total_cost_usd` fra Claude Code. Bare tall, ingen anbefaling.
+Measured on 4 runs: 2 smoke-test tasks outside the set, one run per arm and task. Cost is `total_cost_usd` from Claude Code. Numbers only, no recommendation.
 
-## Per kjøring
+## Per run
 
-| Oppgave | Arm | Kostnad (USD) | Turer | Veggtid (s) | Løst | Budsjettak | Tidstak |
+Yes/no columns: ja = yes, nei = no.
+
+| Task | Arm | Cost (USD) | Turns | Wall time (s) | Solved | Budget cap | Time cap |
 |---|---|---|---|---|---|---|---|
 | https://github.com/Altinn/altinn-access-management-frontend/pull/2552 | claude-opus-5-5 | 0.1678 | 9 | 41.5 | ja | nei | nei |
 | https://github.com/Altinn/altinn-access-management-frontend/pull/2552 | claude-sonnet-5-5 | 0.0405 | 4 | 10.8 | nei | nei | nei |
@@ -13,19 +15,19 @@ Målt på 4 kjøringer: 2 røykprøveoppgaver utenfor settet, én kjøring per a
 
 ## Per arm
 
-| Arm | Kjøringer | Snitt kostnad (USD) | Høyeste kostnad (USD) | Snitt veggtid (s) |
+| Arm | Runs | Mean cost (USD) | Highest cost (USD) | Mean wall time (s) |
 |---|---|---|---|---|
 | claude-opus-5-5 | 2 | 0.2585 | 0.3492 | 75.7 |
 | claude-sonnet-5-5 | 2 | 0.0702 | 0.0998 | 35.0 |
 
-## Én runde: 21 oppgaver × 2 armer
+## One round: 21 tasks × 2 arms
 
-Gjenstående Anthropic-saldo ved avlesning etter P2.4: 75.07 USD (kampanjekreditt og kjøpt saldo).
+Remaining Anthropic balance when read after P2.4: 75.07 USD (promotional credit and purchased balance).
 
-| Grunnlag | Sum for én runde (USD) | Hele runder saldoen dekker |
+| Basis | Sum for one round (USD) | Whole rounds the balance covers |
 |---|---|---|
-| målt snitt | 6.90 | 10 |
-| snitt × 1,3 | 8.97 | 8 |
-| høyeste målte | 9.43 | 7 |
+| measured mean | 6.90 | 10 |
+| mean × 1.3 | 8.97 | 8 |
+| highest measured | 9.43 | 7 |
 
-Grense: grunnlaget er to oppgaver utenfor settet og én kjøring per arm og oppgave.
+Limit: the basis is two tasks outside the set and one run per arm and task.

@@ -22,6 +22,8 @@ nortrebenk measures how well and how fast coding agents solve tasks taken from p
 - The extended text was added after the outcome of the quality check of the PR text (P2.3) and the smoke test were known, and before any agent run on a set task. The additions were written by a model from the same vendor as the agents, without human review; that a task passes the quality check may rest on the rater from the same vendor; and the additions state names and strings from the solution (NTB-0013, AVVIK.md no. 7).
 - Measurement platform is linux/arm64, local. A cross-check on amd64 through unmodified Multi-SWE-bench harness is run before v1.0 only if included credit covers it (NTB-0011). The runner anchor against Multi-SWE-bench fell away because the dataset has no instances for the repository that was to be used (AVVIK.md no. 5).
 - The tasks come from five repositories; tasks from the same repository are not independent, and clustered standard errors with five clusters are uncertain (NTB-0008).
+- Sample: 21 tasks from 5 repositories in two GitHub organisations, navikt and Altinn, merged between 2026-11-02T12:58:35Z and 2026-11-14T23:10:08Z (source: `data/sett_v1.jsonl`).
+- Validation was done with an own runner on linux/arm64, not through unmodified Multi-SWE-bench (AVVIK.md no. 1).
 
 ## Sammendrag (norsk)
 

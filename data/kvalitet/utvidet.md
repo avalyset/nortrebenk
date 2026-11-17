@@ -1,19 +1,19 @@
-# Kvalitetssjekk av utvidet oppgavetekst (P2.3b)
+# Quality check of the extended task text (P2.3b)
 
-Hver oppgave er vurdert på nytt med den utvidede teksten (PR-teksten med krav og grensesnitt, `data/utvidet_tekst.jsonl`) i stedet for PR-teksten, med samme prompt, samme vurderere og samme regel («minst 2 av 3») som i P2.3 (NTB-0004, NTB-0013). OpenAI-vurdereren er bare kalt der nøyaktig én av de to andre stemte for utelukkelse på et kriterium.
+Each task was assessed again with the extended text (the PR text with requirements and interface, `data/utvidet_tekst.jsonl`) instead of the PR text, with the same prompt, the same raters and the same rule («minst 2 av 3», at least 2 of 3) as in P2.3 (NTB-0004, NTB-0013). The OpenAI rater was called only where exactly one of the other two voted for exclusion on a criterion.
 
-## Utfall
+## Outcome
 
 - består: 21
 - utelukket: 0
 - uavklart: 0
 - tillegg_feilet: 0
 
-## Per oppgave
+## Per task
 
-Skårene er underspecified/false_negative. A = claude-sonnet-5-5, O = gpt-6.1-sol, G = gemini-3.5-flash-lite; «–» = ikke kalt.
+The scores are underspecified/false_negative. A = claude-sonnet-5-5, O = gpt-6.1-sol, G = gemini-3.5-flash-lite; «–» = not called. Outcome values: består = passes, utelukket = excluded.
 
-| Oppgave | A P2.3 | O P2.3 | G P2.3 | Utfall P2.3 | A nå | O nå | G nå | Utfall nå |
+| Task | A P2.3 | O P2.3 | G P2.3 | Outcome P2.3 | A now | O now | G now | Outcome now |
 |---|---|---|---|---|---|---|---|---|
 | navikt/mock-oauth2-server #1069 | 1/0 | 0/0 | 0/0 | består | 1/1 | – | 0/0 | består |
 | navikt/mock-oauth2-server #1131 | 1/1 | 0/0 | 0/0 | består | 1/1 | – | 0/0 | består |
@@ -37,14 +37,14 @@ Skårene er underspecified/false_negative. A = claude-sonnet-5-5, O = gpt-6.1-so
 | Altinn/altinn-access-management-frontend #2644 | 3/3 | 0/2 | 0/0 | utelukket | 1/1 | – | 0/0 | består |
 | Altinn/altinn-access-management-frontend #2645 | 1/2 | 0/2 | 0/0 | utelukket | 0/1 | – | 0/0 | består |
 
-## OpenAI-vurdereren kalt for
+## OpenAI rater called for
 
-- ingen
+- none
 
-## Grenser (NTB-0013)
+## Limits (NTB-0013)
 
-- Endringen er gjort etter at utfallet av P2.3 og røykprøven var kjent, og før noen agentkjøring på oppgavene i settet. Den er tidsstemplet før tilleggene ble laget.
-- Tilleggene er skrevet av en modell fra samme leverandør som agentene (claude-opus-5-5), uten menneskelig kontroll.
-- At en oppgave består, kan hvile på vurdereren fra samme leverandør som agentene.
-- Tilleggene oppgir navn og strenger fra løsningen.
-- Ingen oppgave er fjernet fra `instances.jsonl`; settet fryses i P2.5.
+- The change was made after the outcome of P2.3 and the smoke test were known, and before any agent run on the tasks in the set. It was timestamped before the additions were written.
+- The additions were written by a model from the same vendor as the agents (claude-opus-5-5), without human review.
+- That a task passes may rest on the rater from the same vendor as the agents.
+- The additions state names and strings from the solution.
+- No task has been removed from `instances.jsonl`; the set is frozen in P2.5.
