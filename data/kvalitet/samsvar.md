@@ -43,6 +43,6 @@ Verbatim share (the share of the gold patch's added lines, at least 8 characters
 
 ## Limits (NTB-0004)
 
-- The anchor consists of English-language Python tasks that the models may have seen in training, including the outcome of the annotation. The set is Kotlin and TypeScript with Norwegian and English text.
+- The anchor consists of English-language Python tasks that the models may have seen in training, including the outcome of the annotation. The set is Kotlin, TypeScript and C# with Norwegian and English text.
 - The Google rater is a free-tier model (AVVIK.md), not the vendor's strongest model.
 - The annotation file states no licence. The human scores are therefore not included in `anker_utvalg.jsonl`; `harness/kvalitet/hent_menneskelig.py` fetches them from the source.

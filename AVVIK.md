@@ -20,7 +20,7 @@ NTB-0004 requires one rater from Google. The Gemini key's project is on the free
 
 ## 5. The runner anchor against Multi-SWE-bench was dropped (2026-11-16)
 
-The runner was to be anchored against the published test lists for Altinn/app-frontend-react in Multi-SWE-bench. The dataset (ByteDance-Seed/Multi-SWE-bench) has no instances for the repo, and neither do Multi-SWE-RL, Multi-SWE-bench_mini or Multi-SWE-bench-flash. The comparison could not be made. See `data/anker/msb_altinn.md`. The runner is instead checked against the unchanged Multi-SWE-bench harness in the cross-check on amd64 in P4 (NTB-0011).
+The runner was to be anchored against the published test lists for Altinn/app-frontend-react in Multi-SWE-bench. The dataset (ByteDance-Seed/Multi-SWE-bench) has no instances for the repo, and neither do Multi-SWE-RL, Multi-SWE-bench_mini or Multi-SWE-bench-flash. The comparison could not be made. See `data/anker/msb_altinn.md`. The runner is instead checked against the unchanged Multi-SWE-bench harness in the cross-check on amd64 in P4, if included credit covers it (NTB-0011).
 
 ## 6. The smoke trial search built under the disk limit (2026-11-16)
 
@@ -32,4 +32,4 @@ The map did not have the step. It was added after P2.3 let 4 of 21 tasks pass. T
 
 ## 8. Dress rehearsal of the P3 runner before the freeze (2026-11-17)
 
-The map did not have the step. A reading of the runner against the preregistration text found rules that were not implemented (the cap rule, the cost of a run stopped by the time cap, the budget check before reruns, the threshold for a pass with extended text only, the disk gate) and no way to continue after a stop. The runner was corrected (NTB-0014, changed 2026-11-17). It was then run end to end on the two smoke-test tasks outside the set, with the PR text only and one pass, and the budget cap and the time cap were each provoked once on one of them (`data/roykprove/generalprove.jsonl`). The runner was not changed after the rehearsal. No agent was run on a task in the set.
+The map did not have the step. A reading of the runner against the preregistration text found rules that were not implemented (the cap rule, the cost of a run stopped by the time cap, the budget check before reruns, the threshold for a pass with extended text only, the disk gate) and no way to continue after a stop. The runner was corrected (NTB-0014, changed 2026-11-17). It was then run end to end on the two smoke-test tasks outside the set, with the PR text only and one pass, and the budget cap and the time cap were each provoked once on one of them (`data/roykprove/generalprove.jsonl`). One correction from the freeze reading was made after the rehearsal: the task's instance image is kept when the disk gate cleans up between the two builds. It was checked without model calls on one of the tasks outside the set. No agent was run on a task in the set.

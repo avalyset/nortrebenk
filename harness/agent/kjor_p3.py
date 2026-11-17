@@ -218,30 +218,47 @@ def ledig_gib(sti=None):
     return shutil.disk_usage(sti).free / 2**30
 
 
-def rydd_egne():
-    """Sletter egne images (label nortrebenk=p2) unntatt mellomtjeneren og images oppført i NTB_VERNEDE_IMAGES."""
-    ut = subprocess.run(["docker", "images", "-a", "--filter", "label=nortrebenk=p2", "--format", "{{.ID}} {{.Repository}}"],
+def bilder_som_slettes(linjer, vern=(), behold=()):
+    """ID-ene som skal slettes, fra linjer «<ID> <repo>:<tag>» (docker images). Unntatt: mellomtjeneren, ID-er hvis
+    første 12 tegn står i `vern` (NTB_VERNEDE_IMAGES), og images med navn i `behold` (f.eks. oppgavens eget
+    instansbilde mellom de to byggene). Et image med flere navn beholdes hvis ett av dem er unntatt."""
+    vern = {v[:12] for v in vern}
+    behold = {b if ":" in b.rsplit("/", 1)[-1] else b + ":latest" for b in behold}
+    alle, unntatt = set(), set()
+    for l in linjer:
+        if not l.strip():
+            continue
+        i, navn = (l.split(None, 1) + [""])[:2]
+        navn = navn.strip()
+        alle.add(i)
+        if i[:12] in vern or navn.split(":")[0] == "nortrebenk-p2/mellomtjener" or navn in behold:
+            unntatt.add(i)
+    return sorted(alle - unntatt)
+
+
+def rydd_egne(behold=()):
+    """Sletter egne images (label nortrebenk=p2) unntatt mellomtjeneren, images oppført i NTB_VERNEDE_IMAGES og images
+    med navn i `behold`."""
+    ut = subprocess.run(["docker", "images", "-a", "--filter", "label=nortrebenk=p2", "--format", "{{.ID}} {{.Repository}}:{{.Tag}}"],
                         capture_output=True, text=True).stdout.split("\n")
     vern = set()
     vf = os.environ.get("NTB_VERNEDE_IMAGES")
     if vf and os.path.exists(vf):
         vern = {l.strip()[:12] for l in open(vf) if l.strip()}
-    mt = {l.split()[0] for l in ut if l.strip().endswith("nortrebenk-p2/mellomtjener")}
-    for i in sorted({l.split()[0] for l in ut if l.strip()}):
-        if i[:12] not in vern and i not in mt:
-            subprocess.run(["docker", "rmi", "-f", i], capture_output=True)
+    for i in bilder_som_slettes(ut, vern, behold):
+        subprocess.run(["docker", "rmi", "-f", i], capture_output=True)
     subprocess.run(["docker", "builder", "prune", "-af"], capture_output=True)
     trim = os.environ.get("NTB_TRIM")  # f.eks. «colima ssh -- sudo fstrim -a»: gir VM-ens frigjorte blokker tilbake til verten
     if trim:
         subprocess.run(trim.split(), capture_output=True)
 
 
-def diskport():
+def diskport(behold=()):
     """(ok, ledig GiB). Under MIN_DISK_GIB etter opprydding er ikke ok: bygget startes ikke, og oppgavens kjøringer i
-    passet står som manglende (NTB-0014, endret 17.11.2026)."""
+    passet står som manglende (NTB-0014, endret 17.11.2026). Images med navn i `behold` slettes ikke av oppryddingen."""
     f = ledig_gib()
     if f < MIN_DISK_GIB:
-        rydd_egne(); f = ledig_gib()
+        rydd_egne(behold); f = ledig_gib()
     return f >= MIN_DISK_GIB, round(f, 1)
 
 
@@ -262,9 +279,12 @@ def forberedelse(k, oid, med_tid):
     ok, steg["ledig_gib_for_bygg"] = diskport()
     if not ok:
         steg["grunn"] = f"under {MIN_DISK_GIB} GiB ledig"; return False, steg
-    if not trinn("instansbygg", lambda: (k.bygg_instans(oid)[0], None)):
+    instans = []
+    def ib():
+        ok, navn = k.bygg_instans(oid); instans.append(navn); return ok, None
+    if not trinn("instansbygg", ib):
         return False, steg
-    ok, steg["ledig_gib_for_agentbygg"] = diskport()
+    ok, steg["ledig_gib_for_agentbygg"] = diskport(behold=tuple(instans[-1:]))  # oppgavens eget instansbilde beholdes
     if not ok:
         steg["grunn"] = f"under {MIN_DISK_GIB} GiB ledig"; return False, steg
     if not trinn("agentbygg", lambda: (k.bygg(oid), None)):

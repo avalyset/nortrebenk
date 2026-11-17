@@ -66,7 +66,7 @@ python harness/agent/kjor_p3.py kjor --saldo <USD>                      # P3; re
 python harness/agent/kjor_p3.py prove --sett <fil> --instanser <fil> --saldo <USD>
 ```
 
-`prove` is the dress rehearsal: the same loop as `kjor`, with the PR text only and one pass, for tasks outside the set. It refuses any task whose ID is in `data/sett_v1.jsonl` and does not use the `PREREG_DOI.txt` guard. The task file and the instance file have the same schema as `data/sett_v1.jsonl` and `data/instances.jsonl`.
+`prove` is the dress rehearsal: the same loop as `kjor`, with the PR text only and one pass, for tasks outside the set. It refuses any task whose ID is in `data/sett_v1.jsonl` and does not use the `PREREG_DOI.txt` guard. The task file and the instance file have the same schema as `data/sett_v1.jsonl` and `data/instances.jsonl`. `kjor` and `prove` keep their state in `NTB_UT` and must each have their own folder.
 
 The runner writes to `NTB_UT`: `p3_kjoringer.jsonl` (one line per attempt, with `pass`, `nummer`, `oppgave`, `tekstvariant`, `arm`, `forsok`, `status` and the run fields), `p3_pass.jsonl` (one line per pass), `p3_logg.jsonl` and `p3_start.json`.
 

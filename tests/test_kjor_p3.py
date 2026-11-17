@@ -163,7 +163,7 @@ class Diskport(unittest.TestCase):
     def setUp(self):
         self.lagret = (k.ledig_gib, k.rydd_egne)
         k.ledig_gib = lambda sti=None: 5.9
-        k.rydd_egne = lambda: None
+        k.rydd_egne = lambda behold=(): None
 
     def tearDown(self):
         k.ledig_gib, k.rydd_egne = self.lagret
@@ -198,6 +198,35 @@ class Diskport(unittest.TestCase):
             self.assertEqual(len(rader), 4)
             self.assertTrue(all(r["status"] == "manglende" and r["grunn"] == "under 6 GiB ledig" for r in rader))
             self.assertTrue(l.pass_rader()[0]["fullfort"])
+
+
+class Opprydding(unittest.TestCase):
+    """Vern av oppgavens instansbilde når diskporten rydder mellom de to byggene (frys-lesing runde 3, funn 1)."""
+    LINJER = ["aaaaaaaaaaaa1 mswebench/navikt_m_mock-oauth2-server:pr-1105", "bbbbbbbbbbbb2 nortrebenk-p2/agent:x",
+              "cccccccccccc3 nortrebenk-p2/mellomtjener:1", "dddddddddddd4 mswebench/annen:pr-1", "eeeeeeeeeeee5 <none>:<none>", ""]
+
+    def test_vernet_instansbilde_slettes_ikke(self):
+        ut = k.bilder_som_slettes(self.LINJER, behold=("mswebench/navikt_m_mock-oauth2-server:pr-1105",))
+        self.assertNotIn("aaaaaaaaaaaa1", ut)
+        self.assertEqual(ut, ["bbbbbbbbbbbb2", "dddddddddddd4", "eeeeeeeeeeee5"])
+
+    def test_uten_behold_slettes_alt_utenom_mellomtjener_og_vernede(self):
+        self.assertEqual(k.bilder_som_slettes(self.LINJER, vern={"dddddddddddd"}), ["aaaaaaaaaaaa1", "bbbbbbbbbbbb2", "eeeeeeeeeeee5"])
+
+    def test_navn_uten_tag_er_latest(self):
+        self.assertNotIn("bbbbbbbbbbbb2", k.bilder_som_slettes(["bbbbbbbbbbbb2 nortrebenk-p2/agent:latest"], behold=("nortrebenk-p2/agent",)))
+
+    def test_forberedelse_verner_instansbildet_ved_andre_diskport(self):
+        kall = []
+        lagret = k.diskport
+        k.diskport = lambda behold=(): kall.append(behold) or (len(kall) < 2, 9.0)
+        try:
+            falsk = types.SimpleNamespace(bygg_instans=lambda oid: (True, "mswebench/x:pr-1"))
+            ok, steg = k.forberedelse(falsk, "a__x__1", False)
+        finally:
+            k.diskport = lagret
+        self.assertEqual(kall, [(), ("mswebench/x:pr-1",)])
+        self.assertFalse(ok); self.assertEqual(steg["grunn"], "under 6 GiB ledig")
 
 
 class Selvtestfeil(Exception):

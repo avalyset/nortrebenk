@@ -9,7 +9,7 @@ The tasks are taken from public repos where the solution exists in later commits
 
 ## Decision
 
-The instance image has the repo at base_sha without later git objects, without remotes and without refs. The agent's network is limited to the model API and package registries; github.com is blocked. The dependencies are resolved in the image. If the agents run on Modal, the API key is stored as a Modal secret, as a separate key with a spending limit that is deleted after P3.
+The instance image has the repo at base_sha without later git objects, without remotes and with one ref. The agent's network is limited to the model API and package registries; github.com is blocked. The dependencies are resolved in the image. If the agents run on Modal, the API key is stored as a Modal secret, as a separate key with a spending limit that is deleted after P3.
 
 The agent's network is limited to the model API. The agent container sits on an internal Docker network with no route out. The only way out is a proxy that forwards only to the model API and adds the API key, so that the key never exists in the agent container. Package registries and github.com are not available. Tools that let the model API search or fetch on the web on the agent's behalf are turned off in the agent and rejected in the proxy. The agent image is built without the gold patch, test patch and run scripts, and it is checked before every run. The dependencies for base and for the state with the gold patch are resolved in the image, without source changes from the gold patch coming along. Tasks where the tests still cannot be run without network are marked and reported separately. The sentences about package registries and about Modal above no longer apply (NTB-0011).
 

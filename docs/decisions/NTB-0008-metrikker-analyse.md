@@ -2,6 +2,7 @@
 
 - Status: adopted 2026-11-16
 - Changed 2026-11-16: primary outcome and pairwise comparison of text variants, see NTB-0013.
+- Changed 2026-11-17: cost per solved task counts completed runs; discarded attempts are reported separately (NTB-0014).
 
 ## Context
 

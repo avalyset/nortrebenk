@@ -16,7 +16,7 @@
   - P2.3 Quality check of the tasks
   - P2.3b Extended task text with requirements and interface, and a new quality check of it (NTB-0013)
   - P2.4 Anchor and smoke trial on tasks outside the set; budget cap
-  - P2.5 Preregistration (prereg-v1), with translation of the repo's documents to English
+  - P2.5 Preregistration (prereg-v1), with translation of the repo's documents to English and a dress rehearsal of the runner (AVVIK.md no. 8)
 - P3 Pilot run under the preregistration: Claude Code with Opus 5.5 and with Sonnet 5.5, on extended text and on the PR text alone
 - P4 Freeze of v1.0, with cross-check on amd64 before the freeze if included credit covers it
 
@@ -24,7 +24,7 @@ The status of each phase is in the ground truth, not here.
 
 ## Decisions (ADR)
 
-- [NTB-0001: Scope, benefit and limits](docs/decisions/NTB-0001-omfang-nytte-grenser.md)
+- [NTB-0001: Scope, utility and limits](docs/decisions/NTB-0001-omfang-nytte-grenser.md)
 - [NTB-0002: Format, platform and runner](docs/decisions/NTB-0002-format-plattform-kjorer.md)
 - [NTB-0003: Inclusion in the set](docs/decisions/NTB-0003-inklusjon.md)
 - [NTB-0004: Quality check](docs/decisions/NTB-0004-kvalitetssjekk.md)

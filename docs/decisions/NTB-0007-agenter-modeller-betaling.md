@@ -4,6 +4,7 @@
 - Arm 3 is dropped from v1.0, see NTB-0012.
 - Changed 2026-11-16 (2): wrapper, version and run order.
 - Changed 2026-11-16 (3): two text variants in P3, see NTB-0013.
+- Changed 2026-11-17: the number of runs and the caps follow NTB-0014 (up to three passes, a cap per run), and cost is `total_cost_usd` as reported by Claude Code.
 
 ## Context
 

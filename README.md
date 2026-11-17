@@ -18,7 +18,7 @@ nortrebenk measures how well and how fast coding agents solve tasks taken from p
 - v1.0 is a task set, a repeatable method and a preregistered pilot measurement. It is not a ranking of agents, not a picture of the agencies' code, not a measure of licence value, not a measurement of a human working with an agent and not a measurement of GitHub Copilot (NTB-0001).
 - v1.0 measures one vendor, Anthropic (NTB-0012).
 - The agent setup is not anchored to published solve rates (NTB-0007).
-- The quality-check anchor consists of English-language Python tasks the models may have seen in training, including the outcome of the annotation. The set is Kotlin and TypeScript with Norwegian and English text (NTB-0004). The Google rater was a free-tier model (AVVIK.md no. 4).
+- The quality-check anchor consists of English-language Python tasks the models may have seen in training, including the outcome of the annotation. The set is Kotlin, TypeScript and C# with Norwegian and English text (NTB-0004). The Google rater was a free-tier model (AVVIK.md no. 4).
 - The extended text was added after the outcome of the quality check of the PR text (P2.3) and the smoke test were known, and before any agent run on a set task. The additions were written by a model from the same vendor as the agents, without human review; a task's pass in the quality check may rest on the rater from the same vendor; and the additions state names and strings from the solution (NTB-0013, AVVIK.md no. 7).
 - The measurement platform is linux/arm64, local. A cross-check on amd64 through the unmodified Multi-SWE-bench harness is run before v1.0 only if included credit covers it (NTB-0011). The runner anchor against Multi-SWE-bench fell away because the dataset has no instances for the repository that was to be used (AVVIK.md no. 5).
 - The tasks come from five repositories. Tasks from the same repository are not independent, and clustered standard errors with five clusters are uncertain (NTB-0008).
@@ -27,7 +27,7 @@ nortrebenk measures how well and how fast coding agents solve tasks taken from p
 
 ## Sammendrag (norsk)
 
-nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løste oppgave koster. Fasiten er etatens egne tester. Oppgavesettet har 21 oppgaver fra 5 repoer (kilde: `data/sett_v1.jsonl`), og hver oppgave har to tekstvarianter: PR-teksten og en utvidet tekst med krav og grensesnitt. Pilotmålingen er forhåndsregistrert, men ikke kjørt. Dokumentene er på engelsk. Feltnavnene i datafilene er norske og forklares i ordlista under.
+nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løste oppgave koster. Fasiten er etatens egne tester. Oppgavesettet har 21 oppgaver fra 5 repoer (kilde: `data/sett_v1.jsonl`), og hver oppgave har to tekstvarianter: PR-teksten og en utvidet tekst med krav og grensesnitt. Pilotmålingen er forhåndsregistrert, men ikke kjørt. Dokumentene er på engelsk. Feltnavnene i datafilene er norske, og de mest brukte forklares i ordlista under.
 
 ## Glossary of Norwegian field names
 
@@ -48,7 +48,7 @@ nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offent
 | `i_settet_etter_p22` | in the set after P2.2 (ja/nei) |
 | `kalt` | called: whether the rater was called |
 | `kjoring` | run identifier |
-| `kodesprak` | code language |
+| `kodesprak` | main code language of the repository |
 | `kostnad_satt_til_tak` | whether the run's budget cap was recorded as its cost because no cost was reported |
 | `lisens` | licence |
 | `loest, loest_B, loest_C_antall` | solved; solved in run B (test patch only); number of solved runs C (test patch and gold patch) |
