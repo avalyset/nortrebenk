@@ -16,7 +16,7 @@ Claude Code is run as an agent in a container with no route out. The only way ou
   - The log has time, method, path, status and whether the call was rejected, never content or headers.
 - `selvtest.sh`: self-test without model calls. It is run in a fresh container before each agent run and checks five things:
   - that no files are named `fix.patch`, `test.patch`, `run-B.sh` or `run-C.sh`;
-  - that the gold patch's three longest added lines are not found under `/home`, `/root` or `/tmp`;
+  - that up to three of the gold patch's longest added lines (at least 30 characters, at most ten candidates, skipping lines already in the base commit) are not found under `/home`, `/root` or `/tmp`;
   - that github.com and the package registries cannot be reached;
   - that the environment has no key;
   - that git has one commit, no remotes and one ref.

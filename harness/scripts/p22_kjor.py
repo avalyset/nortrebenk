@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """P2.2: forseglede instansbilder og stabilitetskjøringer for de P1-validerte oppgavene i ett repo.
 
-Per oppgave: bygg forseglet bilde (p2/msb_repos), kontroller forseglingen, kjør B (testpatch) én gang og C
+Per oppgave: bygg forseglet bilde (harness/msb_repos), kontroller forseglingen, kjør B (testpatch) én gang og C
 (testpatch + gullpatch) tre ganger. Første C kjøres med --network none; feiler den på grunn av nett, kjøres alle
 tre C med nett (trenger_nett_i_test). «Løst» = alle tester i P1-listene f2p og p2p har PASS.
 

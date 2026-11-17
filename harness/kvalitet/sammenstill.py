@@ -5,7 +5,8 @@
   fordi annotasjonsfila fra OpenAI ikke oppgir lisens; hent_menneskelig.py henter dem fra kilden.
 - vurderinger.jsonl: én linje per egen oppgave og vurderer, med skårer og begrunnelse, valgt regel, utelukket ja/nei
   for ensemblet og det mekaniske feltet «ordrett andel».
-- samsvar.md: samsvaret på ankeret per vurderer og per regel, valgt regel og grensene fra NTB-0004.
+(samsvar.md, med samsvaret på ankeret per vurderer og per regel, valgt regel og grensene fra NTB-0004, skrives ikke
+av dette skriptet; se første linje i fila.)
 
 Ordrett andel: andelen av gullpatchens tilføyde linjer (uten innledende +, trimmet, minst 8 tegn) som står ordrett
 i oppgaveteksten (tittel og beskrivelse).

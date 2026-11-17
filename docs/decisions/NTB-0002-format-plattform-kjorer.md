@@ -19,7 +19,7 @@ The instances are written as Multi-SWE-bench definitions against commit 24f493f.
 
 ## Consequences
 
-P2.2 starts with the trial on kafka-manager. The platform choice is recorded in NTB-0011. README describes the runner as a thin runner on the Multi-SWE-bench classes.
+P2.2 starts with the trial on kafka-manager. The platform choice is recorded in NTB-0011. harness/BRUK.md describes the runner as a thin runner on the Multi-SWE-bench classes.
 
 ## Sources
 

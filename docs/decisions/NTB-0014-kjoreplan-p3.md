@@ -5,7 +5,7 @@
 
 ## Context
 
-P3 is to run the tasks in the set with two arms, two text variants and three runs (NTB-0007, NTB-0013). The disk cannot hold images for all the tasks at the same time, and the credit has a cap (NTB-0012). The smoke trial measured at most 9.43 USD for one round over 21 tasks and two arms. The grading path in the agent runner is a different code path from the validation in P2.2, and two tasks need a separate build to run the tests without network.
+P3 is to run the tasks in the set with two arms, two text variants and three runs (NTB-0007, NTB-0013). The disk cannot hold images for all the tasks at the same time, and the credit has a cap (NTB-0012). The smoke trial gave at most 9.43 USD for one round over 21 tasks and two arms, computed from the highest cost measured per arm on two tasks outside the set. The grading path in the agent runner is a different code path from the validation in P2.2, and two tasks need a separate build to run the tests without network.
 
 ## Decision
 
@@ -31,7 +31,7 @@ Clarifications 2026-11-17, made before the freeze and before any agent run on th
 
 ## Consequences
 
-P3 takes three passes with build and check for each task in each pass. The order is fixed and published before the first run.
+P3 takes up to three passes with build and check for each task in each pass. The order is fixed and published before the first run.
 
 ## Sources
 

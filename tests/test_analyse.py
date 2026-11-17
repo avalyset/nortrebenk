@@ -100,9 +100,6 @@ class Formler(unittest.TestCase):
         self.assertAlmostEqual(an.se_clt(s), (0.75 / 3 / 4) ** 0.5)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 
 class VarianterOgMangler(unittest.TestCase):
     """Differanser mellom tekstvariantene bare fra pass med begge; oppgaver uten gjennomførte kjøringer telles opp;
@@ -150,3 +147,7 @@ class VarianterOgMangler(unittest.TestCase):
         self.assertIsNone(s["kostnad_per_loste_usd"])
         self.assertAlmostEqual(s["kostnad_usd"], 0.2)
         self.assertIn("samlet kostnad", s["merknad_kostnad"])
+
+
+if __name__ == "__main__":
+    unittest.main()
