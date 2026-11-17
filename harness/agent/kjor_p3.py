@@ -11,12 +11,21 @@ Moduser:
   plan [--ut data/p3_plan.jsonl]                 tørrkjøring uten Docker og uten modellkall; skriver planen
   kontroll <id>... [--ut data/p3_kontroll.jsonl]  alt unntatt agentkjøringene, for oppgitte oppgaver
   kjor --saldo <USD>                              P3; nekter å starte før PREREG_DOI.txt finnes i repoet
+  prove --sett <fil> --instanser <fil> --saldo <USD>
+                                                  samme sløyfe som kjor med bare PR-teksten og ett pass, for oppgaver
+                                                  utenfor settet (generalprøve); nekter oppgaver i data/sett_v1.jsonl
+
+Gjenopptak (NTB-0014, endret 17.11.2026): ved første start skrives NTB_UT/p3_start.json med B; senere starter bruker B
+derfra. Brukt er summen av total_cost_usd i p3_kjoringer.jsonl. Fullførte pass leses fra p3_pass.jsonl; har den et pass
+som ikke er fullført (stoppet av budsjettet), nekter kjøreren å fortsette. I passet som pågår, hoppes kjøringer med
+status gjennomfort eller manglende over, og forkastede forsøk teller videre mot grensen på to omkjøringer.
 
 Stier: NTB_UT (logger, bygg, kjøringer). NTB_DISK: stien til disken som måles før hvert bygg (standard /). NTB_TRIM (valgfri): kommando som kjøres etter opprydding, slik at en virtuell
 maskin gir frigjort diskplass tilbake før diskporten måler (Colima: «colima ssh -- sudo fstrim -a»). Kjøringsfilene for analysen er NTB_UT/p3_kjoringer.jsonl (én linje per forsøk,
 med pass, nummer, oppgave, tekstvariant, arm, forsøk, status og kjøringsfeltene fra kjor_agent.py) og NTB_UT/p3_pass.jsonl. Oppgavene leses fra data/sett_v1.jsonl og patchene fra data/instances.jsonl.
 """
 import argparse
+import collections
 import json
 import os
 import pathlib
@@ -74,10 +83,11 @@ def budsjett(saldo):
     return round(saldo - RESERVE, 6)
 
 
-def neste_pass(B, brukt, fullførte):
+def neste_pass(B, brukt, fullførte, maks=MAKS_PASS):
     """Hva neste pass skal være: 'fullt', 'utvidet' eller None (stopp).
-    fullførte: liste med {'kost': samlet kostnad, 'kost_utvidet': kostnad for kjøringene med utvidet tekst, 'type': ...}."""
-    if len(fullførte) >= MAKS_PASS:
+    fullførte: liste med {'kost': samlet kostnad, 'kost_utvidet': kostnad for kjøringene med utvidet tekst, 'type': ...}.
+    Terskelen for et pass med bare utvidet tekst er 1,5 × utvidet-delen av det fullførte passet med høyest kost."""
+    if len(fullførte) >= maks:
         return None
     igjen = B - brukt
     if not fullførte:
@@ -85,8 +95,8 @@ def neste_pass(B, brukt, fullførte):
     fulle = [p for p in fullførte if p.get("type", "fullt") == "fullt"]
     if fulle and igjen >= MARGIN * max(p["kost"] for p in fulle):
         return "fullt"
-    utv = [p["kost_utvidet"] for p in fullførte]
-    if utv and igjen >= MARGIN * max(utv):
+    dyreste = max(fullførte, key=lambda p: p["kost"])
+    if igjen >= MARGIN * dyreste["kost_utvidet"]:
         return "utvidet"
     return None
 
@@ -96,13 +106,16 @@ def kan_starte_kjøring(B, brukt, arm):
 
 
 def infrastrukturfeil(rad):
-    """NTB-0014: Claude Code avslutter med API-feil, eller containeren stopper uten resultatlinje og uten at et tak
-    slo inn. `rad` er kjøringsfila fra kjor_agent.kjør()."""
+    """NTB-0014: uten at et tak slo inn, avslutter Claude Code med API-feil eller kjøringsfeil (subtype
+    error_during_execution, endret 17.11.2026), eller containeren stopper uten resultatlinje. `rad` er kjøringsfila fra
+    kjor_agent.kjør()."""
     if rad is None:
         return True
     tak = bool(rad.get("budsjettak_slo_inn")) or bool(rad.get("tidstak_slo_inn"))
     if rad.get("subtype") is None and not tak:
         return True  # ingen resultatlinje
+    if rad.get("subtype") == "error_during_execution" and not tak:
+        return True
     if rad.get("is_error") and not tak:
         tekst = json.dumps(rad.get("resultat_tekst") or "") + str(rad.get("subtype"))
         if "api" in tekst.lower() or rad.get("subtype") in ("error_during_execution",):
@@ -113,6 +126,43 @@ def infrastrukturfeil(rad):
 def pass_fullført(planlagte, utfall):
     """Fullført når hver planlagt kjøring er gjennomført eller står som manglende. utfall: {nøkkel: status}."""
     return all(utfall.get(k) in ("gjennomfort", "manglende") for k in planlagte)
+
+
+def nøkkel(x):
+    return (x["pass"], x["oppgave"], x["tekstvariant"], x["arm"])
+
+
+def utfall_fra(rader):
+    """{nøkkel: status} for kjøringer med status gjennomfort eller manglende, og {nøkkel: antall forkastede forsøk}."""
+    utfall, forkastet = {}, collections.Counter()
+    for r in rader:
+        if r.get("pass") is None:
+            continue
+        if r.get("status") in ("gjennomfort", "manglende"):
+            utfall[nøkkel(r)] = r["status"]
+        elif r.get("status") == "forkastet":
+            forkastet[nøkkel(r)] += 1
+    return utfall, forkastet
+
+
+def gjenopptak(rader, pass_rader, ider, B, varianter=VARIANTER, maks=MAKS_PASS):
+    """Tilstanden ved start eller omstart (NTB-0014, endret 17.11.2026), fra radene i p3_kjoringer.jsonl og
+    p3_pass.jsonl. Nekter (Sperre) hvis et pass i p3_pass.jsonl ikke er fullført. Passet som pågår, er det første som
+    ikke står i p3_pass.jsonl; typen avgjøres med det som var brukt før passet, slik den ble ved passets start.
+    Returnerer brukt, fullførte pass, passet, typen (None: stopp), alle planlagte kjøringer i passet og de gjenstående."""
+    ufull = sorted(p["pass"] for p in pass_rader if not p.get("fullfort"))
+    if ufull:
+        raise Sperre(f"p3_pass.jsonl har pass som ikke er fullført ({ufull}); kjøreren fortsetter ikke")
+    fullførte = [{"pass": p["pass"], "kost": p["kost"], "kost_utvidet": p["kost_utvidet"], "type": p.get("type", "fullt")}
+                 for p in sorted(pass_rader, key=lambda p: p["pass"])]
+    brukt = sum(r.get("total_cost_usd") or 0.0 for r in rader)
+    p = len(fullførte) + 1
+    brukt_før = sum(r.get("total_cost_usd") or 0.0 for r in rader if (r.get("pass") or 0) < p)
+    type_ = neste_pass(B, brukt_før, fullførte, maks)
+    utfall, forkastet = utfall_fra(rader)
+    kjøringer = plan(ider, (p,), varianter if type_ == "fullt" else ("utvidet",)) if type_ else []
+    return {"brukt": brukt, "fullforte": fullførte, "pass": p, "type": type_, "kjoringer": kjøringer,
+            "gjenstaende": [x for x in kjøringer if nøkkel(x) not in utfall], "forkastet": forkastet}
 
 
 def sperre(rot=ROT):
@@ -130,10 +180,10 @@ def kort_id(r):
     return f"{r['org']}__{r['repo'].split('/')[1]}__{r['pr']}"
 
 
-def forbered_oppgaver(ut):
+def forbered_oppgaver(ut, sett_fil=None, inst_fil=None):
     """Skriver oppgavefiler for begge tekstvarianter, patcher og testlister for kjor_agent.py."""
-    sett = jl(ROT / "data/sett_v1.jsonl")
-    inst = {r["id"]: r for r in jl(ROT / "data/instances.jsonl")}
+    sett = jl(sett_fil or ROT / "data/sett_v1.jsonl")
+    inst = {r["id"]: r for r in jl(inst_fil or ROT / "data/instances.jsonl")}
     for r in sett:
         oid = kort_id(r); i = inst[r["id"]]
         tittel, beskr = r["pr_tekst"]["tittel"], r["pr_tekst"]["beskrivelse"] or ""
@@ -187,12 +237,12 @@ def rydd_egne():
 
 
 def diskport():
+    """(ok, ledig GiB). Under MIN_DISK_GIB etter opprydding er ikke ok: bygget startes ikke, og oppgavens kjøringer i
+    passet står som manglende (NTB-0014, endret 17.11.2026)."""
     f = ledig_gib()
     if f < MIN_DISK_GIB:
         rydd_egne(); f = ledig_gib()
-        if f < MIN_DISK_GIB:
-            raise RuntimeError(f"under {MIN_DISK_GIB} GiB ledig etter opprydding ({f:.1f} GiB)")
-    return round(f, 1)
+    return f >= MIN_DISK_GIB, round(f, 1)
 
 
 def forberedelse(k, oid, med_tid):
@@ -209,10 +259,14 @@ def forberedelse(k, oid, med_tid):
             if ok:
                 return True
         return False
-    steg["ledig_gib_for_bygg"] = diskport()
+    ok, steg["ledig_gib_for_bygg"] = diskport()
+    if not ok:
+        steg["grunn"] = f"under {MIN_DISK_GIB} GiB ledig"; return False, steg
     if not trinn("instansbygg", lambda: (k.bygg_instans(oid)[0], None)):
         return False, steg
-    steg["ledig_gib_for_agentbygg"] = diskport()
+    ok, steg["ledig_gib_for_agentbygg"] = diskport()
+    if not ok:
+        steg["grunn"] = f"under {MIN_DISK_GIB} GiB ledig"; return False, steg
     if not trinn("agentbygg", lambda: (k.bygg(oid), None)):
         return False, steg
     def st():
@@ -245,7 +299,8 @@ def kontroll_modus(ider, ut_fil, ut):
         t_slett = time.time()
         slett_bilder(k, oid)
         steg["sletting"] = {"ok": True, "sekunder": round(time.time() - t_slett, 1)}
-        rad = {"oppgave": oid, "bestatt": ok, "steg": steg, "sekunder_totalt": round(time.time() - t0, 1)}
+        rad = {"oppgave": oid, "bestatt": ok, **({"grunn": steg["grunn"]} if "grunn" in steg else {}), "steg": steg,
+               "sekunder_totalt": round(time.time() - t0, 1)}
         rader.append(rad)
         print(json.dumps({"oppgave": oid, "bestatt": ok, "sekunder": rad["sekunder_totalt"],
                           **{s: v.get("ok") for s, v in steg.items() if isinstance(v, dict)}}, ensure_ascii=False), flush=True)
@@ -254,68 +309,126 @@ def kontroll_modus(ider, ut_fil, ut):
     return rader
 
 
-def kjør_p3(saldo, ut):
-    sperre()
-    ider = forbered_oppgaver(ut)
+def start_budsjett(ut, saldo):
+    """B fra NTB_UT/p3_start.json når den finnes; ellers B = saldo − reserve, skrevet dit ved første start."""
+    f = ut / "p3_start.json"
+    if f.is_file():
+        return json.loads(f.read_text(encoding="utf-8"))["B"]
+    if saldo is None:
+        raise SystemExit("--saldo mangler (Anthropic-saldo avlest rett før start)")
     B = budsjett(saldo)
-    logg = ut / "p3_logg.jsonl"
-    brukt, fullførte = 0.0, []
-    k_pr = ka(ut, "pr_tekst")
-    k_pr.nett()
-    for p in range(1, MAKS_PASS + 1):
-        type_ = neste_pass(B, brukt, fullførte)
-        if type_ is None:
-            break
-        varianter = VARIANTER if type_ == "fullt" else ("utvidet",)
-        kjøringer = plan(ider, (p,), varianter)
-        utfall, kost, kost_utv, stoppet = {}, 0.0, 0.0, False
-        for oid in [x for x in oppgaverekkefølge(ider, p)[0]]:
-            mine = [x for x in kjøringer if x["oppgave"] == oid]
+    f.write_text(json.dumps({"B": B, "saldo": saldo, "tid_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())},
+                            ensure_ascii=False) + "\n", encoding="utf-8")
+    return B
+
+
+def kjør_én(k, ut, oid, x, B, brukt, forkastet_før, logg):
+    """Én planlagt kjøring med inntil to omkjøringer. Budsjettsjekk før hvert forsøk. Selvtestfeil rett før
+    kjøringen prøves én gang til. Returnerer (utfall, brukt): 'gjennomfort', 'manglende', 'budsjett' eller 'selvtest'."""
+    for forsøk in range(forkastet_før + 1, OMKJØRINGER + 2):
+        if not kan_starte_kjøring(B, brukt, x["arm"]):
+            _skriv(logg, {**x, "forsok": forsøk, "status": "ikke startet", "grunn": "budsjett", "brukt": round(brukt, 6), "B": B})
+            return "budsjett", brukt
+        rad = None
+        for st_forsøk in (1, 2):
+            try:
+                rad = k.kjør(oid, x["arm"], f"{TAK_USD[x['arm']]:.2f}")
+                break
+            except k.Selvtestfeil:
+                _skriv(logg, {**x, "forsok": forsøk, "selvtest_feilet": st_forsøk})
+                if st_forsøk == 2:
+                    return "selvtest", brukt
+            except SystemExit:
+                raise
+            except Exception as e:  # noqa: BLE001
+                rad = None; _skriv(logg, {**x, "forsok": forsøk, "feil": f"{type(e).__name__}: {str(e)[:200]}"})
+                break
+        c = (rad or {}).get("total_cost_usd") or 0.0
+        brukt += c
+        status = "forkastet" if infrastrukturfeil(rad) else "gjennomfort"
+        _skriv(ut / "p3_kjoringer.jsonl", {**x, "forsok": forsøk, "status": status, **{k2: v for k2, v in (rad or {}).items() if k2 not in x}})
+        _skriv(logg, {**x, "forsok": forsøk, "status": status, "kjoring": (rad or {}).get("kjoring"), "kost": c,
+                      **({"loest": rad.get("loest")} if status == "gjennomfort" else {})})
+        if status == "gjennomfort":
+            return "gjennomfort", brukt
+    _manglende(ut, logg, x, "infrastrukturfeil tre ganger")
+    return "manglende", brukt
+
+
+def _manglende(ut, logg, x, grunn):
+    _skriv(logg, {**x, "status": "manglende", "grunn": grunn})
+    _skriv(ut / "p3_kjoringer.jsonl", {**x, "status": "manglende", "grunn": grunn})
+
+
+def kjør_løkke(ut, ider, B, varianter=VARIANTER, maks=MAKS_PASS):
+    """Passene etter NTB-0014, med gjenopptak fra p3_kjoringer.jsonl og p3_pass.jsonl."""
+    logg, kj_fil, pass_fil = ut / "p3_logg.jsonl", ut / "p3_kjoringer.jsonl", ut / "p3_pass.jsonl"
+    k_pr = None
+    while True:
+        st = gjenopptak(jl_om(kj_fil), jl_om(pass_fil), ider, B, varianter, maks)
+        if st["type"] is None:
+            _skriv(logg, {"hendelse": "ingen flere pass", "fullforte_pass": len(st["fullforte"]), "brukt": round(st["brukt"], 6), "B": B})
+            return
+        p, brukt = st["pass"], st["brukt"]
+        _skriv(logg, {"hendelse": "pass starter", "pass": p, "type": st["type"], "planlagte": len(st["kjoringer"]),
+                      "gjenstaende": len(st["gjenstaende"]), "brukt": round(brukt, 6), "B": B})
+        if k_pr is None:
+            k_pr = ka(ut, "pr_tekst")
+            k_pr.nett()
+        stoppet = False
+        for oid in oppgaverekkefølge(ider, p)[0]:
+            mine = [x for x in st["gjenstaende"] if x["oppgave"] == oid]
             if not mine:
-                continue
+                continue  # oppgaver uten gjenstående kjøringer bygges ikke
             ok, steg = forberedelse(k_pr, oid, False)
             _skriv(logg, {"pass": p, "oppgave": oid, "forberedelse": steg, "ok": ok})
             if not ok:
                 for x in mine:
-                    utfall[(x["nummer"])] = "manglende"
-                    _skriv(logg, {**x, "status": "manglende", "grunn": "forberedelse feilet"})
-                    _skriv(ut / "p3_kjoringer.jsonl", {**x, "status": "manglende", "grunn": "forberedelse feilet"})
+                    _manglende(ut, logg, x, steg.get("grunn", "forberedelse feilet"))
                 slett_bilder(k_pr, oid); continue
-            for x in mine:
-                if not kan_starte_kjøring(B, brukt, x["arm"]):
+            for i, x in enumerate(mine):
+                res, brukt = kjør_én(ka(ut, x["tekstvariant"]), ut, oid, x, B, brukt, st["forkastet"][nøkkel(x)], logg)
+                if res == "budsjett":
                     stoppet = True; break
-                k = ka(ut, x["tekstvariant"])
-                for forsøk in range(1, OMKJØRINGER + 2):
-                    try:
-                        rad = k.kjør(oid, x["arm"], f"{TAK_USD[x['arm']]:.2f}")
-                    except SystemExit:
-                        raise
-                    except Exception as e:  # noqa: BLE001
-                        rad = None; _skriv(logg, {**x, "forsok": forsøk, "feil": f"{type(e).__name__}: {str(e)[:200]}"})
-                    c = (rad or {}).get("total_cost_usd") or 0.0
-                    brukt += c; kost += c
-                    if x["tekstvariant"] == "utvidet":
-                        kost_utv += c
-                    _skriv(ut / "p3_kjoringer.jsonl", {**x, "forsok": forsøk, "status": "forkastet" if infrastrukturfeil(rad) else "gjennomfort",
-                                                       **{k2: v for k2, v in (rad or {}).items() if k2 not in x}})
-                    if not infrastrukturfeil(rad):
-                        utfall[x["nummer"]] = "gjennomfort"
-                        _skriv(logg, {**x, "forsok": forsøk, "status": "gjennomfort", "kjoring": rad["kjoring"], "kost": c, "loest": rad["loest"]})
-                        break
-                    _skriv(logg, {**x, "forsok": forsøk, "status": "forkastet", "kjoring": (rad or {}).get("kjoring"), "kost": c})
-                else:
-                    utfall[x["nummer"]] = "manglende"
-                    _skriv(logg, {**x, "status": "manglende", "grunn": "infrastrukturfeil tre ganger"})
-                    _skriv(ut / "p3_kjoringer.jsonl", {**x, "status": "manglende", "grunn": "infrastrukturfeil tre ganger"})
+                if res == "selvtest":
+                    for y in mine[i:]:
+                        _manglende(ut, logg, y, "selvtest feilet før kjøring")
+                    break
             slett_bilder(k_pr, oid)
             if stoppet:
                 break
-        fullført = not stoppet and pass_fullført([x["nummer"] for x in kjøringer], utfall)
-        _skriv(ut / "p3_pass.jsonl", {"pass": p, "type": type_, "fullfort": fullført, "kost": round(kost, 6), "kost_utvidet": round(kost_utv, 6)})
-        _skriv(logg, {"pass": p, "type": type_, "fullfort": fullført, "kost": round(kost, 6), "kost_utvidet": round(kost_utv, 6), "brukt": round(brukt, 6), "B": B})
+        rader_p = [r for r in jl_om(kj_fil) if r.get("pass") == p]
+        utfall, _ = utfall_fra(rader_p)
+        fullført = not stoppet and pass_fullført([nøkkel(x) for x in st["kjoringer"]], utfall)
+        kost = sum(r.get("total_cost_usd") or 0.0 for r in rader_p)
+        kost_utv = sum(r.get("total_cost_usd") or 0.0 for r in rader_p if r["tekstvariant"] == "utvidet")
+        varianter_p = sorted({x["tekstvariant"] for x in st["kjoringer"]})
+        _skriv(pass_fil, {"pass": p, "type": st["type"], "varianter": varianter_p, "fullfort": fullført,
+                          "kost": round(kost, 6), "kost_utvidet": round(kost_utv, 6)})
+        _skriv(logg, {"pass": p, "type": st["type"], "fullfort": fullført, "kost": round(kost, 6), "kost_utvidet": round(kost_utv, 6),
+                      "brukt": round(brukt, 6), "B": B})
         if not fullført:
-            break
-        fullførte.append({"kost": kost, "kost_utvidet": kost_utv, "type": type_})
+            return
+
+
+def kjør_p3(saldo, ut):
+    sperre()
+    ider = forbered_oppgaver(ut)
+    kjør_løkke(ut, ider, start_budsjett(ut, saldo))
+
+
+def prøve(saldo, ut, sett_fil, inst_fil):
+    """Generalprøve: samme sløyfe som kjor, med bare PR-teksten og ett pass, for oppgaver utenfor settet."""
+    i_settet = {kort_id(r) for r in jl(ROT / "data/sett_v1.jsonl")}
+    treff = sorted({kort_id(r) for r in jl(sett_fil)} & i_settet)
+    if treff:
+        raise Sperre(f"prove nekter oppgaver i data/sett_v1.jsonl: {treff}")
+    ider = forbered_oppgaver(ut, sett_fil, inst_fil)
+    kjør_løkke(ut, ider, start_budsjett(ut, saldo), ("pr_tekst",), 1)
+
+
+def jl_om(p):
+    return jl(p) if pathlib.Path(p).is_file() else []
 
 
 def _skriv(fil, rad):
@@ -325,10 +438,12 @@ def _skriv(fil, rad):
 
 def main():
     a = argparse.ArgumentParser()
-    a.add_argument("modus", choices=["plan", "kontroll", "kjor"])
+    a.add_argument("modus", choices=["plan", "kontroll", "kjor", "prove"])
     a.add_argument("oppgaver", nargs="*")
     a.add_argument("--ut", default=None)
     a.add_argument("--saldo", type=float, default=None)
+    a.add_argument("--sett", default=None)
+    a.add_argument("--instanser", default=None)
     o = a.parse_args()
     ut = pathlib.Path(os.environ.get("NTB_UT", "ntb-ut")); ut.mkdir(parents=True, exist_ok=True)
     if o.modus == "plan":
@@ -339,9 +454,11 @@ def main():
         print(f"{len(p)} kjøringer i planen skrevet til {fil.name}")
     elif o.modus == "kontroll":
         kontroll_modus(o.oppgaver, pathlib.Path(o.ut or ROT / "data/p3_kontroll.jsonl"), ut)
+    elif o.modus == "prove":
+        if not (o.sett and o.instanser):
+            raise SystemExit("prove krever --sett og --instanser")
+        prøve(o.saldo, ut, pathlib.Path(o.sett), pathlib.Path(o.instanser))
     else:
-        if o.saldo is None:
-            raise SystemExit("--saldo mangler (Anthropic-saldo avlest rett før P3)")
         kjør_p3(o.saldo, ut)
 
 

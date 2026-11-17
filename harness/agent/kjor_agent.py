@@ -31,6 +31,7 @@ sys.modules["multi_swe_bench.harness.repos"] = types.ModuleType("multi_swe_bench
 import _felles  # noqa: E402
 import agentbilde  # noqa: E402
 import gullcache  # noqa: E402
+import takregel  # noqa: E402
 from multi_swe_bench.harness.image import Config  # noqa: E402
 from multi_swe_bench.harness.pull_request import Base, PullRequest  # noqa: E402
 
@@ -40,7 +41,8 @@ TESTER = pathlib.Path(os.environ.get("NTB_TESTER", "tester"))
 UT = pathlib.Path(os.environ.get("NTB_UT", "ntb-ut"))
 NETT, MT = "ntb-agent", "ntb-mellomtjener"
 MT_BILDE = "node@sha256:9d266751ca3d7fdbe651c878ffd5ad0a42fed49a18c283509267c97f025b7496"  # node:24 (har python3)
-TIDSGRENSE = 40 * 60
+TIDSGRENSE = 40 * 60  # tidstaket for agenten (NTB-0014)
+VURDER_TIDSGRENSE = 40 * 60  # tidsgrense for bygg og vurdering, holdt utenfor agentens tidstak
 MT_IMAGE = "nortrebenk-p2/mellomtjener:1"
 INNPAKNING = (HER / "innpakning.txt").read_text(encoding="utf-8")
 
@@ -100,7 +102,7 @@ def bygg(oid):
     logg = UT / "logs" / oid; logg.mkdir(parents=True, exist_ok=True)
     with open(logg / "agentbygg.log", "w") as lf:
         r = subprocess.run(["docker", "build", "--label", "nortrebenk=p2", "-t", agentbilde_navn(oid), str(mappe)],
-                           stdout=lf, stderr=subprocess.STDOUT, timeout=TIDSGRENSE)
+                           stdout=lf, stderr=subprocess.STDOUT, timeout=VURDER_TIDSGRENSE)
     print("agentbilde", "bygget" if r.returncode == 0 else "FEILET", agentbilde_navn(oid))
     return r.returncode == 0
 
@@ -150,6 +152,10 @@ def selvtest(oid, modell=False):
     return res
 
 
+class Selvtestfeil(Exception):
+    """Selvtesten rett før en agentkjøring feilet; ingen modellkall er gjort."""
+
+
 def mt_logg():
     """Mellomtjenerens logg (tid, metode, sti, status, avvist), lest fra containeren og speilet til NTB_UT."""
     r = sh(["docker", "exec", MT, "cat", "/logg/mellomtjener.log"])
@@ -179,7 +185,7 @@ def vurder(oid, agentpatch, navn):
     c = sh(["docker", "create", "--network", "none", "--label", "nortrebenk=p2", bilde, "bash", "-c", skript]).stdout.strip()
     try:
         sh(["docker", "cp", str((d / "agent.patch").resolve()), f"{c}:/tmp/ntb_agent.patch"])
-        r = sh(["docker", "start", "-a", c], timeout=TIDSGRENSE)
+        r = sh(["docker", "start", "-a", c], timeout=VURDER_TIDSGRENSE)
     finally:
         sh(["docker", "rm", "-f", c])
     (d / "vurdering.log").write_text(r.stdout + r.stderr)
@@ -203,7 +209,7 @@ def bygg_instans(oid):
     logg = UT / "logs" / oid; logg.mkdir(parents=True, exist_ok=True)
     with open(logg / "instansbygg.log", "w") as lf:
         r = subprocess.run(["docker", "build", "--label", "nortrebenk=p2", "-t", img.image_full_name(), str(mappe)],
-                           stdout=lf, stderr=subprocess.STDOUT, timeout=TIDSGRENSE)
+                           stdout=lf, stderr=subprocess.STDOUT, timeout=VURDER_TIDSGRENSE)
     return r.returncode == 0, img.image_full_name()
 
 
@@ -230,12 +236,12 @@ def kjør(oid, modell, budsjett):
     o, _ = oppgave(oid)
     st = selvtest(oid)
     if not st["bestatt"]:
-        raise SystemExit("selvtesten feilet; ingen agentkjøring")
+        raise Selvtestfeil("selvtesten feilet; ingen agentkjøring")
     prompt = INNPAKNING.replace("{sti}", f"/home/{o['repo']}").replace("{tittel}", o["tittel"]).replace("{beskrivelse}", o["beskrivelse"] or "")
     navn = f"{oid}__{modell}__{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}"
     beholder = "ntb-agent-" + re.sub(r"[^a-zA-Z0-9_.-]", "-", navn)[-60:]
     innpakk = f"""cd /home/{o['repo']}
-timeout {TIDSGRENSE} claude -p "$NTB_PROMPT" --model {modell} --output-format stream-json --verbose \\
+timeout -k 30 {TIDSGRENSE} claude -p "$NTB_PROMPT" --model {modell} --output-format stream-json --verbose \\
   --dangerously-skip-permissions --disallowedTools WebSearch WebFetch --max-budget-usd {budsjett}
 echo $? > /tmp/ntb_exit
 git add -A >/dev/null 2>&1
@@ -244,8 +250,12 @@ git diff --cached --binary HEAD -- . $ekskl > /tmp/ntb_agent.patch
 """
     start_mt = len(mt_logg()); t0 = time.time()
     miljø = {**os.environ, "NTB_PROMPT": prompt}
-    sh(["docker", "run", "--name", beholder, "--network", NETT, "--label", "nortrebenk=p2", "-e", "NTB_PROMPT",
-        agentbilde_navn(oid), "bash", "-c", innpakk], env=miljø, timeout=TIDSGRENSE + 600)
+    try:
+        sh(["docker", "run", "--name", beholder, "--network", NETT, "--label", "nortrebenk=p2", "-e", "NTB_PROMPT",
+            agentbilde_navn(oid), "bash", "-c", innpakk], env=miljø, timeout=TIDSGRENSE + 600)
+    except subprocess.TimeoutExpired:
+        sh(["docker", "rm", "-f", beholder])
+        raise
     vegg = round(time.time() - t0, 1)
     tdir = UT / "transkripter"; tdir.mkdir(parents=True, exist_ok=True)
     transkript = sh(["docker", "logs", beholder]).stdout
@@ -268,15 +278,17 @@ git diff --cached --binary HEAD -- . $ekskl > /tmp/ntb_agent.patch
     v = vurder(oid, patch, navn)
     nye = mt_logg()[start_mt:]
     r = resultat or {}
+    budsjettak, tidstak = takregel.tak_slo_inn(r.get("subtype"), kode, vegg, TIDSGRENSE)
+    kost, kost_satt = takregel.kostnad(r.get("total_cost_usd"), tidstak, budsjett)
     rad = {"kjoring": navn, "oppgave": oid, "url": o["url"], "modell": modell, "budsjett_usd": budsjett,
-           "claude_code": agentbilde.CC_VERSJON, "total_cost_usd": r.get("total_cost_usd"), "usage": r.get("usage"),
+           "claude_code": agentbilde.CC_VERSJON, "total_cost_usd": kost, "kostnad_satt_til_tak": kost_satt, "usage": r.get("usage"),
            "modelUsage": r.get("modelUsage"), "num_turns": r.get("num_turns"), "duration_ms": r.get("duration_ms"),
            "subtype": r.get("subtype"), "is_error": r.get("is_error"), "resultat_tekst": (r.get("result") or "")[:500], "veggtid_s": vegg,
-           "budsjettak_slo_inn": bool(r.get("subtype") and "budget" in str(r.get("subtype"))),
-           "tidstak_slo_inn": "124" in kode or vegg >= TIDSGRENSE, "utgangskode": kode.strip(),
+           "budsjettak_slo_inn": budsjettak, "tidstak_slo_inn": tidstak, "utgangskode": kode.strip(),
            "mellomtjener_kall": len(nye), "mellomtjener_avvist": sum(1 for l in nye if "\tja:" in l),
            "patch_linjer": len(patch.splitlines()), "forkastede_testfilendringer": forkastet,
-           "loest": v["loest"], "patch_feilet": v["patch_feilet"], "ikke_pass": v["ikke_pass"],
+           "loest_for_takregel": v["loest"], "loest": takregel.loest(v["loest"], budsjettak, tidstak),
+           "patch_feilet": v["patch_feilet"], "ikke_pass": v["ikke_pass"],
            "sk_ant_i_transkript": "sk-ant-" in transkript}
     (UT / "kjoringer").mkdir(parents=True, exist_ok=True)
     (UT / "kjoringer" / f"{navn}.json").write_text(json.dumps(rad, ensure_ascii=False, indent=1))

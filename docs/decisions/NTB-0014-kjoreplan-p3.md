@@ -1,6 +1,7 @@
 # NTB-0014: Run plan for P3
 
 - Status: adopted 2026-11-16
+- Changed 2026-11-17: clarifications before the freeze (cap rule, cost at the time cap, execution errors, disk gate, self-test before a run, budget check before reruns, restart).
 
 ## Context
 
@@ -19,6 +20,8 @@ An infrastructure failure in a run is that Claude Code exits with an API error, 
 A pass is completed when each planned run has either been carried out or stands as missing according to the rules above. A pass stopped by the budget is incomplete. Only completed passes are included in the main analysis, and incomplete ones are reported separately.
 
 The runner for P3 refuses to run agents on tasks in the set before PREREG_DOI.txt exists in the repo.
+
+Clarifications 2026-11-17, made before the freeze and before any agent run on the tasks in the set. A run that hits a cap is recorded as not resolved whatever the tests give. If the time cap stops a run before Claude Code has reported a cost, the run's budget cap is recorded as its cost and the run is flagged. An infrastructure failure also covers a run where Claude Code reports an execution error (result subtype error_during_execution) without a cap having been hit. If less than 6 GiB is free on the Docker disk after cleanup, the build is not started and the task's runs in the pass stand as missing. If the self-test fails twice immediately before a run, that run and the task's remaining runs in the pass stand as missing. The budget check is made before every attempt, reruns included. If the runner stops for a reason outside these rules, it is restarted and continues with the planned runs that have no recorded outcome; a run that was in progress is run again.
 
 ## Alternatives considered
 

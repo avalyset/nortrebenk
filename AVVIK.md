@@ -29,3 +29,7 @@ The limit for P2.4 was at least 6 GiB free on the disk before each build. The se
 ## 7. New step P2.3b and two text variants (2026-11-16)
 
 The map did not have the step. It was added after P2.3 let 4 of 21 tasks pass. The quality requirement now applies to extended text, and P3 runs two text variants (NTB-0013). The change was made before any agent run on the tasks in the set.
+
+## 8. Dress rehearsal of the P3 runner before the freeze (2026-11-17)
+
+The map did not have the step. A reading of the runner against the preregistration text found rules that were not implemented (the cap rule, the cost of a run stopped by the time cap, the budget check before reruns, the threshold for a pass with extended text only, the disk gate) and no way to continue after a stop. The runner was corrected (NTB-0014, changed 2026-11-17). It was then run end to end on the two smoke-test tasks outside the set, with the PR text only and one pass, and the budget cap and the time cap were each provoked once on one of them (`data/roykprove/generalprove.jsonl`). The runner was not changed after the rehearsal. No agent was run on a task in the set.
