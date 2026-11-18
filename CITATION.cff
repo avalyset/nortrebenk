@@ -3,6 +3,8 @@ message: "If you use this work, please cite it as below."
 title: "nortrebenk: coding agents on public code from Norwegian government agencies"
 type: software
 version: 1.0.0
+date-released: "2026-11-18"
+doi: "10.5281/zenodo.24333973"
 authors:
   - family-names: "Botten Nicolaysen"
     given-names: "Eirik"
@@ -17,3 +19,11 @@ keywords:
   - issue resolving
   - public sector
   - Norway
+references:
+  - type: generic
+    title: "Preregistration: nortrebenk v1.0 pilot measurement (P3)"
+    authors:
+      - family-names: "Botten Nicolaysen"
+        given-names: "Eirik"
+    doi: "10.5281/zenodo.24304903"
+    year: 2026

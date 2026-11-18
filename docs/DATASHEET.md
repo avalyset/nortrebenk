@@ -102,9 +102,9 @@ The dataset is the task set (`data/sett_v1.jsonl`, `data/instances.jsonl`, `data
 
 **Distributed to third parties.** Yes, publicly (NTB-0009).
 
-**How.** As this repository and a Zenodo deposit. The preregistration has DOI 10.5281/zenodo.24304903 (`PREREG_DOI.txt`). v1.0 has no DOI yet.
+**How.** As this repository and a Zenodo deposit. The preregistration has DOI 10.5281/zenodo.24304903 (`PREREG_DOI.txt`). v1.0 has DOI 10.5281/zenodo.24333973.
 
-**When.** Not recorded.
+**When.** v1.0 was frozen at git tag `v1.0` on 2026-11-18.
 
 **Licence.** Code under MIT; documents and the study's own data and results under CC BY 4.0 (LICENSE).
 

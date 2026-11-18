@@ -2,6 +2,7 @@
   "title": "nortrebenk: coding agents on public code from Norwegian government agencies",
   "upload_type": "software",
   "version": "1.0.0",
+  "publication_date": "2026-11-18",
   "publisher": "Zenodo",
   "creators": [
     {
@@ -26,5 +27,6 @@
       "scheme": "doi"
     }
   ],
-  "language": "eng"
+  "language": "eng",
+  "doi": "10.5281/zenodo.24333973"
 }

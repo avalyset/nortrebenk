@@ -4,6 +4,8 @@ nortrebenk measures how well and how fast coding agents solve tasks taken from p
 
 **Status: v1.0. Preregistered at git tag `prereg-v1` ([PREREG.md](PREREG.md), DOI [10.5281/zenodo.24304903](https://doi.org/10.5281/zenodo.24304903)). The pilot was run on 17–18 November 2026. Results are in [RESULTATER.md](RESULTATER.md), and deviations no. 9–12 are in [AVVIK.md](AVVIK.md).**
 
+Release v1.0: https://doi.org/10.5281/zenodo.24333973.
+
 ## Contents
 
 - Task set: [data/sett_v1.jsonl](data/sett_v1.jsonl), 21 tasks from 5 repositories (source: `data/sett_v1.jsonl`); patches in [data/instances.jsonl](data/instances.jsonl); canary in [data/CANARY.md](data/CANARY.md).
