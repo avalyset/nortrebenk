@@ -2,6 +2,7 @@
 
 - Status: adopted 2026-11-16
 - Changed 2026-11-16: the cross-check is run through the unchanged Multi-SWE-bench harness.
+- Changed 2026-11-18: the cross-check on amd64 was not run for v1.0 (AVVIK.md no. 12).
 
 ## Context
 

@@ -1,6 +1,7 @@
 {
   "title": "nortrebenk: coding agents on public code from Norwegian government agencies",
   "upload_type": "software",
+  "version": "1.0.0",
   "publisher": "Zenodo",
   "creators": [
     {
@@ -9,6 +10,7 @@
       "affiliation": "EcoDeco AS"
     }
   ],
+  "description": "<p>nortrebenk measures how well and how fast coding agents solve tasks taken from public code in Norwegian public agencies, and what each solved task costs, with the agency's own tests as the ground truth. The set has 21 tasks (merged pull requests) from 5 public GitHub repositories of Nav and Digdir/Altinn, each with two task texts: the pull-request text and an extended text with requirements and an interface. The arms are Claude Code 2.1.325 with claude-sonnet-5-5 and with claude-opus-5-5. In the preregistered pilot (https://doi.org/10.5281/zenodo.24304903; three completed passes, 17–18 November 2026), the solved share on the extended text was 1.0000 for claude-sonnet-5-5 and 0.9524 for claude-opus-5-5, and on the pull-request text alone 0.2143 and 0.2619. This is a pilot that measures one vendor; the results apply to these 21 tasks, and the deviations and limits are stated in AVVIK.md and RESULTATER.md.</p>",
   "license": "cc-by-4.0",
   "keywords": [
     "coding agents",
@@ -16,6 +18,13 @@
     "issue resolving",
     "public sector",
     "Norway"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.24304903",
+      "relation": "references",
+      "scheme": "doi"
+    }
   ],
   "language": "eng"
 }

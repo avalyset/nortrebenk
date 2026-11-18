@@ -1,6 +1,6 @@
 Licences for nortrebenk
 
-Code (harness/, src/, analysis/): MIT License
+Code (harness/, src/, analysis/, tests/): MIT License
 
 Copyright (c) 2026 Eirik Botten Nicolaysen, EcoDeco AS
 
@@ -17,8 +17,6 @@ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEM
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Documents (README.md, PLAN.md, docs/decisions/, AVVIK.md, IDEER.md and other text written for this study): CC BY 4.0
-(https://creativecommons.org/licenses/by/4.0/).
+Documents and the study's own data (README.md, PREREG.md, RESULTATER.md, PLAN.md, docs/, AVVIK.md, IDEER.md, other text written for this study, and the data and results the study produced under data/ and results/): CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 
-Third-party material keeps its own licence: code, tests and pull-request text from the source repositories in data/
-keep the licence of each source repository (MIT or Apache-2.0, stated per repository).
+Third-party material keeps its own licence: code, tests and pull-request text from the source repositories in data/ keep the licence of each source repository (MIT for all five; the licence texts are in data/LISENSER/).

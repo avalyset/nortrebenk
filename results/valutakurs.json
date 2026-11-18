@@ -1,0 +1,8 @@
+{
+ "serie": "EXR/B.USD.NOK.SP",
+ "enhet": "NOK per USD",
+ "dato": "2026-11-17",
+ "kurs": 9.6237,
+ "url": "https://data.norges-bank.no/api/data/EXR/B.USD.NOK.SP?format=sdmx-json&startPeriod=2026-11-11&endPeriod=2026-11-17",
+ "hentet_utc": "2026-11-18T06:21:02Z"
+}

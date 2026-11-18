@@ -33,3 +33,19 @@ The map did not have the step. It was added after P2.3 let 4 of 21 tasks pass. T
 ## 8. Dress rehearsal of the P3 runner before the freeze (2026-11-17)
 
 The map did not have the step. A reading of the runner against the preregistration text found rules that were not implemented (the cap rule, the cost of a run stopped by the time cap, the budget check before reruns, the threshold for a pass with extended text only, the disk gate) and no way to continue after a stop. The runner was corrected (NTB-0014, changed 2026-11-17). It was then run end to end on the two smoke-test tasks outside the set, with the PR text only and one pass, and the budget cap and the time cap were each provoked once on one of them (`data/roykprove/generalprove.jsonl`). One correction from the freeze reading was made after the rehearsal: the task's instance image is kept when the disk gate cleans up between the two builds. It was checked without model calls on one of the tasks outside the set. No agent was run on a task in the set.
+
+## 9. Four runs recorded as missing in pass 3 were run afterwards (2026-11-18)
+
+In pass 3 the runner's free-space gate stopped two tasks before the build, and their four runs with extended text were recorded as missing, as the preregistration says (question 6). The gate measured once, right after cleanup. The measurement for the next task, taken within a few seconds, was above the limit, so the freed space had not yet been returned when the gate measured. The registered run files were first copied, hashed and timestamped. The four runs were then made with the same preparation function, caps and order, and written to a separate file (`data/p3/p3_tillegg.jsonl`); the gate passed at the first measurement for both tasks. The registered analysis is reported unchanged, with the four runs missing. A supplementary table includes them and is labelled as a deviation.
+
+## 10. Operational watchdog during P3 (2026-11-17)
+
+A separate script outside the repository watched the run file during P3. It would have stopped the runner if the last eight runs with an outcome were all missing, or if two completed runs in a row had hit the time cap. It was started at 11:29 UTC, after the runner (11:11 UTC), and never intervened. The registered runner code was not changed.
+
+## 11. Descriptive additions and published run files (2026-11-18)
+
+`analysis/lag_resultater.py` formats the tables in RESULTATER.md from the output of the locked analysis and from the run files, and adds no statistic. Two descriptive items were not pre-specified and are labelled so in RESULTATER.md: cost in NOK at the Norges Bank rate for 17 November 2026, and a per-task table of solved runs. The published run files are the registered files without the field `resultat_tekst` (the first 500 characters of the agent's final message). The locked analysis does not read that field and gives the same output with and without it.
+
+## 12. Scope of the v1.0 freeze reduced (2026-11-18)
+
+The cross-check on linux/amd64 through the unchanged Multi-SWE-bench harness (NTB-0011) was not attempted: no amd64 environment was set up for the pilot. The outcomes of the gold patch and the empty patch are therefore shown on linux/arm64 only, and the runner has not been compared with the unchanged Multi-SWE-bench harness. The cross-check is listed in IDEER.md. v1.0 is assessed against the Agentic Benchmark Checklist only; BetterBench and the JOSS checklist (NTB-0009) are not used, to keep the freeze of a pilot to the checklist written for agentic benchmarks.

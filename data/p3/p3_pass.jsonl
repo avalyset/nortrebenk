@@ -1,0 +1,3 @@
+{"tid_utc": "2026-11-17T16:15:02Z", "pass": 1, "type": "fullt", "varianter": ["pr_tekst", "utvidet"], "fullfort": true, "kost": 21.88897, "kost_utvidet": 10.223988}
+{"tid_utc": "2026-11-17T21:04:57Z", "pass": 2, "type": "fullt", "varianter": ["pr_tekst", "utvidet"], "fullfort": true, "kost": 22.427112, "kost_utvidet": 10.511336}
+{"tid_utc": "2026-11-18T00:23:12Z", "pass": 3, "type": "utvidet", "varianter": ["utvidet"], "fullfort": true, "kost": 9.252449, "kost_utvidet": 9.252449}

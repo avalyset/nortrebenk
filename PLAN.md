@@ -20,7 +20,7 @@
 - P3 Pilot run under the preregistration: Claude Code with Opus 5.5 and with Sonnet 5.5, on extended text and on the PR text alone
 - P4 Freeze of v1.0, with cross-check on amd64 before the freeze if included credit covers it
 
-The status of each phase is in the ground truth, not here.
+The status is in README.md, and the results are in RESULTATER.md.
 
 ## Decisions (ADR)
 

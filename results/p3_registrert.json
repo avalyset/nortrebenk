@@ -1,0 +1,3294 @@
+{
+ "grenser": [
+  "Fem repoer gir fem klynger; klyngede standardfeil med så få klynger er usikre (Miller avsnitt 2.2 forutsetter uavhengige klynger).",
+  "Tallene er beskrivende (NTB-0008); det er ingen hypotesetester."
+ ],
+ "fullforte_pass": [
+  1,
+  2,
+  3
+ ],
+ "hovedtall": {
+  "per_arm_og_variant": {
+   "claude-sonnet-5-5|pr_tekst": {
+    "oppgaver": 21,
+    "oppgaver_uten_gjennomforte_kjoringer": {
+     "antall": 0,
+     "oppgaver": []
+    },
+    "kjoringer": 42,
+    "loest_andel": 0.2143,
+    "se_per_oppgave": 0.0884,
+    "intervall_per_oppgave": [
+     0.0409,
+     0.3876
+    ],
+    "se_klynget_repo": 0.1169,
+    "intervall_klynget_repo": [
+     -0.0147,
+     0.4433
+    ],
+    "kostnad_usd": 5.5266,
+    "loste_kjoringer": 9,
+    "kostnad_per_loste_usd": 0.6141,
+    "veggtid_s": {
+     "median": 39.2,
+     "q1": 25.325,
+     "q3": 55.95
+    }
+   },
+   "claude-sonnet-5-5|utvidet": {
+    "oppgaver": 21,
+    "oppgaver_uten_gjennomforte_kjoringer": {
+     "antall": 0,
+     "oppgaver": []
+    },
+    "kjoringer": 61,
+    "loest_andel": 1.0,
+    "se_per_oppgave": 0.0,
+    "intervall_per_oppgave": [
+     1.0,
+     1.0
+    ],
+    "se_klynget_repo": 0.0,
+    "intervall_klynget_repo": [
+     1.0,
+     1.0
+    ],
+    "kostnad_usd": 6.9446,
+    "loste_kjoringer": 61,
+    "kostnad_per_loste_usd": 0.1138,
+    "veggtid_s": {
+     "median": 31.0,
+     "q1": 18.9,
+     "q3": 48.5
+    }
+   },
+   "claude-opus-5-5|pr_tekst": {
+    "oppgaver": 21,
+    "oppgaver_uten_gjennomforte_kjoringer": {
+     "antall": 0,
+     "oppgaver": []
+    },
+    "kjoringer": 42,
+    "loest_andel": 0.2619,
+    "se_per_oppgave": 0.0952,
+    "intervall_per_oppgave": [
+     0.0752,
+     0.4486
+    ],
+    "se_klynget_repo": 0.1289,
+    "intervall_klynget_repo": [
+     0.0093,
+     0.5145
+    ],
+    "kostnad_usd": 18.0542,
+    "loste_kjoringer": 11,
+    "kostnad_per_loste_usd": 1.6413,
+    "veggtid_s": {
+     "median": 100.15,
+     "q1": 75.10000000000001,
+     "q3": 134.77499999999998
+    }
+   },
+   "claude-opus-5-5|utvidet": {
+    "oppgaver": 21,
+    "oppgaver_uten_gjennomforte_kjoringer": {
+     "antall": 0,
+     "oppgaver": []
+    },
+    "kjoringer": 61,
+    "loest_andel": 0.9524,
+    "se_per_oppgave": 0.0476,
+    "intervall_per_oppgave": [
+     0.859,
+     1.0457
+    ],
+    "se_klynget_repo": 0.0445,
+    "intervall_klynget_repo": [
+     0.8652,
+     1.0396
+    ],
+    "kostnad_usd": 23.0432,
+    "loste_kjoringer": 59,
+    "kostnad_per_loste_usd": 0.3906,
+    "veggtid_s": {
+     "median": 94.6,
+     "q1": 55.9,
+     "q3": 131.8
+    }
+   }
+  },
+  "parvise_differanser": {
+   "opus_minus_sonnet|pr_tekst": {
+    "merknad": "beskrivende",
+    "oppgaver": 21,
+    "differanse": 0.0476,
+    "se_per_oppgave": 0.0588,
+    "intervall_per_oppgave": [
+     -0.0676,
+     0.1629
+    ],
+    "se_klynget_repo": 0.0518,
+    "intervall_klynget_repo": [
+     -0.0539,
+     0.1491
+    ],
+    "per_oppgave": {
+     "Altinn__altinn-access-management-frontend__2619": 0.0,
+     "Altinn__altinn-access-management-frontend__2625": 0.0,
+     "Altinn__altinn-access-management-frontend__2642": 0.0,
+     "Altinn__altinn-access-management-frontend__2644": 0.0,
+     "Altinn__altinn-access-management-frontend__2645": 1.0,
+     "Altinn__altinn-support-dashboard__966": 0.0,
+     "Altinn__altinn-support-dashboard__970": 0.0,
+     "Altinn__altinn-support-dashboard__979": 0.0,
+     "navikt__kafka-manager__329": -0.5,
+     "navikt__kafka-manager__330": 0.0,
+     "navikt__kafka-manager__336": 0.0,
+     "navikt__kafka-manager__337": 0.0,
+     "navikt__mock-oauth2-server__1069": 0.0,
+     "navikt__mock-oauth2-server__1131": 0.0,
+     "navikt__mock-oauth2-server__1154": 0.0,
+     "navikt__mock-oauth2-server__1155": 0.0,
+     "navikt__mock-oauth2-server__1161": 0.5,
+     "navikt__pensjonssimulator__688": 0.0,
+     "navikt__pensjonssimulator__692": 0.0,
+     "navikt__pensjonssimulator__702": 0.0,
+     "navikt__pensjonssimulator__715": 0.0
+    }
+   },
+   "opus_minus_sonnet|utvidet": {
+    "merknad": "beskrivende",
+    "oppgaver": 21,
+    "differanse": -0.0476,
+    "se_per_oppgave": 0.0476,
+    "intervall_per_oppgave": [
+     -0.141,
+     0.0457
+    ],
+    "se_klynget_repo": 0.0433,
+    "intervall_klynget_repo": [
+     -0.1324,
+     0.0372
+    ],
+    "per_oppgave": {
+     "Altinn__altinn-access-management-frontend__2619": 0.0,
+     "Altinn__altinn-access-management-frontend__2625": 0.0,
+     "Altinn__altinn-access-management-frontend__2642": 0.0,
+     "Altinn__altinn-access-management-frontend__2644": 0.0,
+     "Altinn__altinn-access-management-frontend__2645": 0.0,
+     "Altinn__altinn-support-dashboard__966": 0.0,
+     "Altinn__altinn-support-dashboard__970": 0.0,
+     "Altinn__altinn-support-dashboard__979": 0.0,
+     "navikt__kafka-manager__329": 0.0,
+     "navikt__kafka-manager__330": 0.0,
+     "navikt__kafka-manager__336": 0.0,
+     "navikt__kafka-manager__337": 0.0,
+     "navikt__mock-oauth2-server__1069": 0.0,
+     "navikt__mock-oauth2-server__1131": 0.0,
+     "navikt__mock-oauth2-server__1154": 0.0,
+     "navikt__mock-oauth2-server__1155": 0.0,
+     "navikt__mock-oauth2-server__1161": 0.0,
+     "navikt__pensjonssimulator__688": -1.0,
+     "navikt__pensjonssimulator__692": 0.0,
+     "navikt__pensjonssimulator__702": 0.0,
+     "navikt__pensjonssimulator__715": 0.0
+    }
+   },
+   "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+    "merknad": "beskrivende",
+    "oppgaver": 21,
+    "differanse": 0.7857,
+    "se_per_oppgave": 0.0884,
+    "intervall_per_oppgave": [
+     0.6124,
+     0.9591
+    ],
+    "se_klynget_repo": 0.1152,
+    "intervall_klynget_repo": [
+     0.5598,
+     1.0116
+    ],
+    "per_oppgave": {
+     "Altinn__altinn-access-management-frontend__2619": 1.0,
+     "Altinn__altinn-access-management-frontend__2625": 1.0,
+     "Altinn__altinn-access-management-frontend__2642": 1.0,
+     "Altinn__altinn-access-management-frontend__2644": 1.0,
+     "Altinn__altinn-access-management-frontend__2645": 1.0,
+     "Altinn__altinn-support-dashboard__966": 1.0,
+     "Altinn__altinn-support-dashboard__970": 0.0,
+     "Altinn__altinn-support-dashboard__979": 1.0,
+     "navikt__kafka-manager__329": 0.5,
+     "navikt__kafka-manager__330": 1.0,
+     "navikt__kafka-manager__336": 1.0,
+     "navikt__kafka-manager__337": 1.0,
+     "navikt__mock-oauth2-server__1069": 0.0,
+     "navikt__mock-oauth2-server__1131": 0.0,
+     "navikt__mock-oauth2-server__1154": 0.0,
+     "navikt__mock-oauth2-server__1155": 1.0,
+     "navikt__mock-oauth2-server__1161": 1.0,
+     "navikt__pensjonssimulator__688": 1.0,
+     "navikt__pensjonssimulator__692": 1.0,
+     "navikt__pensjonssimulator__702": 1.0,
+     "navikt__pensjonssimulator__715": 1.0
+    },
+    "pass": [
+     1,
+     2
+    ]
+   },
+   "utvidet_minus_pr_tekst|claude-opus-5-5": {
+    "merknad": "beskrivende",
+    "oppgaver": 21,
+    "differanse": 0.6905,
+    "se_per_oppgave": 0.1005,
+    "intervall_per_oppgave": [
+     0.4936,
+     0.8874
+    ],
+    "se_klynget_repo": 0.1138,
+    "intervall_klynget_repo": [
+     0.4675,
+     0.9134
+    ],
+    "per_oppgave": {
+     "Altinn__altinn-access-management-frontend__2619": 1.0,
+     "Altinn__altinn-access-management-frontend__2625": 1.0,
+     "Altinn__altinn-access-management-frontend__2642": 1.0,
+     "Altinn__altinn-access-management-frontend__2644": 1.0,
+     "Altinn__altinn-access-management-frontend__2645": 0.0,
+     "Altinn__altinn-support-dashboard__966": 1.0,
+     "Altinn__altinn-support-dashboard__970": 0.0,
+     "Altinn__altinn-support-dashboard__979": 1.0,
+     "navikt__kafka-manager__329": 1.0,
+     "navikt__kafka-manager__330": 1.0,
+     "navikt__kafka-manager__336": 1.0,
+     "navikt__kafka-manager__337": 1.0,
+     "navikt__mock-oauth2-server__1069": 0.0,
+     "navikt__mock-oauth2-server__1131": 0.0,
+     "navikt__mock-oauth2-server__1154": 0.0,
+     "navikt__mock-oauth2-server__1155": 1.0,
+     "navikt__mock-oauth2-server__1161": 0.5,
+     "navikt__pensjonssimulator__688": 0.0,
+     "navikt__pensjonssimulator__692": 1.0,
+     "navikt__pensjonssimulator__702": 1.0,
+     "navikt__pensjonssimulator__715": 1.0
+    },
+    "pass": [
+     1,
+     2
+    ]
+   }
+  }
+ },
+ "inndelt": {
+  "utfall_p23": {
+   "utelukket": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 17,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 34,
+      "loest_andel": 0.0294,
+      "se_per_oppgave": 0.0294,
+      "intervall_per_oppgave": [
+       -0.0282,
+       0.0871
+      ],
+      "se_klynget_repo": 0.0265,
+      "intervall_klynget_repo": [
+       -0.0226,
+       0.0814
+      ],
+      "kostnad_usd": 4.3947,
+      "loste_kjoringer": 1,
+      "kostnad_per_loste_usd": 4.3947,
+      "veggtid_s": {
+       "median": 36.7,
+       "q1": 23.949999999999996,
+       "q3": 55.725
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 17,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 49,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 5.4589,
+      "loste_kjoringer": 49,
+      "kostnad_per_loste_usd": 0.1114,
+      "veggtid_s": {
+       "median": 24.1,
+       "q1": 16.3,
+       "q3": 45.2
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 17,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 34,
+      "loest_andel": 0.0882,
+      "se_per_oppgave": 0.0641,
+      "intervall_per_oppgave": [
+       -0.0374,
+       0.2139
+      ],
+      "se_klynget_repo": 0.0515,
+      "intervall_klynget_repo": [
+       -0.0127,
+       0.1892
+      ],
+      "kostnad_usd": 14.0467,
+      "loste_kjoringer": 3,
+      "kostnad_per_loste_usd": 4.6822,
+      "veggtid_s": {
+       "median": 96.25,
+       "q1": 73.075,
+       "q3": 125.175
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 17,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 49,
+      "loest_andel": 0.9412,
+      "se_per_oppgave": 0.0588,
+      "intervall_per_oppgave": [
+       0.8259,
+       1.0565
+      ],
+      "se_klynget_repo": 0.053,
+      "intervall_klynget_repo": [
+       0.8372,
+       1.0451
+      ],
+      "kostnad_usd": 17.7781,
+      "loste_kjoringer": 47,
+      "kostnad_per_loste_usd": 0.3783,
+      "veggtid_s": {
+       "median": 81.1,
+       "q1": 54.5,
+       "q3": 114.2
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 17,
+      "differanse": 0.0588,
+      "se_per_oppgave": 0.0728,
+      "intervall_per_oppgave": [
+       -0.0838,
+       0.2015
+      ],
+      "se_klynget_repo": 0.0659,
+      "intervall_klynget_repo": [
+       -0.0703,
+       0.1879
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": -0.5,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.5,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 17,
+      "differanse": -0.0588,
+      "se_per_oppgave": 0.0588,
+      "intervall_per_oppgave": [
+       -0.1741,
+       0.0565
+      ],
+      "se_klynget_repo": 0.0511,
+      "intervall_klynget_repo": [
+       -0.159,
+       0.0413
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": 0.0,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.0,
+       "navikt__pensjonssimulator__688": -1.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 17,
+      "differanse": 0.9706,
+      "se_per_oppgave": 0.0294,
+      "intervall_per_oppgave": [
+       0.9129,
+       1.0282
+      ],
+      "se_klynget_repo": 0.0255,
+      "intervall_klynget_repo": [
+       0.9205,
+       1.0207
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 0.5,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 1.0,
+       "navikt__pensjonssimulator__688": 1.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 17,
+      "differanse": 0.8529,
+      "se_per_oppgave": 0.0832,
+      "intervall_per_oppgave": [
+       0.6899,
+       1.016
+      ],
+      "se_klynget_repo": 0.0497,
+      "intervall_klynget_repo": [
+       0.7555,
+       0.9504
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 1.0,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 0.5,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "består": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.1319,
+      "loste_kjoringer": 8,
+      "kostnad_per_loste_usd": 0.1415,
+      "veggtid_s": {
+       "median": 52.35,
+       "q1": 47.5,
+       "q3": 63.87499999999999
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 12,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.4857,
+      "loste_kjoringer": 12,
+      "kostnad_per_loste_usd": 0.1238,
+      "veggtid_s": {
+       "median": 47.8,
+       "q1": 38.775,
+       "q3": 58.449999999999996
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 4.0074,
+      "loste_kjoringer": 8,
+      "kostnad_per_loste_usd": 0.5009,
+      "veggtid_s": {
+       "median": 145.55,
+       "q1": 95.27499999999999,
+       "q3": 189.875
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 12,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 5.2651,
+      "loste_kjoringer": 12,
+      "kostnad_per_loste_usd": 0.4388,
+      "veggtid_s": {
+       "median": 134.85000000000002,
+       "q1": 105.85,
+       "q3": 171.95
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   }
+  },
+  "flagget_uavhengig": {
+   "nei": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 21,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 42,
+      "loest_andel": 0.2143,
+      "se_per_oppgave": 0.0884,
+      "intervall_per_oppgave": [
+       0.0409,
+       0.3876
+      ],
+      "se_klynget_repo": 0.1169,
+      "intervall_klynget_repo": [
+       -0.0147,
+       0.4433
+      ],
+      "kostnad_usd": 5.5266,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.6141,
+      "veggtid_s": {
+       "median": 39.2,
+       "q1": 25.325,
+       "q3": 55.95
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 21,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 61,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 6.9446,
+      "loste_kjoringer": 61,
+      "kostnad_per_loste_usd": 0.1138,
+      "veggtid_s": {
+       "median": 31.0,
+       "q1": 18.9,
+       "q3": 48.5
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 21,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 42,
+      "loest_andel": 0.2619,
+      "se_per_oppgave": 0.0952,
+      "intervall_per_oppgave": [
+       0.0752,
+       0.4486
+      ],
+      "se_klynget_repo": 0.1289,
+      "intervall_klynget_repo": [
+       0.0093,
+       0.5145
+      ],
+      "kostnad_usd": 18.0542,
+      "loste_kjoringer": 11,
+      "kostnad_per_loste_usd": 1.6413,
+      "veggtid_s": {
+       "median": 100.15,
+       "q1": 75.10000000000001,
+       "q3": 134.77499999999998
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 21,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 61,
+      "loest_andel": 0.9524,
+      "se_per_oppgave": 0.0476,
+      "intervall_per_oppgave": [
+       0.859,
+       1.0457
+      ],
+      "se_klynget_repo": 0.0445,
+      "intervall_klynget_repo": [
+       0.8652,
+       1.0396
+      ],
+      "kostnad_usd": 23.0432,
+      "loste_kjoringer": 59,
+      "kostnad_per_loste_usd": 0.3906,
+      "veggtid_s": {
+       "median": 94.6,
+       "q1": 55.9,
+       "q3": 131.8
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 21,
+      "differanse": 0.0476,
+      "se_per_oppgave": 0.0588,
+      "intervall_per_oppgave": [
+       -0.0676,
+       0.1629
+      ],
+      "se_klynget_repo": 0.0518,
+      "intervall_klynget_repo": [
+       -0.0539,
+       0.1491
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": -0.5,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.5,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 21,
+      "differanse": -0.0476,
+      "se_per_oppgave": 0.0476,
+      "intervall_per_oppgave": [
+       -0.141,
+       0.0457
+      ],
+      "se_klynget_repo": 0.0433,
+      "intervall_klynget_repo": [
+       -0.1324,
+       0.0372
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": 0.0,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.0,
+       "navikt__pensjonssimulator__688": -1.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 21,
+      "differanse": 0.7857,
+      "se_per_oppgave": 0.0884,
+      "intervall_per_oppgave": [
+       0.6124,
+       0.9591
+      ],
+      "se_klynget_repo": 0.1152,
+      "intervall_klynget_repo": [
+       0.5598,
+       1.0116
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 0.5,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 1.0,
+       "navikt__pensjonssimulator__688": 1.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 21,
+      "differanse": 0.6905,
+      "se_per_oppgave": 0.1005,
+      "intervall_per_oppgave": [
+       0.4936,
+       0.8874
+      ],
+      "se_klynget_repo": 0.1138,
+      "intervall_klynget_repo": [
+       0.4675,
+       0.9134
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 1.0,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 0.5,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   }
+  },
+  "repo": {
+   "navikt/mock-oauth2-server": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 10,
+      "loest_andel": 0.6,
+      "se_per_oppgave": 0.2449,
+      "intervall_per_oppgave": [
+       0.1199,
+       1.0801
+      ],
+      "se_klynget_repo": 0.1095,
+      "intervall_klynget_repo": [
+       0.3853,
+       0.8147
+      ],
+      "kostnad_usd": 1.2246,
+      "loste_kjoringer": 6,
+      "kostnad_per_loste_usd": 0.2041,
+      "veggtid_s": {
+       "median": 49.150000000000006,
+       "q1": 26.424999999999997,
+       "q3": 54.49999999999999
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 15,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.6571,
+      "loste_kjoringer": 15,
+      "kostnad_per_loste_usd": 0.1105,
+      "veggtid_s": {
+       "median": 48.4,
+       "q1": 39.45,
+       "q3": 58.4
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 10,
+      "loest_andel": 0.7,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       0.308,
+       1.092
+      ],
+      "se_klynget_repo": 0.0894,
+      "intervall_klynget_repo": [
+       0.5247,
+       0.8753
+      ],
+      "kostnad_usd": 4.39,
+      "loste_kjoringer": 7,
+      "kostnad_per_loste_usd": 0.6271,
+      "veggtid_s": {
+       "median": 138.1,
+       "q1": 105.62499999999999,
+       "q3": 178.0
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 15,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 6.0677,
+      "loste_kjoringer": 15,
+      "kostnad_per_loste_usd": 0.4045,
+      "veggtid_s": {
+       "median": 128.7,
+       "q1": 82.55,
+       "q3": 166.3
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.1,
+      "se_per_oppgave": 0.1,
+      "intervall_per_oppgave": [
+       -0.096,
+       0.296
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.1,
+       0.1
+      ],
+      "per_oppgave": {
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.5
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.4,
+      "se_per_oppgave": 0.2449,
+      "intervall_per_oppgave": [
+       -0.0801,
+       0.8801
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.4,
+       0.4
+      ],
+      "per_oppgave": {
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.3,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       -0.092,
+       0.692
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.3,
+       0.3
+      ],
+      "per_oppgave": {
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 0.5
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "navikt/kafka-manager": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 0.125,
+      "se_per_oppgave": 0.125,
+      "intervall_per_oppgave": [
+       -0.12,
+       0.37
+      ],
+      "se_klynget_repo": 0.0625,
+      "intervall_klynget_repo": [
+       0.0025,
+       0.2475
+      ],
+      "kostnad_usd": 0.8292,
+      "loste_kjoringer": 1,
+      "kostnad_per_loste_usd": 0.8292,
+      "veggtid_s": {
+       "median": 36.9,
+       "q1": 33.575,
+       "q3": 39.650000000000006
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 12,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.0471,
+      "loste_kjoringer": 12,
+      "kostnad_per_loste_usd": 0.0873,
+      "veggtid_s": {
+       "median": 23.55,
+       "q1": 13.775,
+       "q3": 49.625
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 3.0508,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 73.45,
+       "q1": 68.025,
+       "q3": 115.9
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 12,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 4.0618,
+      "loste_kjoringer": 12,
+      "kostnad_per_loste_usd": 0.3385,
+      "veggtid_s": {
+       "median": 58.5,
+       "q1": 53.675000000000004,
+       "q3": 98.85
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": -0.125,
+      "se_per_oppgave": 0.125,
+      "intervall_per_oppgave": [
+       -0.37,
+       0.12
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       -0.125,
+       -0.125
+      ],
+      "per_oppgave": {
+       "navikt__kafka-manager__329": -0.5,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "navikt__kafka-manager__329": 0.0,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.875,
+      "se_per_oppgave": 0.125,
+      "intervall_per_oppgave": [
+       0.63,
+       1.12
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.875,
+       0.875
+      ],
+      "per_oppgave": {
+       "navikt__kafka-manager__329": 0.5,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "navikt__kafka-manager__329": 1.0,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "Altinn/altinn-access-management-frontend": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 10,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 1.6887,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 38.900000000000006,
+       "q1": 25.400000000000002,
+       "q3": 54.5
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 14,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.6597,
+      "loste_kjoringer": 14,
+      "kostnad_per_loste_usd": 0.1186,
+      "veggtid_s": {
+       "median": 27.75,
+       "q1": 21.525,
+       "q3": 31.824999999999996
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 10,
+      "loest_andel": 0.2,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       -0.192,
+       0.592
+      ],
+      "se_klynget_repo": 0.0894,
+      "intervall_klynget_repo": [
+       0.0247,
+       0.3753
+      ],
+      "kostnad_usd": 5.2123,
+      "loste_kjoringer": 2,
+      "kostnad_per_loste_usd": 2.6062,
+      "veggtid_s": {
+       "median": 114.6,
+       "q1": 85.27499999999999,
+       "q3": 131.675
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 14,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 6.3857,
+      "loste_kjoringer": 14,
+      "kostnad_per_loste_usd": 0.4561,
+      "veggtid_s": {
+       "median": 100.65,
+       "q1": 92.875,
+       "q3": 115.175
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.2,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       -0.192,
+       0.592
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.2,
+       0.2
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.8,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       0.408,
+       1.192
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.8,
+       0.8
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "navikt/pensjonssimulator": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 1.1841,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 66.1,
+       "q1": 48.425,
+       "q3": 75.675
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 11,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.776,
+      "loste_kjoringer": 11,
+      "kostnad_per_loste_usd": 0.1615,
+      "veggtid_s": {
+       "median": 25.3,
+       "q1": 22.1,
+       "q3": 89.75
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 3.5118,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 98.5,
+       "q1": 83.675,
+       "q3": 115.57499999999999
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 4,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 11,
+      "loest_andel": 0.75,
+      "se_per_oppgave": 0.25,
+      "intervall_per_oppgave": [
+       0.26,
+       1.24
+      ],
+      "se_klynget_repo": 0.125,
+      "intervall_klynget_repo": [
+       0.505,
+       0.995
+      ],
+      "kostnad_usd": 4.8204,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.5356,
+      "veggtid_s": {
+       "median": 107.6,
+       "q1": 69.35,
+       "q3": 139.15
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": -0.25,
+      "se_per_oppgave": 0.25,
+      "intervall_per_oppgave": [
+       -0.74,
+       0.24
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       -0.25,
+       -0.25
+      ],
+      "per_oppgave": {
+       "navikt__pensjonssimulator__688": -1.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "navikt__pensjonssimulator__688": 1.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 4,
+      "differanse": 0.75,
+      "se_per_oppgave": 0.25,
+      "intervall_per_oppgave": [
+       0.26,
+       1.24
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.75,
+       0.75
+      ],
+      "per_oppgave": {
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "Altinn/altinn-support-dashboard": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 6,
+      "loest_andel": 0.3333,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       -0.32,
+       0.9867
+      ],
+      "se_klynget_repo": 0.1925,
+      "intervall_klynget_repo": [
+       -0.0439,
+       0.7105
+      ],
+      "kostnad_usd": 0.5999,
+      "loste_kjoringer": 2,
+      "kostnad_per_loste_usd": 0.3,
+      "veggtid_s": {
+       "median": 20.55,
+       "q1": 18.875,
+       "q3": 37.300000000000004
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 9,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 0.8046,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.0894,
+      "veggtid_s": {
+       "median": 14.6,
+       "q1": 11.0,
+       "q3": 36.5
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 6,
+      "loest_andel": 0.3333,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       -0.32,
+       0.9867
+      ],
+      "se_klynget_repo": 0.1925,
+      "intervall_klynget_repo": [
+       -0.0439,
+       0.7105
+      ],
+      "kostnad_usd": 1.8893,
+      "loste_kjoringer": 2,
+      "kostnad_per_loste_usd": 0.9447,
+      "veggtid_s": {
+       "median": 53.85,
+       "q1": 38.875,
+       "q3": 74.44999999999999
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 9,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 1.7076,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.1897,
+      "veggtid_s": {
+       "median": 24.8,
+       "q1": 13.0,
+       "q3": 50.2
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.6667,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       0.0133,
+       1.32
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.6667,
+       0.6667
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.6667,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       0.0133,
+       1.32
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.6667,
+       0.6667
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   }
+  },
+  "tekstsprak": {
+   "engelsk": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 13,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 26,
+      "loest_andel": 0.3462,
+      "se_per_oppgave": 0.1314,
+      "intervall_per_oppgave": [
+       0.0887,
+       0.6036
+      ],
+      "se_klynget_repo": 0.1322,
+      "intervall_klynget_repo": [
+       0.0871,
+       0.6052
+      ],
+      "kostnad_usd": 3.2597,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.3622,
+      "veggtid_s": {
+       "median": 38.900000000000006,
+       "q1": 24.375000000000004,
+       "q3": 53.824999999999996
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 13,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 38,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 3.9624,
+      "loste_kjoringer": 38,
+      "kostnad_per_loste_usd": 0.1043,
+      "veggtid_s": {
+       "median": 34.8,
+       "q1": 16.775,
+       "q3": 48.375
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 13,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 26,
+      "loest_andel": 0.4231,
+      "se_per_oppgave": 0.1369,
+      "intervall_per_oppgave": [
+       0.1548,
+       0.6914
+      ],
+      "se_klynget_repo": 0.1337,
+      "intervall_klynget_repo": [
+       0.161,
+       0.6852
+      ],
+      "kostnad_usd": 10.128,
+      "loste_kjoringer": 11,
+      "kostnad_per_loste_usd": 0.9207,
+      "veggtid_s": {
+       "median": 88.94999999999999,
+       "q1": 73.97500000000001,
+       "q3": 125.87499999999999
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 13,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 38,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 13.8755,
+      "loste_kjoringer": 38,
+      "kostnad_per_loste_usd": 0.3651,
+      "veggtid_s": {
+       "median": 89.9,
+       "q1": 54.55,
+       "q3": 132.625
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 13,
+      "differanse": 0.0769,
+      "se_per_oppgave": 0.0955,
+      "intervall_per_oppgave": [
+       -0.1103,
+       0.2641
+      ],
+      "se_klynget_repo": 0.0802,
+      "intervall_klynget_repo": [
+       -0.0802,
+       0.234
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": -0.5,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.5
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 13,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 13,
+      "differanse": 0.6538,
+      "se_per_oppgave": 0.1314,
+      "intervall_per_oppgave": [
+       0.3964,
+       0.9113
+      ],
+      "se_klynget_repo": 0.127,
+      "intervall_klynget_repo": [
+       0.4048,
+       0.9029
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 0.5,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 13,
+      "differanse": 0.5769,
+      "se_per_oppgave": 0.1369,
+      "intervall_per_oppgave": [
+       0.3086,
+       0.8452
+      ],
+      "se_klynget_repo": 0.1282,
+      "intervall_klynget_repo": [
+       0.3256,
+       0.8282
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 0.5
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "norsk": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 10,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 1.4121,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 62.35,
+       "q1": 25.249999999999996,
+       "q3": 72.875
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 14,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 2.1262,
+      "loste_kjoringer": 14,
+      "kostnad_per_loste_usd": 0.1519,
+      "veggtid_s": {
+       "median": 22.7,
+       "q1": 20.6,
+       "q3": 85.225
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 10,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 5.0104,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 104.19999999999999,
+       "q1": 93.8,
+       "q3": 135.95
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 5,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 14,
+      "loest_andel": 0.8,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       0.408,
+       1.192
+      ],
+      "se_klynget_repo": 0.1058,
+      "intervall_klynget_repo": [
+       0.5926,
+       1.0074
+      ],
+      "kostnad_usd": 6.1906,
+      "loste_kjoringer": 12,
+      "kostnad_per_loste_usd": 0.5159,
+      "veggtid_s": {
+       "median": 106.3,
+       "q1": 76.39999999999999,
+       "q3": 129.05
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": -0.2,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       -0.592,
+       0.192
+      ],
+      "se_klynget_repo": 0.0566,
+      "intervall_klynget_repo": [
+       -0.3109,
+       -0.0891
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "navikt__pensjonssimulator__688": -1.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "navikt__pensjonssimulator__688": 1.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 5,
+      "differanse": 0.8,
+      "se_per_oppgave": 0.2,
+      "intervall_per_oppgave": [
+       0.408,
+       1.192
+      ],
+      "se_klynget_repo": 0.0566,
+      "intervall_klynget_repo": [
+       0.6891,
+       0.9109
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "blandet": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 6,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 0.8548,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 40.0,
+       "q1": 35.849999999999994,
+       "q3": 50.224999999999994
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 9,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 0.856,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.0951,
+      "veggtid_s": {
+       "median": 25.3,
+       "q1": 16.3,
+       "q3": 33.8
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 6,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 2.9157,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 129.3,
+       "q1": 86.85000000000001,
+       "q3": 134.77499999999998
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 9,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 2.9771,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.3308,
+      "veggtid_s": {
+       "median": 57.7,
+       "q1": 53.6,
+       "q3": 94.6
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   }
+  },
+  "agentmarkor": {
+   "nei": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 18,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 36,
+      "loest_andel": 0.25,
+      "se_per_oppgave": 0.1011,
+      "intervall_per_oppgave": [
+       0.0519,
+       0.4481
+      ],
+      "se_klynget_repo": 0.1218,
+      "intervall_klynget_repo": [
+       0.0112,
+       0.4888
+      ],
+      "kostnad_usd": 4.5767,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 0.5085,
+      "veggtid_s": {
+       "median": 40.1,
+       "q1": 25.575,
+       "q3": 57.125
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 18,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 53,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 5.9856,
+      "loste_kjoringer": 53,
+      "kostnad_per_loste_usd": 0.1129,
+      "veggtid_s": {
+       "median": 30.8,
+       "q1": 17.7,
+       "q3": 49.7
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 18,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 36,
+      "loest_andel": 0.25,
+      "se_per_oppgave": 0.1011,
+      "intervall_per_oppgave": [
+       0.0519,
+       0.4481
+      ],
+      "se_klynget_repo": 0.1527,
+      "intervall_klynget_repo": [
+       -0.0494,
+       0.5494
+      ],
+      "kostnad_usd": 15.6172,
+      "loste_kjoringer": 9,
+      "kostnad_per_loste_usd": 1.7352,
+      "veggtid_s": {
+       "median": 100.94999999999999,
+       "q1": 71.75,
+       "q3": 136.2
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 18,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 53,
+      "loest_andel": 0.9444,
+      "se_per_oppgave": 0.0556,
+      "intervall_per_oppgave": [
+       0.8356,
+       1.0533
+      ],
+      "se_klynget_repo": 0.0505,
+      "intervall_klynget_repo": [
+       0.8454,
+       1.0435
+      ],
+      "kostnad_usd": 19.6616,
+      "loste_kjoringer": 51,
+      "kostnad_per_loste_usd": 0.3855,
+      "veggtid_s": {
+       "median": 92.3,
+       "q1": 55.9,
+       "q3": 131.8
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 18,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0404,
+      "intervall_per_oppgave": [
+       -0.0792,
+       0.0792
+      ],
+      "se_klynget_repo": 0.0393,
+      "intervall_klynget_repo": [
+       -0.077,
+       0.077
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": -0.5,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.5,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 18,
+      "differanse": -0.0556,
+      "se_per_oppgave": 0.0556,
+      "intervall_per_oppgave": [
+       -0.1644,
+       0.0533
+      ],
+      "se_klynget_repo": 0.0488,
+      "intervall_klynget_repo": [
+       -0.1512,
+       0.0401
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 0.0,
+       "Altinn__altinn-access-management-frontend__2625": 0.0,
+       "Altinn__altinn-support-dashboard__966": 0.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 0.0,
+       "navikt__kafka-manager__329": 0.0,
+       "navikt__kafka-manager__330": 0.0,
+       "navikt__kafka-manager__336": 0.0,
+       "navikt__kafka-manager__337": 0.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 0.0,
+       "navikt__mock-oauth2-server__1161": 0.0,
+       "navikt__pensjonssimulator__688": -1.0,
+       "navikt__pensjonssimulator__692": 0.0,
+       "navikt__pensjonssimulator__702": 0.0,
+       "navikt__pensjonssimulator__715": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 18,
+      "differanse": 0.75,
+      "se_per_oppgave": 0.1011,
+      "intervall_per_oppgave": [
+       0.5519,
+       0.9481
+      ],
+      "se_klynget_repo": 0.1195,
+      "intervall_klynget_repo": [
+       0.5158,
+       0.9842
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 0.5,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 1.0,
+       "navikt__pensjonssimulator__688": 1.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 18,
+      "differanse": 0.6944,
+      "se_per_oppgave": 0.108,
+      "intervall_per_oppgave": [
+       0.4828,
+       0.9061
+      ],
+      "se_klynget_repo": 0.1339,
+      "intervall_klynget_repo": [
+       0.4319,
+       0.957
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2619": 1.0,
+       "Altinn__altinn-access-management-frontend__2625": 1.0,
+       "Altinn__altinn-support-dashboard__966": 1.0,
+       "Altinn__altinn-support-dashboard__970": 0.0,
+       "Altinn__altinn-support-dashboard__979": 1.0,
+       "navikt__kafka-manager__329": 1.0,
+       "navikt__kafka-manager__330": 1.0,
+       "navikt__kafka-manager__336": 1.0,
+       "navikt__kafka-manager__337": 1.0,
+       "navikt__mock-oauth2-server__1069": 0.0,
+       "navikt__mock-oauth2-server__1131": 0.0,
+       "navikt__mock-oauth2-server__1154": 0.0,
+       "navikt__mock-oauth2-server__1155": 1.0,
+       "navikt__mock-oauth2-server__1161": 0.5,
+       "navikt__pensjonssimulator__688": 0.0,
+       "navikt__pensjonssimulator__692": 1.0,
+       "navikt__pensjonssimulator__702": 1.0,
+       "navikt__pensjonssimulator__715": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "ja": {
+    "per_arm_og_variant": {
+     "claude-sonnet-5-5|pr_tekst": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 6,
+      "loest_andel": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "kostnad_usd": 0.9499,
+      "loste_kjoringer": 0,
+      "kostnad_per_loste_usd": null,
+      "merknad_kostnad": "ingen løste kjøringer; samlet kostnad oppgis i stedet",
+      "veggtid_s": {
+       "median": 38.900000000000006,
+       "q1": 27.725,
+       "q3": 50.974999999999994
+      }
+     },
+     "claude-sonnet-5-5|utvidet": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 0.959,
+      "loste_kjoringer": 8,
+      "kostnad_per_loste_usd": 0.1199,
+      "veggtid_s": {
+       "median": 31.75,
+       "q1": 28.574999999999996,
+       "q3": 36.349999999999994
+      }
+     },
+     "claude-opus-5-5|pr_tekst": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 6,
+      "loest_andel": 0.3333,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       -0.32,
+       0.9867
+      ],
+      "se_klynget_repo": 0.1925,
+      "intervall_klynget_repo": [
+       -0.0439,
+       0.7105
+      ],
+      "kostnad_usd": 2.437,
+      "loste_kjoringer": 2,
+      "kostnad_per_loste_usd": 1.2185,
+      "veggtid_s": {
+       "median": 88.94999999999999,
+       "q1": 81.45,
+       "q3": 102.37500000000001
+      }
+     },
+     "claude-opus-5-5|utvidet": {
+      "oppgaver": 3,
+      "oppgaver_uten_gjennomforte_kjoringer": {
+       "antall": 0,
+       "oppgaver": []
+      },
+      "kjoringer": 8,
+      "loest_andel": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "kostnad_usd": 3.3816,
+      "loste_kjoringer": 8,
+      "kostnad_per_loste_usd": 0.4227,
+      "veggtid_s": {
+       "median": 101.5,
+       "q1": 63.974999999999994,
+       "q3": 118.67500000000001
+      }
+     }
+    },
+    "parvise_differanser": {
+     "opus_minus_sonnet|pr_tekst": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.3333,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       -0.32,
+       0.9867
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.3333,
+       0.3333
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0
+      }
+     },
+     "opus_minus_sonnet|utvidet": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       0.0,
+       0.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.0,
+       0.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 0.0,
+       "Altinn__altinn-access-management-frontend__2644": 0.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0
+      }
+     },
+     "utvidet_minus_pr_tekst|claude-sonnet-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 1.0,
+      "se_per_oppgave": 0.0,
+      "intervall_per_oppgave": [
+       1.0,
+       1.0
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       1.0,
+       1.0
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 1.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     },
+     "utvidet_minus_pr_tekst|claude-opus-5-5": {
+      "merknad": "beskrivende",
+      "oppgaver": 3,
+      "differanse": 0.6667,
+      "se_per_oppgave": 0.3333,
+      "intervall_per_oppgave": [
+       0.0133,
+       1.32
+      ],
+      "se_klynget_repo": 0.0,
+      "intervall_klynget_repo": [
+       0.6667,
+       0.6667
+      ],
+      "per_oppgave": {
+       "Altinn__altinn-access-management-frontend__2642": 1.0,
+       "Altinn__altinn-access-management-frontend__2644": 1.0,
+       "Altinn__altinn-access-management-frontend__2645": 0.0
+      },
+      "pass": [
+       1,
+       2
+      ]
+     }
+    }
+   }
+  }
+ },
+ "hovedmaal_uten_flaggede": {
+  "claude-sonnet-5-5|utvidet": {
+   "oppgaver": 21,
+   "oppgaver_uten_gjennomforte_kjoringer": {
+    "antall": 0,
+    "oppgaver": []
+   },
+   "kjoringer": 61,
+   "loest_andel": 1.0,
+   "se_per_oppgave": 0.0,
+   "intervall_per_oppgave": [
+    1.0,
+    1.0
+   ],
+   "se_klynget_repo": 0.0,
+   "intervall_klynget_repo": [
+    1.0,
+    1.0
+   ],
+   "kostnad_usd": 6.9446,
+   "loste_kjoringer": 61,
+   "kostnad_per_loste_usd": 0.1138,
+   "veggtid_s": {
+    "median": 31.0,
+    "q1": 18.9,
+    "q3": 48.5
+   }
+  },
+  "claude-opus-5-5|utvidet": {
+   "oppgaver": 21,
+   "oppgaver_uten_gjennomforte_kjoringer": {
+    "antall": 0,
+    "oppgaver": []
+   },
+   "kjoringer": 61,
+   "loest_andel": 0.9524,
+   "se_per_oppgave": 0.0476,
+   "intervall_per_oppgave": [
+    0.859,
+    1.0457
+   ],
+   "se_klynget_repo": 0.0445,
+   "intervall_klynget_repo": [
+    0.8652,
+    1.0396
+   ],
+   "kostnad_usd": 23.0432,
+   "loste_kjoringer": 59,
+   "kostnad_per_loste_usd": 0.3906,
+   "veggtid_s": {
+    "median": 94.6,
+    "q1": 55.9,
+    "q3": 131.8
+   }
+  }
+ },
+ "for_seg": {
+  "manglende_kjoringer": [
+   {
+    "pass": 3,
+    "nummer": 23,
+    "oppgave": "Altinn__altinn-access-management-frontend__2645",
+    "tekstvariant": "utvidet",
+    "arm": "claude-sonnet-5-5",
+    "grunn": "under 6 GiB ledig"
+   },
+   {
+    "pass": 3,
+    "nummer": 24,
+    "oppgave": "Altinn__altinn-access-management-frontend__2645",
+    "tekstvariant": "utvidet",
+    "arm": "claude-opus-5-5",
+    "grunn": "under 6 GiB ledig"
+   },
+   {
+    "pass": 3,
+    "nummer": 25,
+    "oppgave": "navikt__pensjonssimulator__688",
+    "tekstvariant": "utvidet",
+    "arm": "claude-opus-5-5",
+    "grunn": "under 6 GiB ledig"
+   },
+   {
+    "pass": 3,
+    "nummer": 26,
+    "oppgave": "navikt__pensjonssimulator__688",
+    "tekstvariant": "utvidet",
+    "arm": "claude-sonnet-5-5",
+    "grunn": "under 6 GiB ledig"
+   }
+  ],
+  "forkastede_forsok": {
+   "antall": 0,
+   "kostnad_usd": 0
+  },
+  "ufullstendige_pass": [],
+  "ufullstendige_pass_tall": null
+ }
+}

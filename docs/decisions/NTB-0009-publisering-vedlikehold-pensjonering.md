@@ -1,6 +1,7 @@
 # NTB-0009: Publication, maintenance and retirement
 
 - Status: adopted 2026-11-16
+- Changed 2026-11-18: v1.0 is assessed against the Agentic Benchmark Checklist only; BetterBench and the JOSS checklist are not used for the pilot (AVVIK.md no. 12).
 
 ## Context
 
