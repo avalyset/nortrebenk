@@ -95,12 +95,12 @@ Tasks without completed runs, per arm and text variant: claude-sonnet-5-5, pr_te
 
 ## T8. Missing runs (registered; results/p3_registrert.json, field `for_seg`)
 
-| pass | number | task | text | arm | reason code |
-|---|---|---|---|---|---|
-| 3 | 23 | Altinn/altinn-access-management-frontend#2645 | extended | claude-sonnet-5-5 | under 6 GiB ledig |
-| 3 | 24 | Altinn/altinn-access-management-frontend#2645 | extended | claude-opus-5-5 | under 6 GiB ledig |
-| 3 | 25 | navikt/pensjonssimulator#688 | extended | claude-opus-5-5 | under 6 GiB ledig |
-| 3 | 26 | navikt/pensjonssimulator#688 | extended | claude-sonnet-5-5 | under 6 GiB ledig |
+| pass | number | task | text | arm |
+|---|---|---|---|---|
+| 3 | 23 | Altinn/altinn-access-management-frontend#2645 | extended | claude-sonnet-5-5 |
+| 3 | 24 | Altinn/altinn-access-management-frontend#2645 | extended | claude-opus-5-5 |
+| 3 | 25 | navikt/pensjonssimulator#688 | extended | claude-opus-5-5 |
+| 3 | 26 | navikt/pensjonssimulator#688 | extended | claude-sonnet-5-5 |
 
 Discarded attempts: 0 (cost 0 USD). Incomplete passes: 0.
 
@@ -126,7 +126,7 @@ Supplementary = rows of `data/p3/p3_kjoringer.jsonl` without the four missing, p
 | claude-opus-5-5 | registered | 21 | 61 | 59 | 0.9524 | [0.8590, 1.0457] | [0.8652, 1.0396] | 0.3906 | 4 |
 | claude-opus-5-5 | with supplement (deviation) | 21 | 63 | 61 | 0.9683 | [0.9060, 1.0305] | [0.9101, 1.0264] | 0.3954 | 0 |
 
-Cells that differ between the two analyses: claude-sonnet-5-5, utvidet, claude-opus-5-5, utvidet.
+Cells that differ between the two analyses: claude-sonnet-5-5, extended; claude-opus-5-5, extended.
 
 ## T11. Cost in NOK (descriptive, not pre-specified; AVVIK.md no. 11)
 

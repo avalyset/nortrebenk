@@ -10,7 +10,7 @@ The dataset is the task set (`data/sett_v1.jsonl`, `data/instances.jsonl`, `data
 
 **Who created it, on behalf of which entity.** Eirik Botten Nicolaysen, EcoDeco AS (CITATION.cff).
 
-**Who funded it.** Not recorded beyond this: the study was carried out on prepaid credit that existed on 16 November 2026, with no top-up and no other expenses (NTB-0012). No grant is recorded.
+**Who funded it.** No grant. The work was done by the author at EcoDeco AS. The Anthropic API use (the agent runs, the extended texts and one of the three raters) was paid with the monthly API credit included in the author's own Claude Max subscription, shown in the Anthropic Console as «API credit (Max)»; no credit was granted for the study, and Anthropic had no role in it. The OpenAI rater was paid from EcoDeco AS's prepaid OpenAI API credit, and the Google rater ran on the free tier (AVVIK.md no. 4). The study had no other expenses (NTB-0012).
 
 **Other comments.** v1.0 is a task set, a repeatable method and a preregistered pilot measurement; it is not a ranking of agents and not a picture of the agencies' code (NTB-0001).
 
@@ -54,7 +54,7 @@ The dataset is the task set (`data/sett_v1.jsonl`, `data/instances.jsonl`, `data
 
 **Mechanisms and their validation.** Software: the harness in `harness/` (Multi-SWE-bench classes at commit 24f493f with an own thin runner, NTB-0002). Validation: run validation in P1, stability over three runs and an empty-patch check in P2.2, a grading-path check per task before the agent runs (NTB-0014), and an ensemble of model raters measured against human SWE-bench Verified annotations (agreement in `data/kvalitet/samsvar.md`).
 
-**Sampling strategy.** Deterministic rules applied to the candidate list (NTB-0003). How the 30 candidates run in P1 (`data/p1_resultater.jsonl`) were chosen from `data/kandidater_v1.jsonl` is not recorded in this repository.
+**Sampling strategy.** Deterministic rules applied to the candidate list (NTB-0003). The 30 candidates run in P1 (`data/p1_resultater.jsonl`) are the rows in `data/kandidater_v1.jsonl` with run class A (`kjoreklasse`) and licence MIT (`lisens`); the two sets are equal. How the 194 candidates were collected is not recorded in this repository.
 
 **Who was involved and how they were compensated.** The author; language models as raters and as writers of the extended text. Compensation: not applicable.
 
@@ -118,7 +118,7 @@ The dataset is the task set (`data/sett_v1.jsonl`, `data/instances.jsonl`, `data
 
 **Who maintains it.** The author (CITATION.cff).
 
-**Contact.** Not recorded in this repository.
+**Contact.** The author's ORCID record, https://orcid.org/0009-0001-9188-6788 (CITATION.cff).
 
 **Erratum.** Deviations are recorded in AVVIK.md.
 

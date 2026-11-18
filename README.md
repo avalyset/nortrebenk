@@ -41,16 +41,17 @@ The set is valid for models with a training cutoff before 2026-11-02T12:58:35Z, 
 
 ## Sammendrag (norsk)
 
-nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løste oppgave koster. Fasiten er etatens egne tester. Settet har 21 oppgaver fra 5 repoer (kilde: `data/sett_v1.jsonl`), hver med to tekstvarianter: PR-teksten og en utvidet tekst med krav og grensesnitt.
+nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løste oppgave koster. Fasiten er etatens egne tester. Settet har 21 oppgaver fra 5 repoer hos Nav og Digdir/Altinn (kilde: `data/sett_v1.jsonl`). Hver oppgave har to tekstvarianter: PR-teksten slik den sto, og en utvidet tekst med krav og grensesnitt.
 
-Pilotmålingen er forhåndsregistrert (DOI 10.5281/zenodo.24304903) og ble kjørt 17.–18. november 2026 med Claude Code og to modeller, i tre fullførte pass. Resultatene står i RESULTATER.md, og avvikene nr. 9–12 i AVVIK.md.
+Pilotmålingen er forhåndsregistrert (DOI 10.5281/zenodo.24304903) og ble kjørt 17.–18. november 2026 med Claude Code og to modeller, i tre fullførte pass. Resultatene står i RESULTATER.md, og avvik nr. 9–12 i AVVIK.md.
 
-- Utvidet tekst (hovedmålet): claude-sonnet-5-5 løste 61 av 61 kjøringer (løst andel 1.0000), claude-opus-5-5 59 av 61 (0.9524).
-- PR-tekst alene: løst andel 0.2143 for claude-sonnet-5-5 og 0.2619 for claude-opus-5-5.
-- Kostnad per løste oppgave på utvidet tekst: 1.10 kr for claude-sonnet-5-5 og 3.76 kr for claude-opus-5-5 (kurs 9.6237 kr per USD for 17.11.2026).
-- Forskjellen mellom utvidet tekst og PR-tekst, parvis per oppgave i pass 1 og 2: 0.7857 for claude-sonnet-5-5 og 0.6905 for claude-opus-5-5.
+- **Utvidet tekst (hovedmålet):** claude-sonnet-5-5 løste alle 21 oppgavene i alle kjøringene (løst andel 100 %). claude-opus-5-5 løste 20 av 21 oppgaver i alle kjøringene og én ikke i noen (95,2 %).
+- **PR-tekst alene:** løst andel 21,4 % for claude-sonnet-5-5 og 26,2 % for claude-opus-5-5.
+- **Forskjellen mellom tekstvariantene:** 78,6 prosentpoeng for claude-sonnet-5-5 og 69,0 for claude-opus-5-5, parvis per oppgave i pass 1 og 2.
+- **Kvalitetssjekken av PR-teksten:** de 4 oppgavene som besto den, ble løst i alle kjøringene med PR-teksten alene, av begge modellene. For de 17 som ikke besto, var løst andel 2,9 % for claude-sonnet-5-5 og 8,8 % for claude-opus-5-5.
+- **Kostnad per løste oppgave:** 1,10 kr for claude-sonnet-5-5 og 3,76 kr for claude-opus-5-5 på utvidet tekst, og 5,91 kr og 15,80 kr på PR-tekst alene (9,6237 kr per USD, Norges Bank 17.11.2026).
 
-Hovedmålet ligger i taket for begge modellene, så piloten skiller dem ikke. Den utvidede teksten er skrevet med kjennskap til løsningen og oppgir navn og strenger fra den, så løst andel er trolig høyere enn for en spesifikasjon skrevet uten den kjennskapen. PR-teksten alene besto ikke kvalitetssjekken for 17 av 21 oppgaver, så tallene for PR-tekst beskriver underspesifiserte oppgaver. Dokumentene er på engelsk; feltnavnene i datafilene er norske, og de mest brukte forklares i ordlista under.
+Hovedmålet ligger i taket for begge modellene, så piloten skiller dem ikke. Den utvidede teksten er skrevet med kjennskap til løsningen og oppgir navn og strenger fra den, så løst andel er trolig høyere enn for en spesifikasjon skrevet uten den kjennskapen. PR-teksten alene besto ikke kvalitetssjekken for 17 av 21 oppgaver, så tallene for PR-tekst beskriver for det meste underspesifiserte oppgaver. Tallene gjelder disse 21 oppgavene. Dokumentene er på engelsk; feltnavnene i datafilene er norske, og de mest brukte forklares i ordlista under.
 
 ## Glossary of Norwegian field names
 
@@ -73,6 +74,7 @@ Hovedmålet ligger i taket for begge modellene, så piloten skiller dem ikke. De
 | `ikke_pass` | tests among f2p and p2p that did not pass |
 | `i_settet_etter_p22` | in the set after P2.2 (ja/nei) |
 | `kalt` | called: whether the rater was called |
+| `kjoreklasse` | run class of a candidate (A, B or not set); class B is tests that need Testcontainers, Docker, Kafka, Postgres or similar (IDEER.md) |
 | `kjoring` | run identifier |
 | `kodesprak` | main code language of the repository |
 | `kost, kost_utvidet` | cost of the pass / cost of the pass's runs with extended text (USD) |
@@ -111,5 +113,9 @@ Hovedmålet ligger i taket for begge modellene, så piloten skiller dem ikke. De
 ## Licence
 
 Code under MIT. Documents and the study's own data and results under CC BY 4.0. Code, tests and pull-request text from the source repositories keep the licence of each source repository (data/LISENSER/). See [LICENSE](LICENSE).
+
+## Funding and disclosure
+
+No grant. The work was done by the author at EcoDeco AS. The Anthropic API use in the study (the agent runs, the extended texts and one of the three raters) was paid with the monthly API credit included in the author's own Claude Max subscription, shown in the Anthropic Console as «API credit (Max)». No credit was granted for the study, and Anthropic had no role in it.
 
 AI disclosure: implemented with Claude Code.

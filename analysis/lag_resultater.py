@@ -196,8 +196,8 @@ def main():
 
     # 6. Missing runs and supplement
     L += ["## T8. Missing runs (registered; results/p3_registrert.json, field `for_seg`)", ""]
-    L += tabell(["pass", "number", "task", "text", "arm", "reason code"],
-                [[m["pass"], m["nummer"], kort(m["oppgave"]), VNAVN[m["tekstvariant"]], m["arm"], m["grunn"]]
+    L += tabell(["pass", "number", "task", "text", "arm"],
+                [[m["pass"], m["nummer"], kort(m["oppgave"]), VNAVN[m["tekstvariant"]], m["arm"]]
                  for m in reg["for_seg"]["manglende_kjoringer"]]) + [""]
     fs = reg["for_seg"]["forkastede_forsok"]
     L += [f"Discarded attempts: {fs['antall']} (cost {fs['kostnad_usd']} USD). Incomplete passes: "
@@ -224,8 +224,9 @@ def main():
     for k in reg["hovedtall"]["per_arm_og_variant"]:
         x, y = reg["hovedtall"]["per_arm_og_variant"][k], til["hovedtall"]["per_arm_og_variant"][k]
         if x["loest_andel"] != y["loest_andel"] or x["kjoringer"] != y["kjoringer"]:
-            endret.append(k.replace("|", ", "))
-    L += [f"Cells that differ between the two analyses: {', '.join(endret) if endret else 'none'}.", ""]
+            arm, variant = k.split("|")
+            endret.append(f"{arm}, {VNAVN[variant]}")
+    L += [f"Cells that differ between the two analyses: {'; '.join(endret) if endret else 'none'}.", ""]
 
     # 7. Descriptive additions
     L += ["## T11. Cost in NOK (descriptive, not pre-specified; AVVIK.md no. 11)", "",

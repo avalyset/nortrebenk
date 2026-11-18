@@ -130,16 +130,16 @@ Tasks without completed runs, per arm and text variant: claude-sonnet-5-5, pr_te
 
 ## Missing runs and the supplementary analysis
 
-Four runs in pass 3 were recorded as missing by the runner's free-space gate (preregistration, question 6). The reason code is the one in the registered rows and in the analysis output.
+Four runs in pass 3 were recorded as missing by the runner's free-space gate (preregistration, question 6). The reason code is in the registered rows and in the analysis output.
 
 Table T8 (registered; results/p3_registrert.json, field `for_seg`):
 
-| pass | number | task | text | arm | reason code |
-|---|---|---|---|---|---|
-| 3 | 23 | Altinn/altinn-access-management-frontend#2645 | extended | claude-sonnet-5-5 | under 6 GiB ledig |
-| 3 | 24 | Altinn/altinn-access-management-frontend#2645 | extended | claude-opus-5-5 | under 6 GiB ledig |
-| 3 | 25 | navikt/pensjonssimulator#688 | extended | claude-opus-5-5 | under 6 GiB ledig |
-| 3 | 26 | navikt/pensjonssimulator#688 | extended | claude-sonnet-5-5 | under 6 GiB ledig |
+| pass | number | task | text | arm |
+|---|---|---|---|---|
+| 3 | 23 | Altinn/altinn-access-management-frontend#2645 | extended | claude-sonnet-5-5 |
+| 3 | 24 | Altinn/altinn-access-management-frontend#2645 | extended | claude-opus-5-5 |
+| 3 | 25 | navikt/pensjonssimulator#688 | extended | claude-opus-5-5 |
+| 3 | 26 | navikt/pensjonssimulator#688 | extended | claude-sonnet-5-5 |
 
 Discarded attempts: 0 (cost 0 USD). Incomplete passes: 0.
 
@@ -169,7 +169,7 @@ Supplementary = rows of `data/p3/p3_kjoringer.jsonl` without the four missing, p
 | claude-opus-5-5 | registered | 21 | 61 | 59 | 0.9524 | [0.8590, 1.0457] | [0.8652, 1.0396] | 0.3906 | 4 |
 | claude-opus-5-5 | with supplement (deviation) | 21 | 63 | 61 | 0.9683 | [0.9060, 1.0305] | [0.9101, 1.0264] | 0.3954 | 0 |
 
-Cells that differ between the two analyses: claude-sonnet-5-5, utvidet, claude-opus-5-5, utvidet.
+Cells that differ between the two analyses: claude-sonnet-5-5, extended; claude-opus-5-5, extended.
 
 ## Descriptive additions (not pre-specified)
 
@@ -224,7 +224,6 @@ Limits from the preregistration that still apply:
 - The quality-check anchor consists of English-language Python tasks the models may have seen in training, including the outcome of the annotation. The set is Kotlin, TypeScript and C# with Norwegian and English text (NTB-0004). The Google rater was a free-tier model (AVVIK.md no. 4).
 - The agent setup is not anchored to published solve rates (NTB-0007).
 - The extended text was added after the outcome of P2.3 and the smoke test were known, and before any agent run on set tasks. The additions were written by a model from the same vendor as the agents, without human review; a task's pass may rest on the rater from the same vendor; and the additions state names and strings from the solution (NTB-0013).
-- The smoke test built once below the disk limit (AVVIK.md no. 6).
 - Claude Code can exceed the per-run budget cap: in the rehearsal a cap of 0.02 USD gave a cost of 0.0441 USD (source: `data/roykprove/generalprove.jsonl`).
 - Cost that Claude Code has not reported is not counted as spent: a run that is interrupted when the runner stops, and an attempt discarded because the runner itself failed. B leaves 5.00 USD of the balance unused (NTB-0014).
 - For the two kafka-manager tasks with build fields, the dependency caches come from the gold-patch state and show which dependencies the solution uses (`harness/agent/gullcache.py`).
@@ -258,8 +257,7 @@ rader += [l for l in open("data/p3/p3_tillegg.jsonl", encoding="utf-8") if l.str
 open("results/p3_med_tillegg_inndata.jsonl", "w", encoding="utf-8").write("".join(rader))
 EOF
 python3 analysis/analyse.py results/p3_med_tillegg_inndata.jsonl --pass data/p3/p3_pass.jsonl --ut results/p3_med_tillegg.json
-python3 analysis/lag_resultater.py --hent-kurs
 python3 analysis/lag_resultater.py --B 66.71
 ```
 
-`--hent-kurs` fetches the Norges Bank rate again and overwrites `results/valutakurs.json` with a new retrieval time. B is from the author's internal run log and is used only in table T2.
+The tables use the stored rate in `results/valutakurs.json`. `python3 analysis/lag_resultater.py --hent-kurs` fetches the rate again and overwrites that file with a new retrieval time. B is from the author's internal run log and is used only in table T2.
