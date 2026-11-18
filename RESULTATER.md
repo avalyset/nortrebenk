@@ -60,7 +60,7 @@ The runner was not restarted, and the watchdog did not stop it (source: the auth
 
 ## Main measure (registered)
 
-Solved share on the extended text per arm, over all three completed passes:
+Solved share on the extended text per arm, over all three completed passes. The solved share is the mean of the task scores, and a task's score is the mean of its completed runs (PREREG.md, question 5). It can differ from solved runs divided by runs when tasks have different numbers of completed runs.
 
 Table T4 (results/p3_registrert.json):
 
@@ -232,7 +232,7 @@ Limits from the preregistration that still apply:
 
 Limits that follow from the numbers:
 
-a. The main measure is at the ceiling for both arms: claude-sonnet-5-5 solved 61 of 61 runs (solved share 1.0000) and claude-opus-5-5 solved 59 of 61 (solved share 0.9524) (table T4). The pilot does not separate the two models.
+a. The main measure is at the ceiling for both arms: the solved share is 1.0000 for claude-sonnet-5-5 and 0.9524 for claude-opus-5-5 (table T4). claude-sonnet-5-5 solved 61 of 61 runs. claude-opus-5-5 solved 59 of 61 runs: every run of 20 tasks and no run of one task (table T12). The pilot does not separate the two models.
 
 b. The extended text was written with knowledge of the solution and states names and strings from it (NTB-0013). The solved share on the extended text is probably higher than it would be for a specification written without that knowledge, and the pilot does not measure by how much.
 

@@ -15,3 +15,8 @@ Ført i rapporten (klasse a og h; rettes ikke):
 2. (d) data/kvalitet/uavhengig.md linje 9: batchprisen for gpt-6.1-sol (1.00/5.00 USD per million tokens) står uten kilde. data/ endres ikke.
 3. (e) PLAN.md linje 21: kartet sier «P4 Freeze of v1.0, with cross-check on amd64 before the freeze if included credit covers it»; krysskontrollen ble ikke kjørt (AVVIK.md nr. 12). Kartet endres ikke.
 4. (f) .zenodo.json `"license": "cc-by-4.0"` mot to lisenser i LICENSE, README.md og CITATION.cff (MIT for kode, CC BY 4.0 for dokumenter og data). Feltet tar én lisens-ID, og ingen enkelt ID stemmer med begge; valget er forfatterens.
+
+Etter runden (2026-11-18):
+
+1. Funn (a) er rettet: grense a og innledningen til tabell T4 i RESULTATER.md sier nå at løst andel er snittet av oppgaveskårene, og oppgir kjøringene for seg.
+2. Funn (f) er avklart: `.zenodo.json` beholder én lisens-ID (`cc-by-4.0`), og Zenodo-posten føres med begge lisensene (MIT og CC BY 4.0).
