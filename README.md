@@ -2,7 +2,7 @@
 
 nortrebenk measures how well and how fast coding agents solve tasks taken from public code in Norwegian public agencies, and what each solved task costs. The tasks are merged pull requests from the agencies' public GitHub repositories. The ground truth is the agency's own tests: a task counts as solved when the tests that failed before the change pass, and the tests that passed still pass.
 
-**Status: v1.0. Preregistered at git tag `prereg-v1` ([PREREG.md](PREREG.md), DOI [10.5281/zenodo.24304903](https://doi.org/10.5281/zenodo.24304903)); the pilot was run on 17–18 November 2026. Results are in [RESULTATER.md](RESULTATER.md), and deviations no. 9–12 are in [AVVIK.md](AVVIK.md).**
+**Status: v1.0. Preregistered at git tag `prereg-v1` ([PREREG.md](PREREG.md), DOI [10.5281/zenodo.24304903](https://doi.org/10.5281/zenodo.24304903)). The pilot was run on 17–18 November 2026. Results are in [RESULTATER.md](RESULTATER.md), and deviations no. 9–12 are in [AVVIK.md](AVVIK.md).**
 
 ## Contents
 
@@ -10,9 +10,9 @@ nortrebenk measures how well and how fast coding agents solve tasks taken from p
 - Two text variants per task: the PR text, and an extended text with requirements and interface ([data/utvidet_tekst.jsonl](data/utvidet_tekst.jsonl), NTB-0013).
 - Quality check of the tasks: [data/kvalitet/](data/kvalitet/), including the independent check ([data/kvalitet/uavhengig.md](data/kvalitet/uavhengig.md)). Smoke test, dress rehearsal of the runner and budget: [data/roykprove/](data/roykprove/).
 - Harness: [harness/BRUK.md](harness/BRUK.md) (validation images), [harness/agent/BRUK.md](harness/agent/BRUK.md) (agent runs), `harness/agent/kjor_p3.py` (run plan for P3, 252 runs in `data/p3_plan.jsonl`), `harness/sett/lag_sett.py`, `harness/tekst/`, `harness/kvalitet/`.
-- Pilot run files: [data/p3/](data/p3/): `p3_kjoringer.jsonl` (the registered runs without the field `resultat_tekst`), `p3_pass.jsonl` and `p3_tillegg.jsonl` (the four supplementary runs, AVVIK.md no. 9).
-- Results: [RESULTATER.md](RESULTATER.md); [results/](results/) holds the output of the locked analysis (`p3_registrert.json`, `p3_med_tillegg.json`), the tables (`tabeller.md`) and the exchange rate (`valutakurs.json`).
-- Analysis: `analysis/analyse.py` (locked at `prereg-v1`) and `analysis/lag_resultater.py` (formats the tables, adds no statistic; AVVIK.md no. 11). Tests: `python -m unittest discover -s tests`.
+- Pilot run files in [data/p3/](data/p3/): `p3_kjoringer.jsonl` (the registered runs without the field `resultat_tekst`), `p3_pass.jsonl`, and `p3_tillegg.jsonl` (the four supplementary runs, AVVIK.md no. 9).
+- Results: [RESULTATER.md](RESULTATER.md). [results/](results/) holds the output of the locked analysis (`p3_registrert.json`, `p3_med_tillegg.json`), the tables (`tabeller.md`) and the exchange rate (`valutakurs.json`).
+- Analysis: `analysis/analyse.py` (locked at `prereg-v1`) and `analysis/lag_resultater.py` (formats the tables and adds no statistic; AVVIK.md no. 11). Tests: `python -m unittest discover -s tests`.
 - Datasheet: [docs/DATASHEET.md](docs/DATASHEET.md). Agentic Benchmark Checklist: [docs/ABC_CHECKLIST.md](docs/ABC_CHECKLIST.md).
 - Plan: [PLAN.md](PLAN.md). Decisions: [docs/decisions/](docs/decisions/). Deviations: [AVVIK.md](AVVIK.md). Ideas: [IDEER.md](IDEER.md).
 
@@ -41,17 +41,17 @@ The set is valid for models with a training cutoff before 2026-11-02T12:58:35Z, 
 
 ## Sammendrag (norsk)
 
-nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løste oppgave koster. Fasiten er etatens egne tester. Settet har 21 oppgaver fra 5 repoer hos Nav og Digdir/Altinn (kilde: `data/sett_v1.jsonl`). Hver oppgave har to tekstvarianter: PR-teksten slik den sto, og en utvidet tekst med krav og grensesnitt.
+nortrebenk måler hvor godt og hvor raskt kodeagenter løser oppgaver fra offentlig kode i norske etater, og hva hver løst oppgave koster. Fasiten er etatens egne tester. Settet har 21 oppgaver fra 5 repoer hos Nav og Digdir/Altinn (kilde: `data/sett_v1.jsonl`). Hver oppgave har to tekstvarianter: PR-teksten slik den sto, og en utvidet tekst med krav og grensesnitt.
 
 Pilotmålingen er forhåndsregistrert (DOI 10.5281/zenodo.24304903) og ble kjørt 17.–18. november 2026 med Claude Code og to modeller, i tre fullførte pass. Resultatene står i RESULTATER.md, og avvik nr. 9–12 i AVVIK.md.
 
-- **Utvidet tekst (hovedmålet):** claude-sonnet-5-5 løste alle 21 oppgavene i alle kjøringene (løst andel 100 %). claude-opus-5-5 løste 20 av 21 oppgaver i alle kjøringene og én ikke i noen (95,2 %).
+- **Utvidet tekst (hovedmålet):** claude-sonnet-5-5 løste alle 21 oppgavene i alle kjøringene (løst andel 100 %). claude-opus-5-5 løste 20 av 21 oppgaver i alle kjøringene og den siste i ingen (95,2 %).
 - **PR-tekst alene:** løst andel 21,4 % for claude-sonnet-5-5 og 26,2 % for claude-opus-5-5.
 - **Forskjellen mellom tekstvariantene:** 78,6 prosentpoeng for claude-sonnet-5-5 og 69,0 for claude-opus-5-5, parvis per oppgave i pass 1 og 2.
-- **Kvalitetssjekken av PR-teksten:** de 4 oppgavene som besto den, ble løst i alle kjøringene med PR-teksten alene, av begge modellene. For de 17 som ikke besto, var løst andel 2,9 % for claude-sonnet-5-5 og 8,8 % for claude-opus-5-5.
-- **Kostnad per løste oppgave:** 1,10 kr for claude-sonnet-5-5 og 3,76 kr for claude-opus-5-5 på utvidet tekst, og 5,91 kr og 15,80 kr på PR-tekst alene (9,6237 kr per USD, Norges Bank 17.11.2026).
+- **Kvalitetssjekken av PR-teksten:** De 4 oppgavene som besto, ble løst av begge modellene i alle kjøringene med PR-teksten alene. For de 17 som ikke besto, var løst andel 2,9 % for claude-sonnet-5-5 og 8,8 % for claude-opus-5-5.
+- **Kostnad per løst oppgave:** 1,10 kr for claude-sonnet-5-5 og 3,76 kr for claude-opus-5-5 på utvidet tekst, og 5,91 kr og 15,80 kr på PR-tekst alene (9,6237 kr per USD, Norges Bank 17.11.2026).
 
-Hovedmålet ligger i taket for begge modellene, så piloten skiller dem ikke. Den utvidede teksten er skrevet med kjennskap til løsningen og oppgir navn og strenger fra den, så løst andel er trolig høyere enn for en spesifikasjon skrevet uten den kjennskapen. PR-teksten alene besto ikke kvalitetssjekken for 17 av 21 oppgaver, så tallene for PR-tekst beskriver for det meste underspesifiserte oppgaver. Tallene gjelder disse 21 oppgavene. Dokumentene er på engelsk; feltnavnene i datafilene er norske, og de mest brukte forklares i ordlista under.
+Hovedmålet ligger i taket for begge modellene, og piloten skiller dem ikke. Den utvidede teksten er skrevet med kjennskap til løsningen og oppgir navn og strenger fra den. Løst andel er derfor trolig høyere enn for en spesifikasjon skrevet uten den kjennskapen. PR-teksten alene besto ikke kvalitetssjekken for 17 av 21 oppgaver, og tallene for PR-tekst beskriver for det meste underspesifiserte oppgaver. Tallene gjelder disse 21 oppgavene. Dokumentene er på engelsk. Feltnavnene i datafilene er norske, og de mest brukte forklares i ordlista under.
 
 ## Glossary of Norwegian field names
 
